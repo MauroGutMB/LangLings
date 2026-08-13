@@ -1,0 +1,4 @@
+name    = "Go"
+image   = "golang:1.26-alpine"
+workdir = "/workspace"
+shell   = ["/bin/sh"]

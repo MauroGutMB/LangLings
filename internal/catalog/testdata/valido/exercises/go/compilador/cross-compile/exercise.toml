@@ -1,0 +1,18 @@
+title    = "Cross-compile para Windows"
+category = "compilador"
+editable = ["main.go"]
+objective = "Compile para windows/amd64 gerando bin/hello.exe."
+hints = ["GOOS e GOARCH são variáveis de ambiente."]
+
+[validation]
+mode    = "criteria"
+timeout = "10s"
+
+[[validation.criteria]]
+kind = "file_exists"
+path = "bin/hello.exe"
+
+[[validation.criteria]]
+kind    = "stdout_matches"
+command = ["file", "bin/hello.exe"]
+pattern = "PE32\\+.*x86-64"

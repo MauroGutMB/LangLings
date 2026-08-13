@@ -1,0 +1,12 @@
+title    = "Append em slices"
+category = "sintaxe"
+editable = ["main.go"]
+objective = """
+Faça Dobrar devolver um slice novo com cada elemento multiplicado por 2.
+"""
+hints = ["append pode reaproveitar o array subjacente."]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "30s"
