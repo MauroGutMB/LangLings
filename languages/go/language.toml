@@ -1,0 +1,16 @@
+name    = "Go"
+image   = "golang:1.26-alpine"
+workdir = "/workspace"
+shell   = ["/bin/sh"]
+
+# Volume nomeado, persistente entre execuções e entre containers.
+#
+# Sem ele, cada container novo recompila a biblioteca padrão do zero: medido
+# nesta máquina, 12s por validação contra 400ms. É o que decide se o loop de
+# save é utilizável ou não.
+cache_dir = "/cache"
+
+[env]
+GOCACHE    = "/cache/build"
+GOMODCACHE = "/cache/mod"
+GOFLAGS    = "-mod=mod"

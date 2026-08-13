@@ -1,0 +1,57 @@
+title    = "Cross-compile com versão injetada"
+category = "compilador"
+editable = ["main.go"]
+
+objective = """
+Esta atividade não é validada por testes: ela olha o BINÁRIO que você produzir.
+
+Duas partes:
+
+1. No código, declare uma variável de pacote `versao string` e imprima o valor
+   dela no main. Deixe-a sem valor inicial — quem vai preenchê-la é o linker.
+
+2. Abra o shell do container com [s] e compile à mão, de forma que:
+   - o binário saia em bin/hello.exe
+   - seja para windows/amd64 (você está num container Linux)
+   - a variável versao chegue ao binário valendo 1.0.0, sem estar escrita
+     em lugar nenhum do código
+
+Ao sair do shell com `exit`, os critérios são verificados automaticamente.
+"""
+
+hints = [
+  "GOOS e GOARCH são variáveis de ambiente lidas pelo comando go: GOOS=windows GOARCH=amd64 go build ...",
+  "A flag -o do go build escolhe o caminho de saída. O diretório precisa existir antes.",
+  "O linker aceita -X para definir uma string de pacote em tempo de build: go build -ldflags \"-X main.versao=1.0.0\". Só funciona em variável string de pacote, sem valor inicial.",
+  "Para conferir o que foi gravado no binário sem um Windows por perto: go version -m bin/hello.exe",
+]
+
+[validation]
+mode    = "criteria"
+timeout = "60s"
+
+[[validation.criteria]]
+kind     = "file_exists"
+path     = "bin/hello.exe"
+describe = "bin/hello.exe foi gerado"
+
+# O próprio toolchain do Go é o inspetor: `go version -m` lê os metadados
+# gravados no binário. Isso evita depender do utilitário `file`, que não existe
+# na imagem alpine — e funciona igual para qualquer alvo de cross-compile.
+[[validation.criteria]]
+kind     = "stdout_matches"
+command  = ["go", "version", "-m", "bin/hello.exe"]
+pattern  = "GOOS=windows"
+describe = "o binário é para Windows"
+
+[[validation.criteria]]
+kind     = "stdout_matches"
+command  = ["go", "version", "-m", "bin/hello.exe"]
+pattern  = "GOARCH=amd64"
+describe = "a arquitetura é amd64"
+
+[[validation.criteria]]
+kind     = "stdout_matches"
+command  = ["go", "version", "-m", "bin/hello.exe"]
+pattern  = "main\\.versao=1\\.0\\.0"
+describe = "a versão foi injetada pelo linker"

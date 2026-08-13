@@ -1,0 +1,25 @@
+title    = "Append e o array compartilhado"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Dobrar para devolver um slice NOVO com cada elemento multiplicado
+por 2, sem modificar o slice recebido.
+
+Parece simples, mas há uma armadilha: em Go, dois slices podem apontar para o
+mesmo array por baixo. Uma solução que "funciona" no primeiro teste pode fazer
+o resultado e a entrada compartilharem memória — e aí mexer num altera o outro.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "append devolve um slice que pode reaproveitar o array do slice de origem. Se você partir de xs, o resultado provavelmente vai compartilhar memória com ele.",
+  "make([]int, 0, len(xs)) cria um destino novo, com capacidade já reservada e nenhum vínculo com a entrada.",
+  "O esqueleto é: crie o destino com make, percorra a entrada com range e vá dando append do valor multiplicado.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"
