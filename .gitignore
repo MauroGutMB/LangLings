@@ -1,0 +1,28 @@
+# Binário compilado na raiz
+/langlings
+
+# Documentos de trabalho, fora do controle de versão
+plano-langlings.md
+CLAUDE.md
+AGENTS.md
+
+# Artefatos de build e teste do Go
+*.exe
+*.test
+*.out
+coverage.*
+
+# Bancos SQLite gerados localmente
+# (o banco de verdade fica em ~/.local/share/langlings, mas um -content
+#  apontando para cá geraria arquivos soltos)
+*.db
+*.db-wal
+*.db-shm
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
