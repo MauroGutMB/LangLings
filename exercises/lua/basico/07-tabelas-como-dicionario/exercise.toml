@@ -1,0 +1,27 @@
+title    = "Tabelas como dicionário: chaves, pairs e nil"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram a mesma tabela usada como dicionário: uma
+chave string vira campo (t.chave é açúcar para t["chave"]), atribuir nil a uma
+chave apaga o par, e pairs percorre TODAS as chaves — numéricas e string,
+qualquer ordem, ao contrário de ipairs.
+
+Depois implemente contarChaves: ela recebe uma tabela usada como dicionário e
+devolve quantos pares chave/valor ela tem. Uma tabela vazia devolve 0. Usar #
+não serve aqui — # é para listas com índice numérico seguido, e o dicionário
+não tem essa garantia.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "pairs entrega toda chave que existe na tabela, seja ela número ou string, sem se importar com sequência — é isso que # não cobre.",
+  "Um contador que começa em 0 e soma 1 a cada volta do for..in pairs(t) chega no total certo.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

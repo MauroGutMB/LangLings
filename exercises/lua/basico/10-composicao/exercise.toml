@@ -1,0 +1,29 @@
+title    = "Composição: lista, dicionário, closure e erro juntos"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua não ensinam nada novo — combinam o que os
+exercícios anteriores já mostraram: percorrer uma lista com ipairs, acumular
+num dicionário com pairs, uma closure guardando estado entre chamadas,
+string.format montando um relatório e pcall protegendo um acesso que pode dar
+error.
+
+Depois implemente resumoDeEstoque: ela recebe uma lista de tabelas, cada uma
+com os campos produto (string) e quantidade (número), e devolve um
+dicionário mapeando produto -> soma das quantidades desse produto na lista.
+Um produto que aparece em três entradas soma as três; uma lista vazia devolve
+um dicionário vazio.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "É o mesmo padrão de contarChaves e dobrar combinados: percorra a lista recebida com ipairs, e para cada entrada escreva no dicionário de saída.",
+  "Ao acumular, a chave pode já existir (soma) ou não (começa do zero) — resultado[produto] = (resultado[produto] or 0) + quantidade cobre os dois casos numa linha só.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

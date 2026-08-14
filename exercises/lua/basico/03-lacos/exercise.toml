@@ -1,0 +1,25 @@
+title    = "Laços: for numérico, while e repeat"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram as três formas de repetir em Lua: o for
+numérico (com e sem passo, inclusive de trás para frente), o while e o repeat,
+além de break para sair no meio.
+
+Depois implemente somaPares: ela recebe um número n e devolve a soma dos
+números pares de 1 até n, incluindo o próprio n quando ele for par. Com n
+menor que 2 a soma é 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O for numérico já sabe pular de dois em dois: o terceiro número depois do = é o passo, e nada obriga a começar do 1.",
+  "Comece em 2, vá até n com passo 2 e acumule numa variável declarada antes do laço — quando n é menor que 2 o laço simplesmente não roda, e a variável sai valendo o que entrou.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

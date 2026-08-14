@@ -1,0 +1,28 @@
+title    = "Múltiplos retornos truncam fora da última posição"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+empacotar(a, b) deve devolver a lista {quociente, resto, "extra"}, onde
+quociente e resto vêm de dividir(a, b) — uma função auxiliar que já devolve
+os dois valores.
+
+O código roda sem erro e parece natural: colocar a chamada direto dentro do
+construtor da lista. Rode os testes e repare que a lista resultante vem com
+um elemento a menos, faltando o resto.
+
+A armadilha está em ONDE, dentro do construtor, a chamada com dois retornos
+foi colocada.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Uma chamada que devolve vários valores só entrega TODOS eles quando está na ÚLTIMA posição de uma lista, dos argumentos de uma chamada, ou de um return — em qualquer outra posição, só o primeiro valor sobra.",
+  "Guarde os dois retornos de dividir(a, b) em duas variáveis locais antes de montar a lista, e escreva as três posições da lista já com os valores prontos.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

@@ -1,0 +1,25 @@
+title    = "Strings: concatenação, formatação e métodos"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram o operador .. de concatenação, o # que
+mede o texto, string.format com seus marcadores, a chamada de método com dois
+pontos (texto:upper()) e o fato de toda string em Lua ser imutável.
+
+Depois implemente etiqueta: ela recebe um nome e um preço inteiro e devolve
+exatamente o texto "NOME custa R$ 12" — o nome em maiúsculas e o preço no
+lugar do número.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Dá para montar isso só com .., mas string.format existe justamente para não picotar o texto em pedaços: um molde com marcadores e os valores no fim.",
+  "Os marcadores que você precisa são %s para o texto e %d para o inteiro; o nome em maiúsculas sai do método que os exemplos usam com dois pontos.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

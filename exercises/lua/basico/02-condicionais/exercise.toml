@@ -1,0 +1,25 @@
+title    = "Condicionais: if, elseif e o que conta como verdade"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram if/elseif/else, os operadores de
+comparação (repare no ~= para "diferente"), os conectivos and/or/not e a regra
+que decide o que é verdadeiro em Lua.
+
+Depois implemente classificar: ela recebe um número e devolve o texto
+"negativo" para números menores que zero, "zero" para o zero e "positivo" para
+números maiores que zero.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "São três respostas possíveis e uma só entrada, então é uma cadeia de decisões encadeadas — não três ifs independentes que se atropelam.",
+  "Em Lua a palavra é elseif, junta e sem then no meio: if n < 0 then ... elseif ... else ... end.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

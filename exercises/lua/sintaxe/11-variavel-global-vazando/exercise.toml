@@ -1,0 +1,27 @@
+title    = "Sem local, a variável vira global — e sobrevive à chamada"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+soma(lista) deve devolver a soma dos números de lista, cada chamada
+independente das anteriores.
+
+O código roda sem erro e uma chamada isolada devolve o resultado certo. Rode
+os testes e repare que, depois de uma primeira chamada, uma segunda chamada
+com uma lista diferente vem com um valor grande demais.
+
+A armadilha está em uma variável que deveria durar só uma chamada, mas está
+durando o programa inteiro.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Toda atribuição sem a palavra local cria (ou reaproveita) uma variável GLOBAL — ela não é apagada quando a função termina, e a próxima chamada a encontra do jeito que a anterior deixou.",
+  "\"total = (total or 0)\" só zera total quando ele ainda não existe (é nil); da segunda chamada em diante, ele já existe e carrega o resto da soma anterior. Declarar total como local dentro da função resolve: cada chamada ganha a sua própria, do zero.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

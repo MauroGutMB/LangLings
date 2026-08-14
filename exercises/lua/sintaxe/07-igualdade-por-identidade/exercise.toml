@@ -1,0 +1,27 @@
+title    = "== entre tabelas compara identidade, não conteúdo"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+mesmoConteudo(a, b) deve dizer se as listas a e b têm os mesmos elementos, na
+mesma ordem — mesmo sendo duas tabelas diferentes na memória.
+
+O código roda sem erro e parece a comparação óbvia: usar ==. Rode os testes e
+repare que duas listas com exatamente os mesmos números, construídas
+separadamente, são consideradas diferentes.
+
+A armadilha está no que == realmente compara quando os dois lados são
+tabelas.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Para tabelas, == não olha o conteúdo — ele só é true quando os dois lados são literalmente a MESMA tabela na memória, o mesmo jeito que == compara duas variáveis apontando (ou não) pro mesmo objeto.",
+  "Comparar conteúdo é comparar o comprimento das duas listas e, se baterem, cada posição uma a uma com um for.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

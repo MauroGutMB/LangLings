@@ -1,0 +1,26 @@
+title    = "Só nil e false são falsos"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+descricaoDeEstoque(quantidade) deve devolver "sem estoque" quando quantidade
+for 0, e "em estoque" para qualquer quantidade maior que 0.
+
+O código roda sem erro e parece a checagem óbvia: "se não tem quantidade,
+não tem estoque". Rode os testes e repare que um estoque de 0 unidades é
+relatado como "em estoque".
+
+A armadilha está no que Lua considera falso dentro de um if.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Em Lua só existem dois valores falsos de verdade: nil e false. Todo o resto — incluindo 0 e a string vazia \"\" — é verdadeiro dentro de um if, diferente de outras linguagens.",
+  "\"not quantidade\" só é true quando quantidade é nil ou false; para checar \"quantidade é zero\", a comparação precisa ser explícita: quantidade == 0.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

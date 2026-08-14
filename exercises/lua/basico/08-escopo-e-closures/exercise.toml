@@ -1,0 +1,28 @@
+title    = "Escopo e closures: cada função lembra do seu próprio de fora"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram local limitando uma variável ao bloco
+onde nasce, e uma função interna guardando uma referência viva a uma variável
+de fora — não uma cópia do valor no instante em que foi criada. Duas funções
+criadas pela mesma fábrica não compartilham essa variável entre si.
+
+Depois implemente criarContador: ela devolve uma função que, a cada chamada
+sem argumento, devolve o próximo número inteiro começando em 1 (1, depois 2,
+depois 3, ...). Cada contador criado por uma chamada a criarContador conta por
+conta própria, sem interferir nos outros.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A função devolvida precisa de algum lugar para guardar o número entre uma chamada e a próxima — e esse lugar não pode ser um parâmetro dela, porque ninguém vai passá-lo.",
+  "Uma variável local declarada dentro de criarContador, antes da função interna, continua viva enquanto essa função existir — é a mesma variável em toda chamada, não uma nova a cada vez.",
+  "A função interna soma 1 a essa variável e devolve o valor novo, nessa ordem.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"
