@@ -13,7 +13,7 @@ dispara sozinha** — não existe comando de "verificar" para lembrar. O código
 roda dentro do container daquela linguagem, e o progresso vai para um banco
 SQLite: 🔴 não iniciado, 🟡 em progresso, 🟢 completo.
 
-Cada linguagem tem cinco categorias de atividade:
+As atividades se dividem em cinco categorias:
 
 | Categoria | Como é validada |
 |---|---|
@@ -39,7 +39,7 @@ escreveu. Restaurar o código-base é sempre uma ação explícita.
 
 ## Como executar
 
-**Requisitos:** Linux ou WSL2, Go 1.24+, Docker acessível sem `sudo`
+**Requisitos:** Linux ou WSL2, Go 1.26+, Docker acessível sem `sudo`
 (seu usuário no grupo `docker`), e `gcc` — o driver de SQLite usa cgo.
 
 ```bash
@@ -50,6 +50,28 @@ go build -o langlings ./cmd/langlings
 Na primeira vez que você abrir uma linguagem ainda não instalada, o LangLings
 baixa a imagem Docker dela e mostra o progresso na tela. Só as linguagens que
 você usar ocupam espaço.
+
+### Onde você edita
+
+O LangLings não é um editor e não roda dentro do container — só a validação
+roda. Você trabalha nos arquivos com o seu editor de sempre, em:
+
+```
+~/.local/share/langlings/workspace/<linguagem>/<categoria>/<atividade>/
+```
+
+A tela da atividade mostra esse caminho, e `./langlings paths` também. Abra o
+arquivo em outra janela, deixe a TUI visível ao lado, e salve: a validação
+dispara e o estado muda na hora.
+
+```bash
+vim ~/.local/share/langlings/workspace/go/basico/07-maps/main.go
+```
+
+A tecla `s` abre um shell dentro do container, mas ele existe para *inspecionar*
+o ambiente — rodar o compilador à mão, examinar um binário —, não para editar.
+Enquanto o shell está aberto a interface fica suspensa, então você não vê a
+validação acontecendo.
 
 ### Navegação
 
@@ -86,17 +108,17 @@ O `-p 1` importa: pacotes diferentes mexem no mesmo Docker.
 
 ## Linguagens
 
-| Linguagem | Situação |
-|---|---|
-| Go | disponível |
-| C | planejada |
-| Rust | planejada |
-| Java | planejada |
-| Dart | planejada |
-| JavaScript | planejada |
-| TypeScript | planejada |
-| Lua | planejada |
-| Bash Script | planejada |
+| Linguagem | Básico | Sintaxe | Compilador | Frameworks | Exemplos |
+|---|---|---|---|---|---|
+| Go | 10 | 12 | 1 | — | — |
+| C | 10 | 12 | — | — | — |
+| JavaScript | 10 | 12 | — | — | — |
+| Lua | 10 | 12 | — | — | — |
+| Bash | 10 | 12 | — | — | — |
+| Rust | planejada | | | | |
+| Java | planejada | | | | |
+| TypeScript | planejada | | | | |
+| Dart | planejada | | | | |
 
 Adicionar uma linguagem é escrever um `languages/<slug>/language.toml` e as
 atividades em `exercises/<slug>/<categoria>/<slug-da-atividade>/`. Cada
