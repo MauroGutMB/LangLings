@@ -1,10 +1,15 @@
 # Binário compilado na raiz
 /langlings
+.claude
 
 # Documentos de trabalho, fora do controle de versão
 plano-langlings.md
 CLAUDE.md
 AGENTS.md
+
+# Grafo de conhecimento gerado localmente. O .graphifyignore, esse sim, é
+# versionado: ele diz o que indexar e vale para qualquer um que gere o grafo.
+graphify-out/
 
 # Artefatos de build e teste do Go
 *.exe

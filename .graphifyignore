@@ -1,0 +1,13 @@
+# O conteúdo dos exercícios não é o código do projeto.
+#
+# São ~355 arquivos contra os ~40 do motor, e por desenho eles se repetem: cada
+# exercício traz um main.go/exercicio.lua/exercicio.mjs com as mesmas funções
+# de demonstração em linguagens diferentes. Indexá-los faria o grafo responder
+# "onde está Dobrar?" com 30 resultados irrelevantes e enterraria internal/.
+#
+# O mesmo motivo pelo qual exercises/go.mod existe: fazer o toolchain ignorar
+# esta árvore.
+exercises/
+
+# Saída do próprio graphify.
+graphify-out/
