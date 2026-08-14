@@ -1,0 +1,23 @@
+title    = "O título que some depois de emprestado"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`resumo` monta uma linha com o título, o tamanho do título e o corpo de um
+texto. Ela está escrita de um jeito que parece razoável e não compila.
+
+Não mude o que `resumo` devolve nem clone nada: o problema está em como
+`tamanho` pede o título emprestado.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O erro do compilador aponta para `titulo` sendo usado depois de já ter sido usado por `tamanho`. Passar por valor MOVE a posse embora — depois disso, a ligação original não existe mais.",
+  "`tamanho` só precisa LER o texto para contar caracteres; ela não precisa ser dona dele. Trocar o parâmetro para `&str` e passar `&titulo` resolve sem clonar nada.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

@@ -1,0 +1,26 @@
+title    = "Composição: struct, Vec, HashMap e Option juntos"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs juntam tudo que veio antes: um `struct Produto` com
+`impl`, um `Vec<Produto>` percorrido com iteradores para somar o valor do
+estoque, e um `HashMap<String, f64>` construído a partir do vetor para
+consultar o preço de um produto pelo nome.
+
+Depois implemente `mais_caro`, que recebe um `&[Produto]` e devolve o
+`Produto` de maior preço como `Some(&Produto)` — ou `None` se a lista
+estiver vazia.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`iter()` sobre o slice dá um `&Produto` por vez; comparar `preco` entre dois com um laço funciona, mas o exemplo já usa `iter().map(...).sum()` para outra conta — dá para inspirar-se nele para percorrer.",
+  "Trate a lista vazia primeiro, com um `if produtos.is_empty() { return None; }`, e só depois procure o maior — assim o restante da função nunca precisa lidar com 'não tem nenhum'.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

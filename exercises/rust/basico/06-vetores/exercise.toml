@@ -1,0 +1,25 @@
+title    = "`Vec<T>`"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram como criar um `Vec<T>`, empurrar elementos
+com `push`, acessar com `[]` (que panica fora do intervalo) e com `get` (que
+devolve `Option`), percorrer com `for`, e usar `iter().sum()`, `iter().max()`
+e `filter`/`map`/`collect` para transformar um vetor noutro.
+
+Depois implemente `pares`, que recebe um `&[i32]` e devolve um `Vec<i32>` só
+com os números pares, na mesma ordem — `pares(&[1, 2, 3, 4])` é `[2, 4]`.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`iter()` empresta cada elemento; `filter` mantém só os que satisfazem a condição de paridade que o exemplo usa em `n % 2 == 0`.",
+  "`collect()` monta o `Vec<i32>` a partir do iterador, mas precisa do `filter` (e não do `map`) porque a tarefa é escolher elementos, não transformá-los.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

@@ -1,0 +1,26 @@
+title    = "Laços: `loop`, `while` e `for`"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram as três formas de repetir em Rust: o `loop`
+infinito que só termina com `break` (e que pode devolver um valor por ele), o
+`while` guardado por uma condição, e o `for` percorrendo um intervalo, um
+vetor emprestado e um iterador com `enumerate`.
+
+Depois implemente `soma_pares`, que recebe um número e devolve a soma de todos
+os números pares de 0 até esse número, inclusive. `soma_pares(10)` é
+0+2+4+6+8+10 = 30, e `soma_pares(0)` é 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um `for` sobre o intervalo inclusivo `0..=ate` visita exatamente os números que interessam; falta decidir quais deles entram na soma.",
+  "O acumulador precisa sobreviver às iterações, então ele é declarado antes do laço — e, como vai mudar a cada volta, precisa de `let mut`.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

@@ -1,0 +1,26 @@
+title    = "Funções: parâmetros, expressões e o retorno sem `return`"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram que o corpo de uma função é uma sequência de
+expressões e que a ÚLTIMA delas, sem ponto e vírgula, é o valor devolvido —
+`return` existe, mas é para sair cedo, não para o caminho normal. Também
+mostram que `if` e blocos `{ }` são expressões e podem aparecer do lado
+direito de um `let`.
+
+Depois implemente `maior_de_tres`, que recebe três `i32` e devolve o maior
+deles, sem usar a palavra `return`.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A função inteira pode ser um único `if`/`else if`/`else` sem ponto e vírgula no final de cada ramo: o valor de cada ramo vira o valor da função quando ele é escolhido.",
+  "Compare dois de cada vez, como o exemplo faz para achar o maior entre `a` e `b` antes de comparar com o terceiro.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

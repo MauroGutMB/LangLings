@@ -1,0 +1,20 @@
+title    = "O shadow que morre no fim do bloco errado"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`normalizar` deveria devolver o texto sem espaços nas pontas e em minúsculas.
+O código compila e roda — e o resultado às vezes não é minúsculo.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um `let` dentro de um bloco `{ }` cria uma ligação nova que só existe DENTRO daquele bloco — mesmo que o nome seja igual ao de fora, a ligação externa não é afetada e volta a valer quando o bloco termina.",
+  "O `to_lowercase()` está sendo atribuído a um `texto` que morre junto com o bloco em que foi criado. Mover esse `let` para o mesmo nível do `let` do `trim()` (sem o bloco extra ao redor) faz o shadow valer até o fim da função.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

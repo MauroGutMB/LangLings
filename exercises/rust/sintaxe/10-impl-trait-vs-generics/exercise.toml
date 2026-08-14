@@ -1,0 +1,21 @@
+title    = "O `impl Trait` que só aceita um tipo concreto por vez"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`escolher` deveria devolver um iterador de `i32`: um intervalo quando
+`usar_intervalo` é `true`, os elementos de um `Vec` quando é `false`. O
+código não compila.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`-> impl Iterator<Item = i32>` promete UM tipo concreto só, decidido em tempo de compilação — mesmo que os dois ramos do `if` implementem `Iterator`, `Range<i32>` e `std::vec::IntoIter<i32>` são tipos DIFERENTES, e a função não pode devolver ora um, ora outro.",
+  "Quando o tipo concreto varia em tempo de execução, a saída é despachar em tempo de execução: `Box<dyn Iterator<Item = i32>>` aceita qualquer tipo que implemente o trait, então os dois ramos do `if` podem devolver `Box::new(...)` de coisas diferentes.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

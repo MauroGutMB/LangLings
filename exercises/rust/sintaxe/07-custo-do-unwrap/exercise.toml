@@ -1,0 +1,21 @@
+title    = "O unwrap que só falha quando ninguém está olhando"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`primeiro_positivo` já devolve `Option<i32>`, o tipo certo para "pode não
+haver nenhum positivo". Mesmo assim, o programa encerra com pânico quando o
+vetor não tem nenhum número positivo.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`.find(...)` já devolve `Option<&i32>` — `None` quando nada bate com a condição. Chamar `.unwrap()` nele imediatamente joga fora exatamente a informação que a assinatura da função promete devolver.",
+  "Troque o `.unwrap()` por algo que preserve o `Option` até o final: `.find(...).copied()` já devolve `Option<i32>` (copiando o valor de dentro do `&i32`), pronto para ser o retorno da função sem precisar de um `Some(...)` escrito à mão.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

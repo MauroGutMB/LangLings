@@ -1,0 +1,7 @@
+[package]
+name    = "ll_sintaxe_custo_do_unwrap"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+path = "src/lib.rs"

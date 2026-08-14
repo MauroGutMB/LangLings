@@ -1,0 +1,20 @@
+title    = "O `?` que não sabe converter o erro"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`dobrar_texto` deveria converter um texto para número e devolver o dobro, ou
+um `Err` explicando o que deu errado. O código não compila.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`?` propaga o erro convertendo automaticamente o tipo dele para o tipo de erro da função — mas só quando existe uma conversão (`From`) entre os dois. Não existe uma de `ParseIntError` para `String`, então o `?` sozinho, sem ajuda, não compila aqui.",
+  "`.map_err(|e| ...)` transforma o `Err` ANTES do `?` agir — troque o `ParseIntError` por uma `String` explicativa dentro do `map_err`, e o `?` que vem depois já recebe um tipo que ele sabe propagar.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

@@ -1,0 +1,20 @@
+title    = "O `match` que esqueceu um estado"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`pode_logar` deveria dizer se uma conta em determinado `Estado` pode logar:
+só quando está `Ativo`. O código não compila.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`match` sobre um `enum` precisa cobrir TODAS as variantes — é o compilador garantindo que nenhum caso novo passe despercebido. Falta uma variante no match de `pode_logar`.",
+  "`Estado` tem três variantes: `Ativo`, `Inativo` e `Suspenso`. Acrescente o braço que falta — pensando no que faz sentido para uma conta suspensa poder ou não logar.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

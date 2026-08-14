@@ -1,0 +1,28 @@
+title    = "`HashMap<K, V>`"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram como criar um `HashMap`, inserir com
+`insert` (que sobrescreve uma chave existente), ler com `get` (que devolve
+`Option<&V>`, nunca panica), verificar presença com `contains_key`, e usar
+`entry().or_insert()` para só preencher um valor padrão quando a chave ainda
+não existe.
+
+Depois implemente `contar_palavras`, que recebe um `&str` e devolve um
+`HashMap<String, u32>` com quantas vezes cada palavra aparece — as palavras
+são separadas por espaço. `contar_palavras("a b a")` tem `a` valendo 2 e `b`
+valendo 1.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`split_whitespace()` devolve um iterador de `&str`, um por palavra; cada uma precisa virar `String` para entrar no HashMap que a assinatura promete.",
+  "`entry(chave).or_insert(0)` devolve uma referência mutável ao valor daquela chave — criando-o como 0 se ainda não existir — e dá para somar 1 direto nela com `*contagem += 1`, como o exemplo faz.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

@@ -1,0 +1,27 @@
+title    = "Condicionais: `if` é uma expressão, `match` é exaustivo"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram o `if`/`else if`/`else`, o fato de a condição
+ter que ser um `bool` de verdade (não existe valor "meio verdadeiro" em Rust),
+o `if` usado como expressão do lado direito de um `let`, e o `match` com
+literais, intervalos e o curinga `_`.
+
+Depois implemente `classificar`, que recebe uma nota de 0 a 100 e devolve:
+  - "reprovado" para 0 a 59;
+  - "aprovado" para 60 a 79;
+  - "destaque" para 80 a 100.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Dá para resolver com `if`/`else if`/`else` ou com `match`; nos dois casos o valor da última expressão de cada ramo é o valor devolvido, então não é preciso escrever `return`.",
+  "Se escolher `match`, os intervalos inclusivos do exemplo (`0..=59`) resolvem os três casos direto. Como u32 vai muito além de 100, o compilador vai exigir um ramo que cubra o resto — o `_` serve.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"
