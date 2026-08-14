@@ -1,0 +1,22 @@
+title    = "Arrays.asList devolve uma lista de tamanho fixo"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente adicionar, que recebe um array de String e um novo item, e devolve
+uma lista mutável contendo os itens do array seguidos do novo item.
+
+O código que já está aí compila e parece razoável. Rode os testes: um deles
+derruba o programa com uma exceção no meio de uma operação que parecia óbvia.
+"""
+
+hints = [
+  "Arrays.asList(array) não cria uma ArrayList de verdade — devolve uma view de tamanho fixo apoiada no próprio array.",
+  "add() numa lista de tamanho fixo lança UnsupportedOperationException, mesmo que a lista pareça uma List normal.",
+  "new ArrayList<>(Arrays.asList(array)) copia os elementos para uma lista de verdade, mutável.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

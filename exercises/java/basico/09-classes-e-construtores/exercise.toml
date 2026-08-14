@@ -1,0 +1,24 @@
+title    = "Classes, campos e construtores"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java definem a classe Pessoa: campos nome e idade, um
+construtor que os inicializa usando this para distinguir campo de parâmetro, e
+um método que muda o estado do objeto.
+
+Depois complete Retangulo: falta o método perimetro(), que devolve
+2 * (largura + altura).
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "perimetro() é um método de instância: ele lê os campos largura e altura do próprio objeto, sem receber parâmetros.",
+  "A fórmula é 2 * (largura + altura) — os mesmos campos que area() já usa.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

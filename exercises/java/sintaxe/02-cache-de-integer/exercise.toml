@@ -1,0 +1,23 @@
+title    = "O cache de Integer entre -128 e 127"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente saoIguais, que devolve true quando dois Integer representam o
+mesmo valor numérico.
+
+O código que já está aí compila e passa em alguns casos — inclusive alguns que
+parecem os mais óbvios de testar. Rode os testes: a faixa de valores usada em
+cada caso é o que decide se ele passa ou não.
+"""
+
+hints = [
+  "Integer é um objeto; == nele compara referência, não valor — igual ao que acontece com String.",
+  "A JVM reaproveita (faz cache de) objetos Integer para valores entre -128 e 127 — dentro dessa faixa, == parece funcionar por acidente.",
+  "intValue() extrai o int primitivo de dentro do Integer; comparar dois int com == sempre compara valor, nunca referência.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

@@ -1,0 +1,26 @@
+title    = "Composição: laços, String, array e Map juntos"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java combinam o que veio antes: split para separar
+uma frase em palavras, StringBuilder para montar as iniciais, um HashMap para
+guardar o tamanho de cada palavra, e um laço com filtro para juntar as
+palavras longas numa lista.
+
+Depois implemente contarLetras, que recebe um texto e devolve um
+Map<Character,Integer> com quantas vezes cada letra aparece (ignore espaços e
+qualquer caractere que não seja letra; diferencie maiúsculas de minúsculas).
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Character.isLetter(c) diz se um char é uma letra — use para pular espaços e pontuação.",
+  "texto.toCharArray() devolve um char[]; percorra com for-each e use getOrDefault(c, 0) + 1 para contar, como no exercício de maps.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

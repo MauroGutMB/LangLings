@@ -1,0 +1,24 @@
+title    = "List e ArrayList: coleção que cresce"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram ArrayList crescendo com add, leitura por
+índice com get, remoção e size — em contraste com o array, que nasce de
+tamanho fixo. Também mostram List.of, que devolve uma lista imutável.
+
+Depois implemente pares, que recebe uma List<Integer> e devolve uma nova lista
+só com os números pares, na mesma ordem.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "n % 2 == 0 é como se testa se um int é par em Java.",
+  "Crie uma ArrayList vazia antes do laço e vá dando add nela conforme encontra um par.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

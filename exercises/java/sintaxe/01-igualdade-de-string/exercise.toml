@@ -1,0 +1,22 @@
+title    = "== em String enxerga menos do que parece"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente saoIguais, que devolve true quando duas strings têm o mesmo
+conteúdo, caractere a caractere.
+
+O código que já está aí compila, roda e até acerta alguns casos. Rode os
+testes: um deles vai reprovar por um motivo que == esconde em Java.
+"""
+
+hints = [
+  "== em objetos compara referência (o mesmo espaço na memória), não conteúdo — String é objeto, não primitivo.",
+  "Literais de string idênticos costumam apontar para o mesmo objeto internado pela JVM, o que engana == em alguns testes e não em outros.",
+  ".equals() foi feito para comparar conteúdo; == nunca deveria ser usado para isso em String.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

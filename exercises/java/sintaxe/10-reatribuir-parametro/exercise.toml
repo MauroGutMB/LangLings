@@ -1,0 +1,22 @@
+title    = "Reatribuir um parâmetro não muda o que o chamador vê"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente zerarPrimeiro, que recebe um array de int e zera o primeiro
+elemento — o chamador precisa ver essa mudança depois que o método retorna.
+
+O código que já está aí compila, não lança nada, e devolve void como
+esperado. Rode os testes: o array do chamador não mudou.
+"""
+
+hints = [
+  "Java passa a REFERÊNCIA do array por valor: o parâmetro é uma cópia da referência, não um vínculo com a variável do chamador.",
+  "valores = new int[...] troca para QUAL array o parâmetro aponta — só dentro do método. O array original, para quem chamou, continua intacto.",
+  "Para o chamador enxergar a mudança, escreva DENTRO do array que já veio (valores[0] = ...), sem trocar a referência.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

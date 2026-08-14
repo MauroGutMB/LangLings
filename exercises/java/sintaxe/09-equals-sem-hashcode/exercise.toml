@@ -1,0 +1,24 @@
+title    = "equals sem hashCode quebra o HashSet"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+A classe Ponto e o método contido já estão praticamente prontos: contido
+devolve true quando o conjunto já tem um ponto com o mesmo x e y que alvo —
+não precisa ser o mesmo objeto, só um ponto equivalente.
+
+O código compila e passa quando o objeto procurado é literalmente o mesmo que
+foi inserido no conjunto. Rode os testes: um deles reprova quando o ponto
+procurado é um objeto diferente com os mesmos x e y.
+"""
+
+hints = [
+  "HashSet usa hashCode() para decidir em qual \"balde\" interno procurar, e só chama equals() dentro do balde certo.",
+  "Ponto sobrescreve equals() mas não hashCode() — dois pontos iguais por equals() podem ter hashCode() diferente (o padrão de Object, baseado em identidade), e o HashSet nunca chega a comparar com equals().",
+  "Sobrescreva hashCode() em Ponto usando os mesmos campos que equals() usa — Objects.hash(x, y) faz isso numa linha.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

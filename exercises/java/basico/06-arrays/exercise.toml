@@ -1,0 +1,24 @@
+title    = "Arrays: tamanho fixo e acesso por índice"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram como declarar e inicializar um array,
+ler seu tamanho com .length, acessar por índice, e usar Arrays.toString para
+imprimir o conteúdo (println num array imprime só um identificador interno).
+
+Depois implemente maximo, que recebe um array de int não vazio e devolve o
+maior elemento.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Comece assumindo que o primeiro elemento é o maior, depois percorra o resto comparando.",
+  "numeros[0] é um bom valor inicial para o acumulador — assim você não precisa de um caso especial para arrays de tamanho 1.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

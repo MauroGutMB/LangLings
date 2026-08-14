@@ -1,0 +1,7 @@
+name    = "Java"
+image   = "eclipse-temurin:25-jdk-alpine"
+workdir = "/workspace"
+shell   = ["/bin/sh"]
+
+# Sem cache_dir: não há Maven nem Gradle, e o source launcher (`java
+# Testes.java`) compila em memória sem deixar artefato no disco para cachear.
