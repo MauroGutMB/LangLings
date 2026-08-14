@@ -1,0 +1,24 @@
+title    = "Arrays tipados e tuplas"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram como anotar um array (Tipo[]), como uma
+tupla fixa a quantidade de elementos E o tipo de cada posição individualmente
+(diferente de um array comum), e como acessar posições de uma e de outra.
+
+Depois implemente primeiroEUltimo, que recebe um array de números não-vazio e
+devolve uma tupla [number, number] com o primeiro e o último elemento.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O tipo de retorno de uma tupla se anota como [Tipo, Tipo], igual ao exemplo de coordenada acima — não como Tipo[].",
+  "O último elemento de um array numeros é numeros[numeros.length - 1].",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

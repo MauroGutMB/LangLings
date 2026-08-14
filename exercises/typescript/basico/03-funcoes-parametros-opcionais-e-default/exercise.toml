@@ -1,0 +1,26 @@
+title    = "Funções: parâmetros opcionais e valor default"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram como marcar um parâmetro como opcional
+com ?, como dar a um parâmetro um valor default, e a diferença de tipo entre
+os dois (opcional aceita undefined; com default, o parâmetro nunca é
+undefined dentro da função).
+
+Depois implemente formatarNome, que recebe nome e um sobrenome opcional e
+devolve "nome sobrenome" quando sobrenome foi informado, ou só "nome" quando
+não foi.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um parâmetro opcional se declara com ? depois do nome, como em sobrenome?: string — e seu tipo dentro da função é string | undefined.",
+  "Cheque se sobrenome é undefined (ou use === undefined) antes de decidir o formato da string a devolver.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

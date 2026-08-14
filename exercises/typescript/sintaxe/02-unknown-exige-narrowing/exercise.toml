@@ -1,0 +1,22 @@
+title    = "unknown exige narrowing antes de usar"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente somarSeNumero, que recebe valor (unknown) e outro (number) e
+devolve a soma dos dois quando valor for de fato um number, ou devolve outro
+sem alteração quando não for.
+
+O código atual nem compila: ele usa valor num + como se já soubesse que é um
+number, e unknown não permite isso sem checagem antes.
+"""
+
+hints = [
+  "unknown aceita qualquer valor na entrada, mas TypeScript recusa qualquer operação nele até você provar o tipo com uma checagem.",
+  "typeof valor === \"number\" dentro de um if estreita (narrowing) o tipo de valor para number só dentro daquele bloco.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

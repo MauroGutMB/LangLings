@@ -1,0 +1,26 @@
+title    = "Sobrecarga: quando uma união apaga informação"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Ajuste a assinatura de converterTipo (o corpo já está pronto e correto): ela
+recebe string ou number e devolve o outro tipo — string vira number, number
+vira string.
+
+O teste (não editável) chama converterTipo("42") e usa .toFixed no
+resultado, porque sabe que uma string sempre vira number. Mas a assinatura
+atual devolve string | number para QUALQUER entrada — TypeScript esqueceu a
+relação entre o tipo de entrada e o de saída. Declare sobrecargas (function
+converterTipo(valor: string): number; e a versão para number) antes da
+implementação, para que o tipo de retorno dependa do tipo de entrada.
+"""
+
+hints = [
+  "Uma única assinatura com union nos dois lados (string | number -> string | number) é verdadeira, mas imprecisa: ela não diz que string sempre vira number.",
+  "Adicione duas declarações de assinatura (sem corpo) acima da implementação: uma para (valor: string): number, outra para (valor: number): string. A implementação continua tendo a assinatura union.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

@@ -1,0 +1,26 @@
+title    = "Composição: interface, union de literais e optional chaining"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts combinam interface, union de literais e
+optional chaining num único cenário de pedido com cupom de desconto opcional.
+
+Depois implemente calcularTotal, que soma o preco de cada Produto em uma
+lista e, se um Cupom for informado, aplica o desconto: tipo "percentual"
+reduz o total em cupom.valor por cento; tipo "fixo" subtrai cupom.valor do
+total (sem deixar o total ficar negativo — o mínimo é 0).
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Primeiro some produtos.reduce((soma, p) => soma + p.preco, 0) para o total sem desconto.",
+  "cupom é opcional: se for undefined, devolva o total sem alterações — cheque isso antes de olhar cupom.tipo.",
+  "Math.max(0, total) depois de aplicar o desconto garante que o resultado nunca fica negativo.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

@@ -1,0 +1,25 @@
+title    = "Objetos e interface"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram como declarar uma interface para
+descrever o formato de um objeto, como um campo opcional na interface muda o
+tipo do campo dentro da função, e como TypeScript recusa um objeto que não
+bate com a interface na hora da atribuição.
+
+Depois implemente apresentar, que recebe uma Pessoa e devolve
+"nome (idade anos)" — ou só "nome" quando idade não foi informada.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A interface Pessoa já está definida acima do bloco SUA VEZ — não crie outra, use essa.",
+  "idade é um campo opcional (idade?: number). Dentro da função, cheque se pessoa.idade é undefined antes de usar no template string.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

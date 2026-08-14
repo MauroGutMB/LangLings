@@ -1,0 +1,24 @@
+title    = "Narrowing não sobrevive dentro de uma closure"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente formatarMaisTarde, que recebe valor (string | number) e devolve
+uma função sem parâmetros que, quando chamada, devolve valor formatado: se
+era string, em maiúsculas; se era number, com duas casas decimais.
+
+O código atual nem compila: dentro da closure devolvida, o compilador não
+consegue garantir que a variável 'let' segue com o tipo estreitado que a
+checagem de fora provou, porque em teoria ela poderia ter sido reatribuída
+antes da closure rodar.
+"""
+
+hints = [
+  "TypeScript estreita (narrowing) o tipo de uma variável 'let' dentro do bloco onde a checagem foi feita — mas não garante essa mesma estreiteza dentro de uma função criada ali e chamada depois.",
+  "Guarde a checagem e o uso na mesma execução: monte a string de resultado ANTES de criar e devolver a closure, e faça a closure só devolver esse valor já pronto.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

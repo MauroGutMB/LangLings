@@ -1,0 +1,24 @@
+title    = "unknown vs any"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram a diferença entre any (desliga a
+checagem de tipos completamente) e unknown (também aceita qualquer valor, mas
+exige uma checagem de tipo — narrowing — antes de deixar usá-lo).
+
+Depois implemente paraNumeroSeguro, que recebe um valor unknown e devolve ele
+mesmo se já for number, ou 0 caso contrário.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Sem checar o tipo de valor primeiro, usar valor como number não compila — é essa checagem que separa unknown de any.",
+  "typeof valor === \"number\" dentro de um if estreita o tipo de valor para number só dentro daquele bloco.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

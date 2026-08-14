@@ -1,0 +1,23 @@
+title    = "any desliga a checagem em cascata"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente apresentarPessoa, que recebe uma Pessoa (definida acima) e devolve
+"Olá, NOME, você tem IDADE anos".
+
+O código atual compila — pessoa está tipado como any, então o compilador não
+audita nenhum acesso a campo dentro da função. Rode os testes: um typo no
+nome do campo passou despercebido, e a saída vem com "undefined" no lugar do
+nome. Troque any pelo tipo Pessoa e deixe o compilador apontar o erro.
+"""
+
+hints = [
+  "any desliga a checagem em qualquer expressão que dependa dele — inclusive nomes de campo digitados errado, que com um tipo de verdade seriam apontados na hora.",
+  "Troque o parâmetro de any para Pessoa. O compilador vai reclamar de um campo que não existe — é aí que está o typo.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

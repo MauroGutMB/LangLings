@@ -1,0 +1,22 @@
+title    = "as mente para o compilador, não converte nada"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente comprimento, que recebe um valor unknown e devolve o comprimento
+dele quando for uma string, ou 0 quando não for.
+
+O código atual compila: `as string` só avisa o compilador para tratar valor
+como string dali em diante, sem converter nem checar nada em tempo de
+execução. Quando valor não é uma string de verdade, o resultado não bate.
+"""
+
+hints = [
+  "as não é um narrowing — é uma afirmação sua, e o compilador confia nela mesmo quando está errada. Ele não gera nenhuma checagem em tempo de execução.",
+  "Troque a asserção `as string` por uma checagem de verdade: typeof valor === \"string\".",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

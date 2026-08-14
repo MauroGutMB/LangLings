@@ -1,0 +1,24 @@
+title    = "noUncheckedIndexedAccess: array[i] pode ser undefined"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente primeiraLetra, que recebe palavras (string[]) e indice (number) e
+devolve a primeira letra de palavras[indice] em maiúscula, ou "" quando a
+posição não existe.
+
+Este exercício liga noUncheckedIndexedAccess no tsconfig: com essa opção,
+indexar um array (palavras[indice]) devolve string | undefined, não string —
+porque o índice pode estar fora dos limites. O código atual assume que o
+resultado é sempre uma string e não compila.
+"""
+
+hints = [
+  "Com noUncheckedIndexedAccess ligado, palavras[indice] tem tipo string | undefined — o compilador está te lembrando que esse índice pode não existir.",
+  "Guarde palavras[indice] numa variável e cheque se ela é undefined antes de chamar .charAt ou .toUpperCase nela.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"
