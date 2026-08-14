@@ -1,0 +1,23 @@
+title    = "Tipagem estrutural: dois tipos distintos, o mesmo formato"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Conserte velocidadeMedia(distanciaEmMetros, tempoEmSegundos), que deve
+devolver metros por segundo (distância dividida pelo tempo).
+
+O código compila e os tipos Metros e Segundos parecem distintos, mas os dois
+são só apelidos (type) de number — TypeScript não os distingue de verdade.
+Isso escondeu uma troca na ordem da divisão dentro da função: o parâmetro
+está correto, a conta é que ficou invertida.
+"""
+
+hints = [
+  "Metros e Segundos não são tipos diferentes para o compilador — os dois são number por baixo. Se o parâmetro certo estivesse trocado, tsc não acusaria nada.",
+  "A divisão está de cabeça para baixo: o resultado atual é tempo/distância, não distancia/tempo.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

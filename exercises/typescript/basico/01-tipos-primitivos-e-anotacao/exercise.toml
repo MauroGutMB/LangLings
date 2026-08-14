@@ -1,0 +1,24 @@
+title    = "Tipos primitivos e anotação explícita"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram os tipos primitivos de TypeScript
+(number, string, boolean), como anotar uma variável explicitamente e como
+anotar parâmetros e retorno de função.
+
+Depois implemente celsiusParaFahrenheit, que converte uma temperatura em
+Celsius para Fahrenheit usando a fórmula (celsius * 9/5) + 32.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Anote o parâmetro e o retorno da função como number — é isso que os exemplos acima já fazem em cada declaração.",
+  "A fórmula é (celsius * 9 / 5) + 32. Teste com 0 (deve dar 32) e com 100 (deve dar 212).",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

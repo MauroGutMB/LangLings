@@ -1,0 +1,24 @@
+title    = "Funções genéricas"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram como um parâmetro de tipo (<T>) permite
+escrever uma função que funciona com qualquer tipo sem perder a informação de
+qual tipo é — diferente de usar any, que joga fora essa informação.
+
+Depois implemente ultimo, uma função genérica que recebe um array de T e
+devolve o último elemento, ou undefined se o array vier vazio.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A assinatura já está pronta: <T>(itens: T[]): T | undefined. Você só precisa do corpo.",
+  "Cheque itens.length antes de indexar — um array vazio não tem último elemento, e é aí que undefined entra.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

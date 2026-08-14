@@ -1,0 +1,23 @@
+title    = "Genérico sem constraint aceita tipos demais"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente maiorPorTamanho, que recebe dois valores do mesmo tipo T e devolve
+o que tiver maior .length — útil tanto para strings quanto para arrays.
+
+O código atual nem compila: T é um parâmetro de tipo totalmente livre — sem
+constraint, TypeScript não sabe se T tem um campo length, e recusa o acesso.
+Restrinja T a { length: number }, o suficiente para garantir esse campo sem
+travar o tipo em string ou array especificamente.
+"""
+
+hints = [
+  "Sem `extends`, T pode ser QUALQUER tipo — inclusive um number, que não tem length. É por isso que a.length não compila.",
+  "Troque <T> por <T extends { length: number }> na assinatura — isso restringe T a qualquer tipo que tenha esse campo, sem fixar se é string, array ou outra coisa.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

@@ -1,0 +1,23 @@
+title    = "Object.keys devolve string[], não keyof T"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Conserte somarTodosOsPrecos, que recebe um Preco (definido acima, com os
+campos dolar, euro e real) e devolve a soma dos três valores.
+
+O código atual nem compila: Object.keys sempre devolve string[], mesmo
+quando o objeto de entrada tem um tipo mais específico como Preco — TypeScript
+não sabe (nem verifica) que toda string devolvida é de fato uma chave válida
+de Preco. Indexar precos com uma chave string comum não é permitido.
+"""
+
+hints = [
+  "Object.keys(precos) devolve string[] sempre, independente do tipo de precos — é uma limitação da própria assinatura de Object.keys no TypeScript, não específica deste código.",
+  "Converta o resultado com `as (keyof Preco)[]` para afirmar que cada chave devolvida é de fato um campo de Preco.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

@@ -1,0 +1,25 @@
+title    = "Inferência de tipo, const e let"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram como TypeScript infere o tipo a partir
+do valor inicial, a diferença entre o tipo inferido de uma const (o valor
+literal) e de uma let (o tipo mais amplo), e por que anotar tipo em uma
+variável cujo valor já é óbvio costuma ser redundante.
+
+Depois implemente precoComDesconto, que aplica um percentual de desconto a um
+preço: preco - (preco * percentual / 100).
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Não anote o tipo dos parâmetros como 'any' nem deixe de anotar — number já é suficiente, exatamente como nos exemplos.",
+  "A conta é preco menos (preco vezes percentual dividido por 100).",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

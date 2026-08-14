@@ -1,0 +1,23 @@
+title    = "União: uma propriedade que só existe num dos ramos"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente descrever, que recebe um Resultado (Sucesso ou Falha, definidos
+acima) e devolve o campo dado quando for Sucesso, ou a mensagem prefixada
+com "erro: " quando for Falha.
+
+O código atual nem compila: ele acessa resultado.dado direto, mas dado só
+existe no ramo Sucesso — no ramo Falha esse campo não existe, e o compilador
+recusa o acesso sem antes checar qual dos dois ramos é.
+"""
+
+hints = [
+  "resultado é uma união de dois formatos diferentes de objeto — o campo status é o discriminador que diz qual dos dois você tem em mãos.",
+  "Cheque resultado.status === \"ok\" (ou \"erro\") antes de acessar dado ou mensagem — dentro de cada ramo do if, TypeScript sabe qual dos dois tipos é.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

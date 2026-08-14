@@ -1,0 +1,26 @@
+title    = "type e union de literais"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram como declarar um alias com type, como uma
+union de literais de string restringe uma variável a um conjunto fechado de
+valores (diferente de string, que aceita qualquer texto), e como o
+compilador recusa um valor fora dessa lista.
+
+Depois implemente descreverStatus, que recebe um Status ("ativo", "pausado"
+ou "cancelado") e devolve a frase correspondente: "em andamento",
+"em espera" ou "encerrado".
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O tipo Status já está definido acima como union de literais — use-o como tipo do parâmetro, não 'string'.",
+  "Um switch (ou uma cadeia de if) sobre status, com um caso para cada um dos três literais, resolve.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

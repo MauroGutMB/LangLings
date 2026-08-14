@@ -1,0 +1,25 @@
+title    = "O tipo que não existe em tempo de execução"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente ehUsuario, um type guard que recebe um valor unknown e devolve
+true quando ele tem o formato de Usuario (um objeto com campo nome do tipo
+string).
+
+O código atual nem compila: interface é uma construção que só existe em
+tempo de COMPILAÇÃO — ela é apagada do código antes de rodar, então não há
+como perguntar a um valor em tempo de execução "você é um Usuario?" com
+typeof. typeof só devolve um de um conjunto fixo de strings ("string",
+"number", "object" etc.), e "Usuario" nunca é uma delas.
+"""
+
+hints = [
+  "interface (e type) não deixam rastro no JavaScript gerado — não existe nenhum jeito de checar 'é um Usuario' diretamente em tempo de execução, porque não sobra nada do tipo para checar.",
+  "Cheque a FORMA do objeto em vez do nome do tipo: typeof valor === \"object\", valor não é null, e \"nome\" in valor, com typeof (valor as { nome: unknown }).nome === \"string\".",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

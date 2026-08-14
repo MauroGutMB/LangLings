@@ -1,0 +1,26 @@
+title    = "null, undefined, optional chaining e ??"
+category = "basico"
+editable = ["exercicio.mts"]
+
+objective = """
+Os exemplos em exercicio.mts mostram um campo opcional aninhado, o operador
+?. (optional chaining) que interrompe o acesso e devolve undefined em vez de
+lançar erro quando um elo da cadeia falta, e ?? (nullish coalescing) para dar
+um valor default só quando o resultado é null ou undefined.
+
+Depois implemente obterCidade, que recebe um Usuario e devolve a cidade do
+endereço, ou "desconhecida" se o usuário não tiver endereço ou o endereço não
+tiver cidade.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "usuario.endereco?.cidade não lança erro quando endereco é undefined — ele encurta a cadeia e o resultado vira undefined.",
+  "Encadeie o resultado com ?? \"desconhecida\" para trocar undefined pelo valor default.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

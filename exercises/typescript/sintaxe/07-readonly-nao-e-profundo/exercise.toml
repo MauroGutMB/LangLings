@@ -1,0 +1,23 @@
+title    = "readonly não impede mutação profunda"
+category = "sintaxe"
+editable = ["exercicio.mts"]
+
+objective = """
+Implemente comTemaEscuro, que recebe uma Config e devolve uma NOVA Config com
+opcoes.tema igual a "escuro", sem alterar o objeto config recebido.
+
+O código atual compila — readonly em Config só protege os campos de primeiro
+nível (nome, opcoes) contra reatribuição; o objeto dentro de opcoes continua
+mutável normalmente. A versão atual muda config.opcoes.tema diretamente, o
+que muda o objeto original — e o teste comprova que ele não deveria mudar.
+"""
+
+hints = [
+  "readonly nome: string e readonly opcoes: Opcoes protegem só a referência de config.nome e config.opcoes — o objeto para o qual opcoes aponta continua com seus campos graváveis.",
+  "Em vez de escrever em config.opcoes.tema, construa um objeto novo (com spread ...) e copie opcoes para dentro dele antes de sobrescrever tema.",
+]
+
+[validation]
+mode    = "test"
+command = ["sh", "-c", "tsc --noEmit -p tsconfig.json && node --test exercicio.test.mts"]
+timeout = "60s"

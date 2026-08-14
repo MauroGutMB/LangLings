@@ -1,0 +1,4 @@
+name       = "TypeScript"
+dockerfile = "languages/typescript/Dockerfile"
+workdir    = "/workspace"
+shell      = ["/bin/sh"]
