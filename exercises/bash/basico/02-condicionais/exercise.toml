@@ -1,0 +1,28 @@
+title    = "Condicionais: [[ ]], if e case"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram os testes de texto (-z, -n, ==, !=), os
+testes numéricos (-eq, -lt, -gt), os testes de arquivo (-f, -d), o encadeamento
+if/elif/else, o case com padrões e os atalhos && e ||.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente classificar, que recebe um número inteiro e devolve
+"negativo", "zero" ou "positivo".
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "São três casos mutuamente exclusivos: um if com um elif e um else cobre todos, e cada ramo só precisa de um echo.",
+  "Para comparar números dentro de [[ ]] use -lt, -gt e -eq, como nos exemplos — os operadores < e > lá dentro comparam texto, não valor.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

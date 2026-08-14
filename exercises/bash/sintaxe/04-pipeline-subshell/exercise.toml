@@ -1,0 +1,27 @@
+title    = "Pipeline vira subshell: a variável não sai de dentro"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+contar_pares recebe números como argumentos e devolve quantos deles são
+pares.
+
+O código atual monta os números com printf, manda para um while read por
+pipe e incrementa um contador a cada par encontrado. Rode os testes: o
+contador nunca sai de zero, para nenhuma entrada.
+
+A armadilha não está na conta — está em onde, exatamente, o contador é
+incrementado.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Cada estágio de um pipeline roda na SUA PRÓPRIA subshell — inclusive o último. O que muda lá dentro não volta para a shell que chamou.",
+  "Trocar o pipe por um redirecionamento de entrada — como < <(comando), a chamada process substitution — mantém o while na shell atual, sem tirar o printf do lugar.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

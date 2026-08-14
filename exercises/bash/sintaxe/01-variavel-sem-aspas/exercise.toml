@@ -1,0 +1,25 @@
+title    = "Variável sem aspas: o word splitting apaga espaços"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+colchetes deve devolver o texto recebido entre colchetes, preservando
+exatamente os espaços que vieram — inclusive espaço duplo no meio e espaço
+nas pontas.
+
+O código atual parece pronto e passa para entradas simples. Rode os testes:
+há uma armadilha na forma como o argumento é usado dentro do echo, e ela só
+aparece quando o texto tem mais de um espaço junto ou espaço na ponta.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Uma variável usada sem aspas passa pelo word splitting do shell: o texto é quebrado em palavras pelos espaços e depois rejuntado com um espaço só.",
+  'Colocar "$1" entre aspas duplas faz o shell tratar o valor como uma coisa só, sem reparti-lo — mesmo com espaços extras dentro.',
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

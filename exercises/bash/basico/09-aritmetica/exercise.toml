@@ -1,0 +1,30 @@
+title    = "Aritmética: $(( )) e (( ))"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram $(( )) para somar, dividir (sempre
+inteiro), tirar resto e elevar a potência, (( x += n )) e (( x++ )) para
+alterar uma variável no lugar, comparação numérica dentro de (( )) sem -gt,
+e o status de (( )) (0 quando a conta dá diferente de zero, 1 quando dá
+zero).
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente media: soma os números recebidos como argumentos e devolve
+a média, truncada para baixo. Sem argumentos, devolve 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Some tudo como em soma_array e divida pela quantidade de argumentos — $# já é esse número.",
+  "$(( total / $# )) já trunca para baixo sozinho; só falta tratar $# igual a 0 antes de dividir por ele.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

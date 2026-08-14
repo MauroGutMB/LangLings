@@ -1,0 +1,25 @@
+title    = "[ ] contra [[ ]]: quando o teste explode em vez de responder"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+eh_producao não imprime nada: devolve status 0 se o argumento for exatamente
+"prod" e status diferente de 0 em qualquer outro caso, sem quebrar não
+importa o valor recebido.
+
+O código atual funciona para as entradas óbvias. Rode os testes: há uma
+entrada específica que faz o teste usado dentro da função se comportar mal —
+não por causa do que é comparado, mas de como.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "[ ] é um comando comum: os argumentos dele passam pelo mesmo word splitting de qualquer variável sem aspas, e um argumento com espaço vira mais de uma palavra para ele.",
+  "[[ ]] é uma construção do próprio bash, não um comando — o que está dentro não sofre word splitting nem expansão de glob, então $1 chega inteiro mesmo sem aspas.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

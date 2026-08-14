@@ -1,0 +1,31 @@
+title    = "Strings: expansão de parâmetro"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Bash manipula texto sem chamar programa nenhum: tudo acontece dentro de ${}.
+Os exemplos em exercicio.sh mostram o tamanho (${#v}), o valor padrão
+(${v:-...}), a remoção de prefixo (${v#...} e ${v##...}), a remoção de sufixo
+(${v%...} e ${v%%...}), a substituição (${v/a/b} e ${v//a/b}), o recorte
+(${v:0:3}) e a troca de caixa (${v^^}, ${v,,}).
+
+Depois implemente sem_extensao, que recebe um nome de arquivo e devolve o mesmo
+nome sem a última extensão: "relatorio.txt" vira "relatorio", "arquivo.tar.gz"
+vira "arquivo.tar", e um nome sem ponto nenhum sai inalterado.
+
+Para ver os exemplos rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Você precisa apagar do fim do texto: o último ponto e tudo o que vem depois dele. Uma das formas de ${} dos exemplos faz exatamente isso, em uma linha.",
+  "Escolha entre a versão curta (%) e a longa (%%) pensando em arquivo.tar.gz: a curta corta o menor pedaço que casa com o padrão, a longa corta o maior. Um nome sem ponto não casa com padrão nenhum e volta intacto de graça.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

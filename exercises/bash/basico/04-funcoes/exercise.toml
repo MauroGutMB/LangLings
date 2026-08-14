@@ -1,0 +1,30 @@
+title    = "Funções: argumentos posicionais, return e echo"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram como uma função lê os argumentos ($1, $2,
+$#, "$@"), por que os argumentos NÃO aparecem entre parênteses na definição, a
+diferença entre devolver um VALOR (echo, capturado com $(...)) e devolver um
+STATUS (return, lido com $?), e como dar valor padrão a um argumento ausente.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente saudar_todos, que imprime "Ola, <nome>!" para cada argumento
+recebido, uma linha por nome, na ordem em que vieram. Sem argumentos, não
+imprime nada.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A lista de argumentos de uma função é percorrível como qualquer outra lista: um for basta, e o corpo é um echo só.",
+  'Percorra "$@" com as aspas, como nos exemplos: é a forma que entrega cada argumento inteiro, mesmo quando ele contém espaços.',
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

@@ -1,0 +1,24 @@
+title    = "read sem -r come as barras invertidas da entrada"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+ler_linha lê uma linha do stdin e devolve exatamente o que veio, sem alterar
+nada.
+
+Rode os testes: texto comum passa sem problema. Uma linha com barra
+invertida dentro — como um caminho estilo Windows — sai diferente do que
+entrou.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "read, por padrão, trata a barra invertida como caractere de escape: ela é removida e o próximo caractere é tomado ao pé da letra.",
+  "A flag -r desliga esse tratamento — é a diferença entre 'ler uma linha' e 'interpretar uma linha'.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

@@ -1,0 +1,23 @@
+title    = "return devolve status, não valor"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+calcular_bonus deve devolver, como valor que quem chama captura com $(...),
+o dobro do salário base recebido.
+
+Rode os testes: a conta em si — dobrar o salário — está certa. O problema é
+o caminho que esse número percorre para sair da função.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "return não devolve um número calculado: devolve um STATUS de saída, lido em $?, e limitado ao intervalo de 0 a 255.",
+  "Para uma função entregar um VALOR a quem a chamou, o caminho é a saída padrão — echo — capturada com $(...), não return.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

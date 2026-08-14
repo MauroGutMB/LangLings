@@ -1,0 +1,25 @@
+title    = "set -e não pára dentro de if/&&"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+preparar_e_finalizar deve imprimir "diretorio pronto" e depois "finalizado"
+quando criar_diretorio (já correta, não mexa nela) dá certo — e imprimir só
+"finalizado", devolvendo status 1, quando criar_diretorio falha.
+
+Rode os testes: o texto impresso já está certo nos dois casos. É o status
+devolvido no caso de falha que não bate com o que se espera de uma função
+que deveria sinalizar erro.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "set -e não aborta comandos que são a condição de um if, de um while, ou o lado esquerdo de && / ||. Uma falha ali é 'esperada' e passa direto.",
+  "O status de uma função sem return explícito é o do último comando do corpo — troque a suposição de que set -e vai agir por um if/return explícito.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

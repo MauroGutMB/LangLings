@@ -1,0 +1,25 @@
+title    = "local mascara o status de quem ele chama"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+buscar_config deve devolver, via echo, o valor de uma chave existente e
+status 1 (sem imprimir nada) quando a chave não existe. buscar_no_dicionario
+já está correta e não deve mudar.
+
+Rode os testes: para chaves que existem, tudo funciona. Para as que não
+existem, a função deveria devolver status 1 e não devolve — o if que checa a
+falha nunca dispara.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "$? guarda o status do ÚLTIMO comando executado. Numa linha como \"local x=$(...)\", qual é o último comando a rodar: a substituição ou o próprio local?",
+  "Separe a declaração da atribuição: \"local valor\" numa linha, \"valor=$(...)\" na seguinte. Assim $? sobra do jeito que a linha depois espera.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"
