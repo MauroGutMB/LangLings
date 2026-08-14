@@ -1,0 +1,23 @@
+title    = "O laço que consome o vetor que ele devolve"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`soma_e_lista` deveria somar os elementos de um vetor e devolver a soma junto
+com o vetor original, intacto. A soma está certa e o vetor devolvido está
+certo — e mesmo assim não compila.
+
+Não clone o vetor: o problema é COMO o laço percorre ele.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`for x in v` chama `v.into_iter()` por baixo dos panos, e `into_iter()` CONSOME o vetor — depois do laço, `v` não existe mais para ser devolvido.",
+  "Trocar para `for x in &v` (ou `v.iter()`) empresta cada elemento em vez de consumir o vetor; dentro do laço, `x` passa a ser `&i32`, então a soma precisa desreferenciar (`*x`) ou usar `x` com `+=` que já lida com isso via `Copy`.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

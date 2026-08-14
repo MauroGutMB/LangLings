@@ -1,0 +1,23 @@
+title    = "O clone que engana o borrow checker e ninguém mais"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`dobrar_todos` deveria dobrar, IN PLACE, cada número do vetor recebido por
+referência mutável. O código compila, os testes rodam — e o vetor sai
+intocado.
+
+Não é permitido usar `.clone()`: é exatamente ele que está causando o bug.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`v.clone()` faz uma cópia NOVA do vetor. O laço `for x in v.clone()` dobra os elementos dessa cópia — o `v` original nunca é tocado, por mais que pareça que sim.",
+  "`v.iter_mut()` dá acesso mutável a cada elemento DENTRO do vetor original, sem copiar nada: `for x in v.iter_mut() { *x *= 2; }` resolve sem clone.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

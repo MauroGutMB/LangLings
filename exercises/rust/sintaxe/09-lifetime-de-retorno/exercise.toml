@@ -1,0 +1,20 @@
+title    = "A referência que devolve o texto errado"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`maior_str` deveria devolver o maior dos dois textos recebidos, como uma
+referência para um deles — sem copiar nada. O código não compila.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A assinatura promete que o retorno vive tanto quanto `a` (o `'a` está só no primeiro parâmetro e no retorno). Mas a função pode devolver `b`, e `b` não tem NENHUMA garantia de viver tanto quanto `a` — o compilador não sabe provar isso.",
+  "Dê aos dois parâmetros o MESMO lifetime: `fn maior_str<'a>(a: &'a str, b: &'a str) -> &'a str`. Isso diz ao compilador que o retorno só precisa viver tanto quanto o MENOR dos dois — o que sempre é verdade, seja qual for o texto devolvido.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

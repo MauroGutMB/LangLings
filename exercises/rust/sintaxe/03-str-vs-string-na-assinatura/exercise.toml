@@ -1,0 +1,25 @@
+title    = "O parâmetro que só aceita metade dos textos"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`contem_arroba` verifica se um texto tem '@'. `validar_emails` usa ela para
+checar cada item de uma lista de literais de texto. O código não compila, e
+o erro aponta para dentro de `validar_emails`, mesmo o problema estando na
+assinatura de `contem_arroba`.
+
+Não mude o que `validar_emails` recebe nem devolve: o ajuste é só no
+parâmetro de `contem_arroba`.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`&String` e `&str` não são o mesmo tipo, e a coerção só anda num sentido: um `&String` vira `&str` sozinho, mas o contrário não acontece. Passar um literal (`&str`) para um parâmetro `&String` é erro de tipo.",
+  "Trocar o parâmetro de `contem_arroba` para `&str` resolve nos dois sentidos: continua aceitando uma referência a uma `String` (a coerção cuida disso) e passa a aceitar literais direto, sem forçar quem chama a alocar uma String só para satisfazer a assinatura.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

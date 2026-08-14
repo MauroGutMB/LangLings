@@ -1,0 +1,29 @@
+title    = "`Option<T>` e `Result<T, E>`"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram os dois tipos que Rust usa no lugar de
+`null` e de exceções: `Option<T>` (`Some`/`None`, para "pode não ter valor")
+e `Result<T, E>` (`Ok`/`Err`, para "pode falhar com um motivo"). Mostram como
+tratar os dois com `match`, como `unwrap_or` dá um valor padrão sem precisar
+de `match`, e como `?` propaga um `Err` para fora da função, encerrando ali —
+convertendo o tipo do erro com `map_err` quando ele não bate com o da função.
+
+Depois implemente `somar_textos`, que recebe dois `&str`, converte os dois
+para `i32` e devolve a soma como `Ok`. Se qualquer um dos dois não for um
+número válido, devolve `Err` com uma mensagem (o texto da mensagem não
+importa, só que seja `Err`).
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`str::parse::<i32>()` devolve `Result<i32, ParseIntError>`; o exemplo já mostra como usar `?` com `map_err` para essa conversão dentro de uma função que devolve `Result<_, String>`.",
+  "Chame parse nos dois textos, um `?` em cada linha, e some os dois i32 resultantes no `Ok` final — se qualquer `?` encontrar um Err, a função já retorna ali, sem chegar na soma.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

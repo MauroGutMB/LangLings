@@ -1,0 +1,25 @@
+title    = "`struct` e `impl`"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram como declarar um `struct`, construir uma
+instância, e usar um bloco `impl` para dar métodos a ele: um construtor
+associado (`Self::novo`, chamado como `Retangulo::novo`, sem receiver), um
+método que só lê (`&self`) e um que muta (`&mut self`).
+
+Depois complete o `impl` de `Retangulo` com o método `eh_quadrado`, que
+devolve `true` quando `largura` e `altura` são iguais.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`eh_quadrado` só precisa LER os campos, então o receiver é `&self`, do mesmo jeito que `area` já usa logo acima.",
+  "Compare `self.largura` com `self.altura` — é a igualdade entre os dois campos, não uma conta com eles.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

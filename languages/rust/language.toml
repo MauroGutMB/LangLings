@@ -1,0 +1,14 @@
+name    = "Rust"
+image   = "rust:1.97-slim-trixie"
+workdir = "/workspace"
+shell   = ["/bin/bash"]
+
+# O cache existe por dois motivos, nenhum deles sendo "cargo não funciona sem":
+# eu testei, e ele funciona. O primeiro é não sujar o diretório do aluno com um
+# target/ de dezenas de MB a cada exercício. O segundo é reuso: o verify roda em
+# container efêmero, então sem o volume o target/ nasce vazio a cada exercício.
+cache_dir = "/cache"
+
+[env]
+CARGO_HOME       = "/cache/cargo"
+CARGO_TARGET_DIR = "/cache/target"

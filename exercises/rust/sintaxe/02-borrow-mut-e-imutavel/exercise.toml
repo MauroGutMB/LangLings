@@ -1,0 +1,24 @@
+title    = "O maior valor que trava o próprio empréstimo"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`maior_e_dobro` acha o maior número do vetor, empurra o dobro dele para o
+final do vetor, e devolve o maior valor original. A lógica está certa e
+mesmo assim não compila.
+
+Não clone o vetor nem o valor: o problema é o TIPO da variável que guarda o
+maior valor, não a lógica ao redor dela.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O compilador reclama de emprestar `v` como mutável enquanto ele já está emprestado como imutável. `v.iter().max()` devolve uma REFERÊNCIA (`&i32`) para dentro do vetor, e essa referência continua viva até a última vez que é usada — inclusive no `push` e no retorno.",
+  "`i32` é `Copy`. Em vez de guardar a referência, desreferencie na hora (`*v.iter().max().unwrap()`) para guardar um `i32` independente — sem ligação nenhuma com o vetor depois disso.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

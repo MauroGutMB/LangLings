@@ -1,0 +1,21 @@
+title    = "O retorno grande que acumula num tipo pequeno"
+category = "sintaxe"
+editable = ["src/lib.rs"]
+
+objective = """
+`fatorial` já devolve `u64` — grande o bastante para fatoriais que `u32` não
+comportaria. O código compila, funciona para entradas pequenas, e entra em
+pânico para uma entrada bem dentro do que `u64` suportaria.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O TIPO DE RETORNO ser `u64` não protege nada sozinho: o acumulador dentro da função é `u32`, e é nele que a multiplicação acontece, uma linha de cada vez. `13!` já estoura um `u32` bem antes do `as u64` no final.",
+  "Mude o tipo do acumulador para `u64` também — a conta inteira precisa acontecer no tipo largo, não só a conversão do resultado.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

@@ -1,0 +1,25 @@
+title    = "Variáveis, mutabilidade e tipos escalares"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Leia os exemplos comentados em src/lib.rs: eles mostram que `let` cria uma
+ligação imutável, que `let mut` é o que permite reatribuir, como anotar o tipo
+quando a inferência não dá conta, quais são os tipos escalares e por que a
+conversão entre números é sempre explícita com `as`.
+
+Depois implemente `media`: ela recebe dois `i32` e devolve a média deles como
+`f64`, sem perder a parte fracionária — `media(1, 2)` é 1.5, não 1.0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Rust não promove número de um tipo para outro sozinho. Dividir dois i32 devolve um i32, e a parte fracionária some antes mesmo de virar f64.",
+  "Converta para f64 ANTES de dividir, com `as`, como o exemplo faz em `idade as f64 / 2.0`. Repare também que o divisor precisa ser 2.0, e não 2: os dois lados da divisão têm que ser do mesmo tipo.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"

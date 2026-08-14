@@ -1,0 +1,26 @@
+title    = "`String` vs `&str`"
+category = "basico"
+editable = ["src/lib.rs"]
+
+objective = """
+Os exemplos em src/lib.rs mostram a diferença entre `String` (dona do seu
+conteúdo, alocada, pode crescer) e `&str` (uma visão emprestada de texto, de
+um literal ou de dentro de uma `String`), e por que uma função que só precisa
+LER texto deve pedir `&str` em vez de `String`.
+
+Depois implemente `gritar`, que recebe um `&str` e devolve uma `String` nova
+com o texto em maiúsculas seguido de um ponto de exclamação —
+`gritar("oi")` é `"OI!"`.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "`str` tem `to_uppercase()`, que devolve uma `String` nova (o `&str` original não muda). Falta grudar o `!` nela.",
+  "`String` implementa `+ &str` e também tem `push_str`; qualquer um dos dois junta o `!` ao final sem precisar de outra alocação manual.",
+]
+
+[validation]
+mode    = "test"
+command = ["cargo", "test", "--offline", "--quiet"]
+timeout = "120s"
