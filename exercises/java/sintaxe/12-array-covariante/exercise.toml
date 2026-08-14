@@ -1,0 +1,23 @@
+title    = "Array covariante: o tipo promete o que o runtime não garante"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente preencherComZero, que recebe um Number[] e sobrescreve cada posição
+com o zero apropriado ao tipo real do array (Integer 0 se o array por baixo é
+de Integer, Double 0.0 se for de Double).
+
+O código que já está aí compila e funciona para um Integer[]. Rode os testes:
+passar um Double[] pelo mesmo parâmetro Number[] derruba o programa.
+"""
+
+hints = [
+  "Um array de Double é aceito onde se espera Number[] porque arrays em Java são covariantes — Double[] É-UM Number[] aos olhos do compilador.",
+  "Isso é só de fachada: o array continua sendo um Double[] por dentro, e gravar um Integer nele lança ArrayStoreException em tempo de execução.",
+  "numeros.getClass().getComponentType() diz qual é o tipo real por trás do array, para você escolher o zero certo antes de gravar.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

@@ -1,0 +1,27 @@
+title    = "Map e HashMap: chave, valor e getOrDefault"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram HashMap guardando pares chave -> valor,
+put para inserir, get que devolve null para uma chave ausente, containsKey
+para checar existência sem arriscar um null, e getOrDefault como atalho para
+"pegue o valor ou use este padrão".
+
+Depois implemente contagem, que recebe uma List<String> de palavras e devolve
+um Map<String,Integer> com quantas vezes cada palavra aparece. Palavras
+diferentes por maiúsculas são palavras diferentes. Lista vazia devolve um map
+de tamanho 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "getOrDefault(chave, 0) devolve 0 quando a chave ainda não está no map, então dá para somar 1 sem checar containsKey antes.",
+  "mapa.put(palavra, mapa.getOrDefault(palavra, 0) + 1) atualiza a contagem de uma palavra em uma linha só.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

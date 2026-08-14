@@ -1,0 +1,25 @@
+title    = "Tipos primitivos e wrappers: onde Java guarda um número"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram os tipos primitivos mais comuns (int,
+double, boolean, char), o autoboxing que transforma um int num Integer sem
+pedir, e a conversão entre int e double.
+
+Depois implemente celsiusParaFahrenheit, que recebe uma temperatura em Celsius
+(double) e devolve a mesma temperatura em Fahrenheit, usando a fórmula
+F = C * 9 / 5 + 32.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Em Java, um double se comporta como número comum nas quatro operações — não precisa converter nada para multiplicar ou somar.",
+  "9 / 5 entre dois int viraria 1 por divisão inteira; escrever 9.0 ou multiplicar antes por um double evita a armadilha.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

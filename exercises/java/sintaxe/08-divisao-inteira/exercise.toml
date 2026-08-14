@@ -1,0 +1,22 @@
+title    = "Divisão inteira trunca antes de virar double"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente media, que recebe dois int e devolve a média deles como double.
+
+O código que já está aí compila e acerta quando a divisão é exata. Rode os
+testes: um deles reprova porque o resultado perdeu a parte decimal antes de
+ser convertido.
+"""
+
+hints = [
+  "a / b com a e b int faz divisão inteira: o resultado já sai truncado, e só DEPOIS vira double — tarde demais para recuperar a casa decimal.",
+  "Convertendo um dos operandos para double ANTES da divisão, o Java promove o outro automaticamente e a divisão já sai com casas decimais.",
+  "(double) a / b funciona; a / (double) b também. (double) (a / b) não — o cast está no lugar errado.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

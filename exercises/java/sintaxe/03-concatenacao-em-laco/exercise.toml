@@ -1,0 +1,23 @@
+title    = "Concatenar em laço: o separador que sobra"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente juntar, que recebe uma lista de itens e um separador e devolve os
+itens concatenados com o separador entre eles — sem separador sobrando antes
+do primeiro item ou depois do último.
+
+O código que já está aí compila e roda sem lançar nada. Rode os testes: um
+deles vai reprovar porque o resultado tem um caractere a mais do que deveria.
+"""
+
+hints = [
+  "Um separador \"entre\" itens só deveria aparecer nas junções, nunca depois do último — colocar separador dentro do laço em toda volta erra isso.",
+  "Uma forma de evitar o separador sobrando é só concatenar o separador quando resultado ainda não tem nada.",
+  "String.join(separador, itens) já faz exatamente isso, sem laço manual.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

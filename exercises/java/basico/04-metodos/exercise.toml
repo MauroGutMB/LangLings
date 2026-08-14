@@ -1,0 +1,23 @@
+title    = "Métodos: parâmetros, retorno e sobrecarga"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram um método void (não devolve nada), um
+método que devolve um valor, e sobrecarga: dois métodos com o mesmo nome que
+se diferenciam pela quantidade ou pelo tipo dos parâmetros.
+
+Depois implemente maiorDeTres, que recebe três int e devolve o maior deles.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Compare dois de cada vez: primeiro ache o maior entre a e b, depois compare esse resultado com c.",
+  "Math.max(x, y) devolve o maior entre dois valores — dá para encadear duas chamadas para três números.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

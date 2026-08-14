@@ -1,0 +1,22 @@
+title    = "Autoboxing: desempacotar um Integer nulo explode"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente pontuacao, que recebe um Map<String,Integer> e uma chave e devolve
+a pontuação associada — ou 0 se a chave não existir no map.
+
+O código que já está aí compila e passa quando a chave existe. Rode os
+testes: um deles derruba o programa com uma exceção que nem aparece no código.
+"""
+
+hints = [
+  "map.get(chave) devolve null quando a chave não existe — get nunca lança exceção sozinho.",
+  "O problema é o que Java faz DEPOIS do null: atribuir ou devolver um Integer nulo onde se espera um int força um unboxing automático, e desempacotar null lança NullPointerException.",
+  "getOrDefault(chave, valorPadrao) resolve isso sem precisar checar containsKey antes.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

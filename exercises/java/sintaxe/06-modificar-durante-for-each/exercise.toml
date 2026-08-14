@@ -1,0 +1,23 @@
+title    = "Modificar uma coleção durante o for-each que a percorre"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente removerNegativos, que recebe uma List<Integer> e devolve uma nova
+lista sem os números negativos.
+
+O código que já está aí compila e passa quando não há nada para remover. Rode
+os testes: um deles derruba o programa com uma exceção que só aparece quando
+existe algo para remover.
+"""
+
+hints = [
+  "O for-each usa um Iterator por baixo dos panos, e esse iterator detecta quando a coleção mudou por fora dele.",
+  "Chamar .remove() na lista (não no iterator) enquanto um for-each está andando sobre ela lança ConcurrentModificationException.",
+  "removeIf(condição) existe exatamente para filtrar uma coleção sem esse problema — não precisa nem de laço manual.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

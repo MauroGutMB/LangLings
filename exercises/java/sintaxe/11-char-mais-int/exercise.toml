@@ -1,0 +1,22 @@
+title    = "char + int vira int, não char"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente proximaLetra, que recebe um char minúsculo e devolve a letra
+seguinte no alfabeto ('a' devolve 'b', 'y' devolve 'z').
+
+O código que já está aí compila — mas devolve sempre a mesma letra que
+recebeu, sem avançar. Rode os testes para ver a extensão do problema.
+"""
+
+hints = [
+  "Em Java, letra + 1 não é char: somar um char com um int promove os dois para int, então o resultado do + já não é mais char.",
+  "Para voltar a ser char, esse int intermediário precisa de um cast explícito: (char) (letra + 1).",
+  "char é internamente um número (o código Unicode do caractere) — por isso dá para somar 1 nele, só não dá para devolver a soma como char sem cast.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

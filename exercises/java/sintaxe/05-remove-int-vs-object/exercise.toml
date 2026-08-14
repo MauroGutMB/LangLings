@@ -1,0 +1,23 @@
+title    = "List.remove(int) não é List.remove(Object)"
+category = "sintaxe"
+editable = ["Exercicio.java"]
+
+objective = """
+Implemente removerValor, que recebe uma List<Integer> e um valor, e devolve
+uma nova lista sem a primeira ocorrência desse valor.
+
+O código que já está aí compila e não lança nada para alguns casos, mas o
+resultado está errado — ou pior, quebra em outros. Rode os testes para ver
+qual chamada expõe o problema.
+"""
+
+hints = [
+  "List<Integer> tem dois métodos remove sobrecarregados: remove(int índice) e remove(Object valor).",
+  "Passar um int puro para remove escolhe a versão por índice, não a versão por valor — mesmo que a variável se chame \"valor\".",
+  "Integer.valueOf(valor) embrulha o int num Integer antes de chamar remove, forçando o compilador a escolher a sobrecarga remove(Object).",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

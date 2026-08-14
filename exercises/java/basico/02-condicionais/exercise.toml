@@ -1,0 +1,25 @@
+title    = "Condicionais: if, switch clássico e switch em forma de seta"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram if/else, o switch clássico com break, e
+o switch moderno em forma de seta (case ... ->), que não cai para o caso
+seguinte e pode devolver um valor diretamente.
+
+Depois implemente diaDaSemana, que recebe um número de 1 a 7 e devolve o nome
+do dia (1 = "domingo" ... 7 = "sabado"); qualquer outro número devolve
+"invalido". Use switch em forma de seta.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "case 1 -> \"domingo\" não precisa de break: a forma de seta já não cai para o próximo caso.",
+  "default -> cobre qualquer valor que não bateu em nenhum case, incluindo 0, negativos e números acima de 7.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

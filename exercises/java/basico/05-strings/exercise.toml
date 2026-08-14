@@ -1,0 +1,23 @@
+title    = "String: imutabilidade e StringBuilder"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram que String é imutável — todo método que
+"altera" uma string na verdade devolve uma nova —, e como StringBuilder existe
+para montar texto aos poucos sem recriar uma string a cada passo.
+
+Depois implemente inverter, que recebe uma string e devolve ela invertida.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "StringBuilder tem um método reverse() pronto — ele muta o próprio StringBuilder e devolve ele mesmo.",
+  "toString() no fim converte o StringBuilder de volta para String, que é o tipo que o método precisa devolver.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"

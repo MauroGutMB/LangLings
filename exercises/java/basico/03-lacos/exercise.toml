@@ -1,0 +1,24 @@
+title    = "Laços: for, for-each e while"
+category = "basico"
+editable = ["Exercicio.java"]
+
+objective = """
+Os exemplos em Exercicio.java mostram o for clássico com contador, o for-each
+que percorre um array sem precisar de índice, e o while que repete enquanto
+uma condição for verdadeira.
+
+Depois implemente soma, que recebe um array de int e devolve a soma de todos
+os elementos. Um array vazio devolve 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um for-each (for (int n : numeros)) lê cada elemento sem precisar de índice nem de numeros.length.",
+  "Comece o acumulador em 0 antes do laço — é o valor que soma devolve para um array vazio.",
+]
+
+[validation]
+mode    = "test"
+command = ["java", "Testes.java"]
+timeout = "60s"
