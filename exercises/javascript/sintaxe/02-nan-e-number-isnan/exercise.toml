@@ -1,0 +1,22 @@
+title    = "NaN não é igual a nada, nem a si mesmo"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente temNaN, que devolve true quando o array recebido contém algum NaN.
+
+O código já escrito compila e roda sem erro — só que devolve o mesmo valor
+para todo array, tenha ou não um NaN dentro. Rode os testes para ver quando
+isso quebra.
+"""
+
+hints = [
+  "NaN é o único valor de JavaScript que não é igual a si mesmo: NaN === NaN é false.",
+  "indexOf e includes(valor) de array comparam por igualdade estrita por baixo dos panos — um deles falha com NaN da mesma forma que ===. O outro tem um caso especial para ele.",
+  "Number.isNaN(x) pergunta diretamente 'isto é NaN?', sem depender de comparação de igualdade.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

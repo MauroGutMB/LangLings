@@ -1,0 +1,26 @@
+title    = "A arrow function não tem this próprio"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+O objeto contador tem um método incrementar que deveria somar 1 ao campo
+valor do próprio objeto e devolvê-lo.
+
+O código compila e, lido por cima, parece certo — mas rode os testes: toda
+chamada a incrementar() explode com um TypeError, antes mesmo de chegar perto
+de somar nada.
+
+A armadilha está em como incrementar foi declarado, não no que o corpo dele
+faz.
+"""
+
+hints = [
+  "Uma arrow function não cria seu próprio this — ela usa o this de onde foi escrita no código, não o do objeto que a chama.",
+  "Aqui a arrow function foi escrita no nível do módulo, então o this dentro dela nunca é o contador — não importa quem chame incrementar().",
+  "Um método comum ( incrementar() {...} , sem seta) recebe this a partir de como é chamado: contador.incrementar() faz this apontar para contador.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

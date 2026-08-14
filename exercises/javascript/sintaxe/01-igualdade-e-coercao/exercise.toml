@@ -1,0 +1,22 @@
+title    = "== enxerga menos do que parece"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente ehZero, que devolve true apenas quando o valor recebido é o número
+0 — nada além disso conta.
+
+O código que já está aí compila, roda e até acerta o caso óbvio. Rode os
+testes: um deles vai reprovar por um motivo que == esconde.
+"""
+
+hints = [
+  "== compara depois de converter os dois lados para um tipo comum. Isso faz valores bem diferentes entre si passarem no teste de igualdade.",
+  "Repare em quais valores '', false e null viram quando convertidos para número: todos caem em 0.",
+  "=== não converte nada: só é verdadeiro quando tipo e valor já coincidem de saída.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

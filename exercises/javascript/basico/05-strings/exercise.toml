@@ -1,0 +1,26 @@
+title    = "Strings: template literal e os métodos do dia a dia"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram o template literal com `${}`, os métodos
+de busca e recorte (includes, indexOf, slice), os de transformação
+(toUpperCase, trim, replaceAll) e a dupla split/join, que leva de string para
+array e de volta.
+
+Depois implemente iniciais, que recebe um nome completo e devolve as iniciais
+em maiúsculas, sem separador: 'ana maria silva' vira 'AMS'. Espaços sobrando
+nas pontas devem ser ignorados, e um nome só devolve uma letra.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O caminho é o mesmo dos exemplos: trim para limpar as pontas, split para quebrar o nome em palavras, e join no fim para colar as letras de volta.",
+  "De cada palavra você quer só a primeira letra — nomeCompleto[0] ou slice(0, 1) servem — e o resultado inteiro precisa sair em maiúsculas. Strings são imutáveis: toUpperCase DEVOLVE outra string em vez de alterar a original.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

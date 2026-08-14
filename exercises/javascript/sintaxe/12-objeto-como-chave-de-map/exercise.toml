@@ -1,0 +1,23 @@
+title    = "Map compara chaves de objeto por referência, não por conteúdo"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente buscarValor(mapa, id), que devolve o valor associado à chave cujo
+campo .id é igual ao id recebido. mapa é um Map cujas chaves são objetos
+{ id: ... } — mas você não tem acesso ao objeto original, só ao número id.
+
+O código já escrito compila e faz uma busca razoável. Rode os testes: ela
+nunca encontra nada.
+"""
+
+hints = [
+  "Map compara chaves com a mesma igualdade de ===. Dois objetos com os mesmos campos são, ainda assim, valores diferentes — só uma referência é igual a si mesma.",
+  "mapa.get({ id }) cria um objeto NOVO na hora da chamada. Não importa o que esse objeto contenha: nunca é a mesma referência que foi usada em mapa.set(...), então get sempre devolve undefined.",
+  "Não dá para 'construir' a chave certa a partir do id — é preciso percorrer as entradas do mapa (mapa.entries() ou for...of) e comparar chave.id com o id recebido.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

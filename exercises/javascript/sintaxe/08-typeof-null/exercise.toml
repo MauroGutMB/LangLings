@@ -1,0 +1,22 @@
+title    = "typeof null mente"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente ehObjeto, que devolve true quando o valor recebido é um objeto de
+verdade — null não conta como objeto para este exercício.
+
+O código já escrito acerta os casos comuns. Rode os testes: um valor bem
+específico é classificado errado.
+"""
+
+hints = [
+  "typeof null é a string 'object' — um dos comportamentos mais antigos e mais estranhos de JavaScript, mantido por compatibilidade com código já escrito.",
+  "typeof sozinho não separa null de um objeto de verdade. É preciso uma verificação a mais, específica para esse valor.",
+  "valor !== null antes (ou depois) da checagem de typeof fecha a brecha, sem mudar nada para os outros casos.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

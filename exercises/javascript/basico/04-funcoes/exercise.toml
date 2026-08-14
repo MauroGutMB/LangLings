@@ -1,0 +1,27 @@
+title    = "Funções: arrow, parâmetro com padrão e rest"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram a função declarada com function, a arrow
+function e sua forma curta de uma expressão só, o parâmetro com valor padrão, o
+parâmetro rest que junta o resto dos argumentos num array, e função passada
+como valor para outra função.
+
+Depois implemente repetir, que recebe um texto e quantas vezes repeti-lo, e
+devolve o texto emendado consigo mesmo esse número de vezes. Se quem chamar não
+disser quantas vezes, o padrão é 2 — mas repetir('x', 0) devolve string vazia,
+porque 0 foi dito.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O valor padrão é escrito na própria lista de parâmetros, com um = depois do nome. Ele só entra em ação quando o argumento é undefined — quem passa 0 passou um valor, e o padrão não substitui.",
+  "Para montar o resultado, strings têm um método que faz exatamente isso: repeat(n). Se preferir um laço, ele também resolve.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

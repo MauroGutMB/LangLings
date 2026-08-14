@@ -1,0 +1,27 @@
+title    = "Objetos: acesso, desestruturação e spread"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram o objeto literal, o acesso por ponto e por
+colchetes, o que acontece ao ler uma chave que não existe, a desestruturação
+que arranca campos para variáveis, Object.keys/values/entries, e o spread que
+copia um objeto dentro de outro.
+
+Depois implemente comPadroes, que recebe um objeto de configuração parcial e
+devolve um objeto novo com os padrões { tema: 'claro', fonte: 14, animacoes:
+true } preenchidos onde a configuração não disse nada. O que a configuração
+disse vence o padrão, e o objeto recebido não pode ser alterado.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Espalhe os dois objetos dentro de um literal novo. Como o resultado é um objeto novo, o que veio por argumento nunca é tocado.",
+  "A ordem do spread é o que decide quem vence: quando a mesma chave aparece duas vezes, a última sobrescreve a anterior. Os padrões, portanto, vêm primeiro.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

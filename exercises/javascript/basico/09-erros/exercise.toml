@@ -1,0 +1,30 @@
+title    = "Erros: throw, try/catch e Error"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram o throw que interrompe a função, o
+try/catch que retoma o controle, o finally que roda de qualquer jeito, os
+campos name e message de um Error, e a classe ErroDeEntrada — um Error próprio,
+que quem captura consegue distinguir com instanceof.
+
+Depois implemente dividir:
+  - com b diferente de zero, devolva a divisão de a por b;
+  - com b igual a zero, lance um ErroDeEntrada com a mensagem exata
+    'divisão por zero'.
+
+Note que a / 0 em JavaScript devolve Infinity em silêncio — é justamente isso
+que o erro existe para evitar.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Trate o caso inválido primeiro e lance dali mesmo: quem lança não devolve nada, então não há else a escrever depois.",
+  "A mensagem vai no construtor: `throw new ErroDeEntrada('divisão por zero')`. Lançar a string sozinha também interromperia a função, mas o que chega em quem captura seria uma string sem name, sem message e sem instanceof.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"
