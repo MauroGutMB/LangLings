@@ -1,0 +1,21 @@
+title    = "dynamic desliga o compilador, não o erro"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+cumprimentar recebe uma pessoa e devolve a saudação dela.
+
+O código compila sem nenhum aviso. O parâmetro está tipado como dynamic — o
+que isso desliga no compilador vai doer em tempo de execução.
+"""
+
+hints = [
+  "dynamic diz ao compilador 'não verifique nada sobre este valor' — inclusive se o método chamado nele existe.",
+  "Com o parâmetro tipado como Pessoa em vez de dynamic, o compilador acusaria o nome do método errado antes mesmo de rodar.",
+  "Confira o nome do método definido em Pessoa contra o nome usado dentro de cumprimentar — não são o mesmo texto.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

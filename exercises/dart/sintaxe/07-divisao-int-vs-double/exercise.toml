@@ -1,0 +1,22 @@
+title    = "/ sempre devolve double, mesmo entre dois int"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+mediaInteira deveria devolver a média inteira (arredondada para baixo) de uma
+lista de inteiros.
+
+O código compila. Rode os testes: a execução para antes de qualquer
+comparação de valor, mesmo nos casos em que a divisão seria exata.
+"""
+
+hints = [
+  "Em Dart, / entre dois int não devolve int: devolve double, sempre — 4 / 2 é 2.0, não 2.",
+  "Forçar esse double de volta a int com `as int` não converte nada: é uma checagem de tipo, e double nunca é int, então ela falha em tempo de execução.",
+  "~/ é a divisão inteira: já devolve int diretamente, truncando o resto.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

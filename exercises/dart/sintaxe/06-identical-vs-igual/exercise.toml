@@ -1,0 +1,21 @@
+title    = "identical não é ==, mesmo quando parece"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+mesmoValor deveria devolver true quando duas Moedas têm o mesmo código —
+mesmo sendo instâncias diferentes criadas separadamente.
+
+O código compila e roda. A comparação usada responde uma pergunta diferente
+da que a função promete.
+"""
+
+hints = [
+  "identical(a, b) pergunta 'a e b são o MESMO objeto na memória?' — não 'têm o mesmo valor?'.",
+  "Moeda já sobrescreve == para comparar por código. A resposta certa é usar exatamente esse ==, não identical.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

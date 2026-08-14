@@ -1,0 +1,25 @@
+title    = "Map: chave, valor e a forma de checar presença"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra criação de Map, inserção e leitura por chave, o que
+acontece ao ler uma chave ausente (null, não erro), containsKey e o
+percurso por entries.
+
+Depois implemente contarPalavras, que recebe uma lista de palavras e devolve
+um Map com quantas vezes cada palavra aparece. Palavras diferentes por
+maiúsculas são palavras diferentes. Lista vazia devolve um map vazio.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Ler uma chave ausente de um Map<String, int> devolve null, não 0 — diferente de Go. update tem um parâmetro ifAbsent para esse caso.",
+  "mapa.update(palavra, (v) => v + 1, ifAbsent: () => 1) resolve tanto a primeira ocorrência quanto as seguintes num só laço.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

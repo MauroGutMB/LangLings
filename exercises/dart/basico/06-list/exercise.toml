@@ -1,0 +1,23 @@
+title    = "List: criar, alterar e filtrar"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra criação de List, add, remove, acesso por índice, sort e o
+spread (...) para combinar listas.
+
+Depois implemente apenasPositivos, que recebe uma lista de inteiros e devolve
+uma nova lista só com os valores maiores que zero, na ordem original.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "where() filtra uma lista mantendo só os elementos que satisfazem uma condição, mas devolve um Iterable — encerre com toList().",
+  "A condição para 'positivo' é n > 0 — zero não entra.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

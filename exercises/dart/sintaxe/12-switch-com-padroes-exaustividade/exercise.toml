@@ -1,0 +1,22 @@
+title    = "O _ que sobra silencia a exaustividade do switch"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+area calcula a área de uma Forma (Circulo, Quadrado ou Retangulo — Forma é
+sealed, então essas são as únicas subclasses possíveis).
+
+O código compila e acerta duas das três formas. A terceira não gera erro
+nenhum — só devolve um número que não é a área de nada.
+"""
+
+hints = [
+  "Forma é sealed: o compilador SABE quais são todas as subclasses e consegue provar exaustividade sozinho, sem precisar de um caso curinga.",
+  "O caso `_ => 0` no final captura qualquer subclasse não tratada explicitamente — inclusive Retangulo, que tem seu próprio case ausente.",
+  "Tire o `_` e adicione um case Retangulo r => ...: sem o curinga, o compilador acusa na hora se faltar alguma subclasse de Forma.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

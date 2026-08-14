@@ -1,0 +1,25 @@
+title    = "Variáveis e tipos: var, final, const"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra a diferença entre var (tipo inferido, valor pode mudar),
+final (valor atribuído uma vez, em tempo de execução) e const (valor fixo em
+tempo de compilação), além da inferência de tipo que var faz a partir do
+literal.
+
+Depois implemente areaDoQuadrado, que recebe o lado de um quadrado (num) e
+devolve a área (lado ao quadrado).
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "num aceita tanto int quanto double — o tipo do resultado acompanha o tipo do argumento.",
+  "A área de um quadrado é lado multiplicado por ele mesmo: lado * lado.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

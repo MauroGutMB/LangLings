@@ -1,0 +1,24 @@
+title    = "Condicionais: if e switch com padrões"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra if/else if/else e um switch expression (Dart 3) que casa
+por padrão, incluindo faixas de valor com guardas (when).
+
+Depois implemente classificarNota, que recebe uma nota de 0 a 10 e devolve
+'aprovado' (nota >= 7), 'recuperação' (5 <= nota < 7) ou 'reprovado'
+(nota < 5).
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um switch expression em Dart 3 pode ter guardas (`case _ when condição`) para casar por faixa de valor, não só por valor exato.",
+  "As três faixas são disjuntas e cobrem 0 a 10 inteiro: comece pelo caso mais alto (nota >= 7) e desça.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

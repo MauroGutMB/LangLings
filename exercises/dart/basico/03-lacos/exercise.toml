@@ -1,0 +1,23 @@
+title    = "Laços: for, for-in e while"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra o for clássico (com índice), o for-in (percorrendo uma
+coleção diretamente) e o while, além de break e continue.
+
+Depois implemente somaPares, que recebe uma lista de inteiros e devolve a
+soma apenas dos valores pares. Uma lista vazia devolve 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O operador % dá o resto da divisão: n % 2 == 0 identifica um número par.",
+  "Comece a soma em 0 e vá somando dentro de um for-in, pulando os ímpares com continue ou um if.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

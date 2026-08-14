@@ -1,0 +1,22 @@
+title    = "map() não roda nada até alguém consumir o Iterable"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+contarProcessados deveria devolver quantos elementos de ns foram passados
+pela função de transformação — ou seja, o tamanho de ns.
+
+O código compila, roda sem erro, e devolve um número. Só que esse número não
+muda, não importa o que você passe.
+"""
+
+hints = [
+  "map() em Dart devolve um Iterable preguiçoso: a função passada para ele só executa elemento a elemento conforme alguém itera o resultado.",
+  "Aqui o resultado de .map(...) nunca é lido — nem guardado numa variável, nem percorrido — então o corpo do map nunca roda, e contador nunca sai de 0.",
+  "Encerrar a cadeia com .toList() (ou qualquer outra forma de consumir o Iterable) força a execução de cada chamada.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

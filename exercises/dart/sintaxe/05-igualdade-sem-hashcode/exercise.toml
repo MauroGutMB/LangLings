@@ -1,0 +1,22 @@
+title    = "Sem == e hashCode, dois pontos iguais são estranhos"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+pontosUnicos deveria devolver um Set sem pontos duplicados — dois pontos com
+o mesmo x e o mesmo y contam como o mesmo ponto, mesmo sendo instâncias
+diferentes de Ponto.
+
+O código compila e roda sem erro nenhum. O tamanho do conjunto devolvido é
+que não bate.
+"""
+
+hints = [
+  "Um Set decide duplicata por == e hashCode. Uma classe que não os sobrescreve herda o comportamento padrão de Object: cada instância só é igual a ela mesma.",
+  "Sobrescreva operator == comparando x e y, e hashCode combinando os dois com Object.hash(x, y) — os dois precisam ser coerentes entre si.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

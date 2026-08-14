@@ -1,0 +1,22 @@
+title    = "final guarda uma referência, não uma cópia"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+comZeroExtra deveria devolver uma NOVA lista igual a base, com um 0 a mais no
+final — sem alterar a lista base que foi passada.
+
+O código compila, roda, e o valor devolvido até parece certo. O problema
+aparece em quem chamou a função, não em quem recebeu o retorno.
+"""
+
+hints = [
+  "final impede REATRIBUIR a variável — não impede mutar o que ela aponta, nem faz cópia de nada.",
+  "`final r = base;` faz r e base apontarem para a MESMA lista na memória: chamar r.add(...) também muda base.",
+  "Para partir de uma lista nova sem tocar na original, use o spread: [...base, 0].",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"
