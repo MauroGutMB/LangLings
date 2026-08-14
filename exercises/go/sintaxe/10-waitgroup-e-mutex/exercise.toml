@@ -1,0 +1,35 @@
+title    = "Esperar as goroutines e proteger o que elas compartilham"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Processar: ela chama fn(x) para cada elemento de xs, uma goroutine
+por elemento, e devolve dois valores:
+
+  - um slice com os resultados NA MESMA ORDEM de xs (fn pode demorar tempos
+    diferentes, então a ordem de término não serve);
+  - quantas dessas chamadas devolveram um número negativo.
+
+Processar só pode retornar depois que todas as goroutines terminarem. Com xs
+vazio ou nil, devolve um slice de comprimento 0 e a contagem 0.
+
+São duas armadilhas diferentes, e elas pedem ferramentas diferentes: uma é
+sobre QUANDO a função volta, a outra é sobre duas goroutines escrevendo no
+mesmo lugar ao mesmo tempo.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Uma goroutine disparada com go não segura quem a disparou: sem alguém esperando, Processar volta com o resultado ainda vazio. sync.WaitGroup existe para isso — Add antes de disparar, Done ao terminar, Wait antes de retornar.",
+  "Para os resultados, repare que cada goroutine tem um índice só seu: se o slice já nasce com make([]T, len(xs)), cada uma escreve numa posição diferente e ninguém precisa se coordenar.",
+  "O contador de negativos é o oposto: todas as goroutines mexem na MESMA variável, e ++ não é uma operação atômica. Um sync.Mutex em volta do incremento (ou um sync/atomic) resolve.",
+]
+
+[validation]
+mode    = "test"
+# -timeout curto de propósito: a armadilha desta atividade é código que
+# BLOQUEIA. Sem isso, o erro só apareceria quando o timeout do exercício
+# estourasse, e sem o rastro das goroutines paradas.
+command = ["go", "test", "-timeout", "30s", "./..."]
+timeout = "120s"

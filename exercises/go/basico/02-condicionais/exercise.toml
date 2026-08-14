@@ -1,0 +1,26 @@
+title    = "Condicionais: if com statement e switch"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Os exemplos em main.go mostram o if sem parênteses, o if com um statement
+antes da condição, o switch sem valor (que substitui uma escada de if/else) e
+o switch com vários rótulos por case.
+
+Depois implemente Faixa, que classifica um int:
+  - "baixo" para n menor que 10 (inclusive negativos)
+  - "medio" para n de 10 a 99
+  - "alto"  para n de 100 em diante
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "São três faixas contíguas: cada uma começa onde a anterior termina. Escreva as condições na ordem e a primeira que casar decide.",
+  "Um switch sem valor à frente (switch { case cond: }) é o idioma de Go para uma escada de if/else — e cada case para sozinho, sem break.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

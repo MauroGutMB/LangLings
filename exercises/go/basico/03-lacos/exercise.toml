@@ -1,0 +1,24 @@
+title    = "Laços: as três formas do for e o range"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Go tem um laço só: o for. Os exemplos em main.go mostram as três formas dele
+(completa, só com condição, e infinita com break), o range sobre slice e sobre
+int, e o continue.
+
+Depois implemente Soma, que devolve a soma dos elementos de xs. Para um slice
+vazio ou nil, o resultado é 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Você precisa de um acumulador declarado antes do laço e somado a cada volta. Comece ele em 0 — assim o slice vazio já devolve o resultado certo sem tratamento especial.",
+  "Percorrer o slice com range e descartar o índice com _ é a forma idiomática: for _, x := range xs.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

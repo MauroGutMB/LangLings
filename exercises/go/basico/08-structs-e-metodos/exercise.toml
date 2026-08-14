@@ -1,0 +1,24 @@
+title    = "Structs e métodos"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Os exemplos em main.go mostram como declarar um struct, criá-lo com campos por
+nome, a diferença entre um método com receiver de valor e um com receiver de
+ponteiro, o zero value de um struct, a cópia na atribuição e o embedding.
+
+Depois implemente o método Perimetro do Retangulo: ele devolve
+2 * (Largura + Altura) e não altera o retângulo.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um método é uma função com um receiver declarado entre func e o nome. Dentro dele, o receiver é acessado como qualquer variável.",
+  "Como Perimetro só lê os campos, o receiver de valor (r Retangulo) basta — é o mesmo do método Area logo acima.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

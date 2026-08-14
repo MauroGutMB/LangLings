@@ -1,0 +1,24 @@
+title    = "Strings: bytes, runas e strings.Builder"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Uma string em Go é uma sequência de bytes, não de caracteres. Os exemplos em
+main.go mostram o que len devolve, o que a indexação devolve, o que o range
+entrega, a conversão para []rune e o strings.Builder.
+
+Depois implemente Contar, que devolve quantos CARACTERES existem em s —
+Contar("olá") é 3, não 4, e Contar("") é 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "len(s) conta bytes, e em UTF-8 um caractere acentuado ocupa mais de um byte. Você precisa contar unidades diferentes das que len conta.",
+  "Duas ferramentas resolvem: converter para []rune e medir, ou utf8.RuneCountInString, do pacote unicode/utf8. Um range sobre a string também percorre uma runa por volta.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

@@ -1,0 +1,25 @@
+title    = "Slices: make, append, len/cap e fatiamento"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Os exemplos em main.go mostram a diferença entre len e cap, o que make reserva,
+por que o resultado de append precisa ser reatribuído, como fatiar com [i:j] e
+que o zero value de um slice (nil) já é utilizável.
+
+Depois implemente Pares, que devolve um slice NOVO com os elementos pares de
+xs, na mesma ordem em que aparecem. Sem nenhum par — ou com xs vazio ou nil —
+o resultado é um slice de comprimento 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Você precisa de um slice de destino separado da entrada, e de percorrer xs decidindo elemento a elemento se ele entra.",
+  "make([]int, 0, len(xs)) cria o destino já com capacidade reservada e comprimento zero; daí é append para cada elemento que passar no teste x%2 == 0.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

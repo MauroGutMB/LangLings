@@ -1,0 +1,25 @@
+title    = "A variável do range é uma cópia"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Repor deve somar n à quantidade de TODOS os produtos do slice recebido,
+alterando o próprio slice de quem chamou (a função não devolve nada).
+
+O código já está escrito, compila, roda sem erro nenhum — e não altera coisa
+alguma. A armadilha está em qual variável o laço está de fato modificando.
+
+Repor também precisa aguentar um slice vazio ou nil sem entrar em pânico.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "No for _, p := range ps, o p não é o elemento do slice: é uma variável nova que recebe uma CÓPIA dele a cada volta. Escrever em p.Qtd escreve na cópia.",
+  "Para alterar o elemento de verdade você precisa chegar nele pelo slice: percorra os índices (for i := range ps) e escreva em ps[i].",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

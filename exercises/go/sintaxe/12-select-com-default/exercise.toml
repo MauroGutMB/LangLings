@@ -1,0 +1,33 @@
+title    = "O select que não pode esperar"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Drenar: ela recebe um canal e devolve, num slice e na ordem em que
+saíram, tudo o que já estava PRONTO para ser recebido naquele instante. Ela
+nunca pode bloquear — nem por um instante.
+
+Os casos que ela precisa atravessar sem travar:
+  - canal com valores no buffer e ainda aberto: leva os valores e para;
+  - canal aberto e vazio: devolve um slice de comprimento 0;
+  - canal fechado (com ou sem valores pendentes): leva o que sobrou e para;
+  - canal nil: devolve um slice de comprimento 0.
+
+A armadilha é que a forma normal de ler um canal é justamente esperar por ele.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Tanto <-ch quanto for v := range ch bloqueiam num canal aberto e vazio, e para sempre num canal nil. Você precisa de uma leitura que possa desistir.",
+  "Um select escolhe entre operações de canal prontas; com um case default, ele nunca espera — se nada estiver pronto na hora, o default roda. Repita isso num laço até cair no default.",
+  "Falta distinguir \"veio um valor\" de \"o canal fechou\": um canal fechado está SEMPRE pronto e devolveria o zero value para sempre. A forma v, ok := <-ch dentro do case é o que quebra o laço.",
+]
+
+[validation]
+mode    = "test"
+# -timeout curto de propósito: a armadilha desta atividade é código que
+# BLOQUEIA. Sem isso, o erro só apareceria quando o timeout do exercício
+# estourasse, e sem o rastro das goroutines paradas.
+command = ["go", "test", "-timeout", "30s", "./..."]
+timeout = "120s"

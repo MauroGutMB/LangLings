@@ -1,0 +1,32 @@
+title    = "Juntando tudo: struct, slice, map e erro"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Último da categoria: nada novo, só a combinação do que veio antes. Os exemplos
+em main.go montam um pequeno relatório de estoque usando struct, slice, map,
+laço e erro.
+
+Depois implemente Resumir, que recebe um slice de Item e devolve o valor total
+por categoria:
+  - a chave do map é o campo Categoria do item;
+  - o valor é a soma de Preco * Qtd de todos os itens daquela categoria (o
+    Preco está em centavos, então tudo é int);
+  - com o slice vazio ou nil, devolva nil e um erro que embrulhe ErrSemItens,
+    de forma que errors.Is o reconheça;
+  - um item com Categoria vazia é inválido: devolva nil e um erro que embrulhe
+    ErrCategoriaVazia.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Trate primeiro os dois casos de erro e devolva cedo; o corpo que sobra é um laço só, somando no map.",
+  "O map de destino precisa ser criado com make antes do laço, e acumular com out[it.Categoria] += ... aproveita que uma chave ausente lê como 0.",
+  "Para os erros, o padrão é o mesmo do exercício anterior: fmt.Errorf com %w em cima da sentinela, acrescentando contexto na mensagem.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

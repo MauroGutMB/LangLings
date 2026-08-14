@@ -1,0 +1,28 @@
+title    = "Erros: error, errors.New e o %w"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Em Go um erro é um valor devolvido, não uma exceção lançada. Os exemplos em
+main.go mostram uma sentinela criada com errors.New, o embrulho com
+fmt.Errorf("%w", ...), o errors.Is enxergando através do embrulho e o que se
+perde quando se usa %v no lugar de %w.
+
+Depois implemente Dividir:
+  - com b diferente de zero, devolve a/b e nil;
+  - com b igual a zero, devolve 0 e um erro que embrulhe ErrDivisaoPorZero,
+    de forma que errors.Is(err, ErrDivisaoPorZero) seja true — e a mensagem
+    do erro precisa conter mais do que só o texto da sentinela.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Trate o caso de b == 0 antes de dividir: em Go a divisão inteira por zero entra em pânico, e pânico não é erro devolvido.",
+  "fmt.Errorf monta um erro com contexto; o verbo %w é o que preserva a causa original para o errors.Is de quem chamar.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

@@ -1,0 +1,25 @@
+title    = "Maps: chave, valor e a forma de duas variáveis"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Os exemplos em main.go mostram como inserir, ler e apagar de um map, o que
+acontece ao ler uma chave ausente, a forma de duas variáveis que distingue
+"ausente" de "presente valendo zero", e o percurso com range.
+
+Depois implemente Contagem, que recebe um slice de palavras e devolve um map
+com quantas vezes cada palavra aparece. Palavras diferentes por maiúsculas são
+palavras diferentes. Com o slice vazio ou nil, o map devolvido tem tamanho 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um map precisa ser criado antes de receber a primeira escrita — o zero value dele não serve para gravar. Crie o seu com make.",
+  "Ler uma chave ausente devolve 0 sem erro, então m[p]++ já funciona tanto para a primeira ocorrência quanto para as seguintes.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

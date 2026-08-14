@@ -1,0 +1,28 @@
+title    = "O valor guardado num map não tem endereço"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Marcar: ela soma p aos pontos do time no placar. Se o time ainda não
+estiver no map, ele entra com p pontos. Marcar altera o map recebido e não
+devolve nada.
+
+Há uma armadilha, e ela nem chega a rodar: a linha mais direta que resolveria
+isso não compila. O compilador vai dizer o motivo em três palavras, e o
+exercício é entender o que elas querem dizer.
+
+Marcar também precisa aguentar um map nil sem entrar em pânico: nesse caso não
+há onde gravar, então ela simplesmente não faz nada.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um map pode realocar os próprios buckets quando cresce, então o valor guardado numa chave não tem endereço estável. Por isso ele não é endereçável — e o que não é endereçável não pode ter um campo alterado no lugar.",
+  "O contorno é fazer os três passos à mão: leia o valor da chave para uma variável (a leitura de chave ausente já devolve o zero value), altere a variável, e grave-a de volta na mesma chave.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

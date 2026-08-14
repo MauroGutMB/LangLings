@@ -1,0 +1,25 @@
+title    = "Funções: múltiplos retornos e variádicas"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Os exemplos em main.go mostram uma função com dois retornos (valor e erro),
+uma função variádica, o espalhamento de um slice com ... e funções guardadas
+em variáveis.
+
+Depois implemente Maior, que é variádica e devolve dois valores: o maior dos
+números recebidos e true. Chamada sem nenhum número, devolve 0 e false — não
+existe maior de coisa nenhuma.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Dentro de uma função variádica, o parâmetro é um slice comum: dá para checar len(xs) antes de qualquer coisa e sair cedo no caso vazio.",
+  "Para o resto, comece o candidato com o primeiro elemento (não com 0 — os números podem ser todos negativos) e percorra os demais com range comparando.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

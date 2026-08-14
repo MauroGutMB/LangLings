@@ -1,0 +1,29 @@
+title    = "O método que não muta nada"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+O tipo Contador tem dois métodos já escritos, e os dois estão errados:
+
+  - Incrementar() precisa somar 1 ao campo N do contador em que foi chamado;
+  - Dobro() precisa devolver um Contador NOVO com o dobro de N, sem alterar o
+    contador em que foi chamado.
+
+O código compila e parece fazer exatamente isso. Rode os testes e repare que
+Incrementar não incrementa e Dobro dobra a mais do que devia.
+
+A armadilha está na assinatura dos métodos, não no corpo deles.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um método tem um receiver, e o receiver segue as mesmas regras de um parâmetro comum: passar por valor entrega uma cópia.",
+  "Escrever num campo de uma cópia é legal e não faz nada visível de fora. Para o método alterar o original, o receiver precisa ser um ponteiro (c *Contador).",
+  "Isso vale nos dois sentidos: um método que NÃO deve alterar nada é justamente o que fica melhor com receiver de valor, porque o corpo dele não tem como escapar da cópia.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

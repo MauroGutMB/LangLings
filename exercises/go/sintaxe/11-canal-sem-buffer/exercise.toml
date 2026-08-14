@@ -1,0 +1,33 @@
+title    = "O canal sem buffer que trava quem escreve"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Enfileirar: ela recebe um slice e devolve um canal de leitura pelo
+qual esses valores saem, na ordem do slice. O canal precisa ser fechado depois
+do último valor, para que quem chamar consiga percorrê-lo com um range que
+termina.
+
+Repare que Enfileirar devolve o canal — ou seja, ela precisa RETORNAR antes de
+quem chamou começar a ler.
+
+Há uma armadilha: escrita a mais direta trava a própria Enfileirar e o teste
+morre com "all goroutines are asleep - deadlock". Entender por que ela trava é
+o exercício.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um canal sem buffer não guarda nada: cada envio fica parado até que alguém esteja recebendo naquele exato momento. Como Enfileirar ainda não retornou, não existe ninguém do outro lado.",
+  "São dois caminhos possíveis. Um: dar ao canal capacidade suficiente na criação, com make(chan int, n), e aí os envios não bloqueiam. Outro: deixar os envios e o close acontecerem numa goroutine, para que Enfileirar possa retornar imediatamente.",
+  "Em qualquer dos dois, o close vem depois do último envio e só uma vez — fechar um canal já fechado, ou enviar num canal fechado, é pânico.",
+]
+
+[validation]
+mode    = "test"
+# -timeout curto de propósito: a armadilha desta atividade é código que
+# BLOQUEIA. Sem isso, o erro só apareceria quando o timeout do exercício
+# estourasse, e sem o rastro das goroutines paradas.
+command = ["go", "test", "-timeout", "30s", "./..."]
+timeout = "120s"

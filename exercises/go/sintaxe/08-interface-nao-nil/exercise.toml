@@ -1,0 +1,30 @@
+title    = "A interface não-nil com ponteiro nil dentro"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Validar recebe o valor de um campo e devolve error:
+
+  - com o campo vazio, um *ErroValidacao descrevendo o problema;
+  - com o campo preenchido, nil — literalmente nil, do jeito que quem chama
+    testa com if err != nil.
+
+O código já está escrito e faz exatamente isso... segundo a leitura. Rode os
+testes: o caminho feliz devolve um erro que não existe.
+
+A armadilha é a mais cara de Go: um valor de interface tem duas partes, e ele
+só é igual a nil quando as DUAS estão vazias.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um error é uma interface, e ela guarda um par (tipo, valor). Atribuir um *ErroValidacao nil a um error preenche o tipo e deixa só o valor vazio — então a interface não é nil.",
+  "Isso vale para o retorno também: devolver uma variável de tipo *ErroValidacao numa função que declara error faz a conversão acontecer, mesmo quando a variável vale nil.",
+  "O conserto é não deixar o ponteiro chegar ao retorno quando não há erro: decida no if e devolva o literal nil no caminho feliz.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

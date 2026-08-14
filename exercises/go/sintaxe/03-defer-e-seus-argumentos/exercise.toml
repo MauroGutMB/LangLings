@@ -1,0 +1,29 @@
+title    = "Quando os argumentos do defer são avaliados"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Processar: ela soma os elementos de xs e devolve o total. Se xs for
+vazio ou nil, devolve 0 e um erro que embrulhe ErrVazio.
+
+A regra que dá o exercício: nos DOIS caminhos de saída, e exatamente uma vez,
+Processar precisa chamar registrar(total) com o total que ela está devolvendo.
+É para isso que existe o defer — a chamada é agendada num lugar só e vale para
+qualquer return.
+
+Há uma armadilha: um defer escrito da forma mais óbvia registra o número
+errado, e o teste do caminho feliz é o único que percebe.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um defer tem dois momentos: a hora em que a linha é executada (quando a chamada é agendada) e a hora em que a função retorna (quando a chamada acontece). Os argumentos pertencem ao primeiro momento.",
+  "Para que o valor seja lido só no segundo momento, ele não pode ser argumento: ponha a chamada dentro de uma função anônima diferida, que lê a variável quando roda.",
+  "Isso só funciona se a variável ainda existir e estiver atualizada quando o defer rodar — retornos nomeados na assinatura (total int, err error) são exatamente a ferramenta para isso.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

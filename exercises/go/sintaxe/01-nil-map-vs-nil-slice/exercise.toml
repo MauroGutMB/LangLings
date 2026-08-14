@@ -1,0 +1,27 @@
+title    = "O map nil não é o slice nil"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Acumular: ela soma n ao valor guardado em m sob a chave k e devolve
+o map resultante. Se a chave ainda não existir, ela passa a existir valendo n.
+
+O detalhe é que m pode chegar nil — e Acumular precisa devolver, mesmo nesse
+caso, um map utilizável com a chave já dentro.
+
+Há uma armadilha: o zero value de um map não se comporta como o zero value de
+um slice, e o código que trata os dois do mesmo jeito passa em alguns testes
+e explode em outro.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um map nil é somente leitura: ler dele devolve o zero value sem reclamar, mas a primeira escrita é um pânico em tempo de execução. Um slice nil, ao contrário, aceita append.",
+  "Não existe append para maps: quem cria o mapa é você. Cheque m antes de escrever e, se ele for nil, ponha um make no lugar antes de seguir.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

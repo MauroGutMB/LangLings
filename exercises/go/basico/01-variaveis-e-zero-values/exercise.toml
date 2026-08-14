@@ -1,0 +1,24 @@
+title    = "Variáveis, tipos e zero values"
+category = "basico"
+editable = ["main.go"]
+
+objective = """
+Leia os exemplos comentados em main.go e rode-os se quiser: eles mostram as
+duas formas de declarar variável, o zero value de cada tipo e a conversão
+explícita entre tipos numéricos.
+
+Depois implemente Media: ela recebe dois int e devolve a média deles como
+float64, sem perder a parte fracionária — Media(1, 2) é 1.5, não 1.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Go não converte tipos numéricos sozinho. Dividir dois int devolve um int, e a parte fracionária some antes mesmo de virar float64.",
+  "Converta para float64 ANTES de dividir, como o exemplo faz em float64(idade) / 2.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

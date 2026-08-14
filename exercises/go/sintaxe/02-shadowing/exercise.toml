@@ -1,0 +1,31 @@
+title    = "O := que cria uma variável nova"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Somar: ela recebe strings, converte cada uma para int com
+strconv.Atoi e devolve dois valores.
+
+  - o total das que são números válidos (as inválidas são ignoradas na soma);
+  - o erro devolvido pelo strconv na PRIMEIRA entrada inválida, ou nil se
+    todas forem válidas.
+
+Ou seja: Somar não para no primeiro erro, mas precisa lembrar dele.
+
+Há uma armadilha: dentro do laço é fácil escrever uma linha que parece gravar
+numa variável de fora e na verdade cria outra, só daquele bloco. O total sai
+certo e o erro volta nil.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O := não é atribuição: ele DECLARA. Num bloco interno, ele declara variáveis novas que apagam as de fora dentro daquele bloco — o compilador não reclama porque o código é legal.",
+  "O := só reaproveita uma variável já existente quando ela foi declarada no MESMO bloco; e ele exige que pelo menos um dos nomes do lado esquerdo seja novo.",
+  "Guarde o primeiro erro numa variável declarada antes do laço e escreva nela com = (atribuição), não com :=. Se precisar dos dois na mesma linha, declare o n antes.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"

@@ -1,0 +1,30 @@
+title    = "errors.Is não serve para o que errors.As serve"
+category = "sintaxe"
+editable = ["main.go"]
+
+objective = """
+Implemente Classificar, que olha um erro e devolve uma string:
+
+  - "ok"            quando err é nil;
+  - "ausente"       quando err é, ou embrulha, a sentinela ErrNaoEncontrado;
+  - "http:<status>" quando err é, ou embrulha, um *ErroHTTP — com o Status
+                    daquele erro no lugar de <status>, por exemplo "http:404";
+  - "outro"         para qualquer outro erro.
+
+A armadilha é dupla, e os dois lados aparecem só nos testes que usam erros
+embrulhados com %w: comparar erro com == e afirmar tipo com .(*T) funcionam
+até alguém acrescentar contexto por cima.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um erro embrulhado com fmt.Errorf(\"...: %w\", causa) é um erro NOVO: ele não é == à causa nem tem o tipo dela. O que ele oferece é um método Unwrap, e é por ele que a cadeia é percorrida.",
+  "errors.Is percorre a cadeia comparando com um erro que você já tem em mãos — é o certo para sentinelas. errors.As percorre a mesma cadeia procurando o primeiro erro de um TIPO, e o entrega numa variável sua — é o único que dá acesso aos campos.",
+  "errors.As recebe um ponteiro para a variável de destino: declare var alvo *ErroHTTP e passe &alvo. A ordem das checagens importa, porque \"outro\" é o caso que sobra.",
+]
+
+[validation]
+mode    = "test"
+command = ["go", "test", "./..."]
+timeout = "120s"
