@@ -1,0 +1,23 @@
+title    = "Set: valores únicos e interseção"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra criação de Set, add (que ignora duplicatas), contains,
+union, intersection e difference.
+
+Depois implemente elementosComuns, que recebe duas listas de inteiros e
+devolve um Set com os valores que aparecem em ambas.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "toSet() converte uma List em Set, descartando duplicatas no processo.",
+  "Set tem o método intersection, que devolve só os elementos presentes nos dois conjuntos.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

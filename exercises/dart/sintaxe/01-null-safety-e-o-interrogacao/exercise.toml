@@ -1,0 +1,21 @@
+title    = "O ? que muda o tipo — e o ! que aposta contra ele"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+tamanhoOuZero deveria devolver o tamanho de s, ou 0 quando s for nulo.
+
+O código compila e acerta na hora óbvia. Rode os testes: um deles vai
+reprovar por um motivo que o tipo String? deveria ter avisado.
+"""
+
+hints = [
+  "String? é um tipo diferente de String — admite null. Ler .length direto nele não compila; alguma conversão está acontecendo antes.",
+  "O operador ! (bang) diz ao compilador 'confie em mim, isto não é null' — e explode em tempo de execução quando você está errado.",
+  "?? dá um valor de fallback só quando o lado esquerdo é null, sem apostar em nada.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

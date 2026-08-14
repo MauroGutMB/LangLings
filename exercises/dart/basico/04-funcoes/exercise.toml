@@ -1,0 +1,24 @@
+title    = "Funções: nomeados, opcionais e arrow"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra parâmetros nomeados com valor padrão, parâmetros
+posicionais opcionais e a sintaxe de seta (=>) para funções de uma expressão
+só.
+
+Depois implemente cumprimentar, que recebe nome (posicional) e um parâmetro
+nomeado opcional saudacao (padrão 'Olá') e devolve '$saudacao, $nome!'.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um parâmetro nomeado opcional entra entre chaves na assinatura: {String saudacao = 'Olá'}.",
+  "O corpo é só uma interpolação de string — dá para escrever a função inteira com =>, sem chaves nem return.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

@@ -1,0 +1,22 @@
+title    = "Um parâmetro opcional que na verdade nunca deveria faltar"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+formatarPedido deveria juntar cliente e quantidade num texto. pedidoConvidado
+é a versão para quem não tem cadastro: usa o nome padrão 'convidado'.
+
+O código compila. formatarPedido funciona quando cliente é informado —
+pedidoConvidado é onde a execução para.
+"""
+
+hints = [
+  "cliente está tipado como String?, opcional: nada obriga quem chama a informá-lo, e pedidoConvidado não informa.",
+  "required na assinatura de um parâmetro nomeado faz o compilador exigir o argumento em toda chamada — inclusive dentro do próprio arquivo, em pedidoConvidado.",
+  "Depois de marcar cliente como required String (sem o ?), pedidoConvidado precisa passar um valor de verdade: 'convidado' resolve.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

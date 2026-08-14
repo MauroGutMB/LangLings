@@ -1,0 +1,22 @@
+title    = "A cascata (..) devolve o objeto, não o que cada chamada devolveu"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+incrementarTres deveria aplicar Contador.incrementar três vezes seguidas e
+devolver o valor final — inicial + 3.
+
+O código compila e roda sem erro nenhum. O valor devolvido é só o inicial,
+como se nada tivesse acontecido.
+"""
+
+hints = [
+  "Uma cascata a..b()..c() sempre AVALIA para a — o valor de retorno de b() e c() é descartado, não importa o que eles devolvam.",
+  "incrementar() é puro: devolve um Contador NOVO, não muda o de dentro. Encadear com .. joga esses novos objetos fora, um atrás do outro.",
+  "Sem cascata: reatribua a variável a cada chamada — c = c.incrementar(); — para não perder o resultado.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

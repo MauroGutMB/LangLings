@@ -1,0 +1,25 @@
+title    = "Composição: List, Map e laço juntos"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() combina o que os exercícios anteriores mostraram em separado:
+uma lista de maps representando itens, percorrida com for-in, somando um
+total com interpolação de string no resultado.
+
+Depois implemente totalCompra, que recebe uma lista de itens (cada item é um
+Map com as chaves 'preco' (num) e 'quantidade' (int)) e devolve a soma de
+preco * quantidade de todos os itens. Lista vazia devolve 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Cada item é um Map<String, num> — item['preco'] e item['quantidade'] leem os dois campos.",
+  "Comece o total em 0 e, num for-in sobre a lista de itens, some preco * quantidade a cada volta.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

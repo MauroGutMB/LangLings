@@ -1,0 +1,9 @@
+name    = "Dart"
+image   = "dart:3.13-sdk"
+workdir = "/workspace"
+shell   = ["/bin/bash"]
+
+# Sem cache_dir de propósito: PUB_CACHE só teria o que guardar se os exercícios
+# tivessem dependências do pub, e nenhum tem. Os arquivos são rodados como
+# script solto (`dart run testes.dart`, sem pubspec.yaml), então não há
+# resolução de pacotes para acelerar.

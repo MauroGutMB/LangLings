@@ -1,0 +1,22 @@
+title    = "late promete um valor que nem sempre chega"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+formatarConfig deveria devolver 'MODO DEBUG', 'MODO PRODUCAO' ou, quando
+nenhum modo for passado, 'MODO PADRAO'.
+
+O código compila sem reclamar de nada. É exatamente o caso sem modo que
+quebra — e não é um erro de digitação óbvio.
+"""
+
+hints = [
+  "late tira do compilador a obrigação de provar que a variável foi atribuída antes de ser lida — ele confia em você.",
+  "Quando nenhum if atribui resultado, ler resultado no return não dá null: dá um erro de LateInitializationError, o preço de ter usado late sem cobrir todo caminho.",
+  "Uma variável comum (var) com um valor padrão inicial não tem esse risco: ela já nasce atribuída.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

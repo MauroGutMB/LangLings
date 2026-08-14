@@ -1,0 +1,24 @@
+title    = "Strings: interpolação e métodos"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra interpolação ($variavel e ${expressão}), e os métodos mais
+comuns de String: toUpperCase, trim, split, contains e substring.
+
+Depois implemente iniciais, que recebe um nome completo (palavras separadas
+por um único espaço) e devolve as iniciais de cada palavra em maiúsculas,
+sem separador. "Ana Maria Silva" devolve "AMS".
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "split(' ') quebra a string em uma lista de palavras.",
+  "Cada palavra não vazia tem uma primeira letra: palavra[0]. toUpperCase() maiúsculiza. Junte tudo com join('').",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

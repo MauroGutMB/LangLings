@@ -1,0 +1,22 @@
+title    = "Classes: construtores e this.x"
+category = "basico"
+editable = ["exercicio.dart"]
+
+objective = """
+exemplos() mostra uma classe com construtor usando o atalho this.x, um
+construtor nomeado e um método comum.
+
+Depois complete o método area() de Retangulo, que devolve largura * altura.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Dentro de um método, os campos da própria instância são acessíveis diretamente pelo nome — não precisa de this. para lê-los.",
+  "A área de um retângulo é largura multiplicada por altura.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"

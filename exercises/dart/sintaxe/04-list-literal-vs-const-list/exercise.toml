@@ -1,0 +1,22 @@
+title    = "const [] não aceita ser mudada — nem uma vez"
+category = "sintaxe"
+editable = ["exercicio.dart"]
+
+objective = """
+comItem deveria devolver uma nova lista com base mais item no final, sem
+acumular chamadas anteriores — cada chamada parte sempre de ['a', 'b'].
+
+O código compila. Rode os testes: um deles nem chega a comparar valores,
+porque a execução para antes disso.
+"""
+
+hints = [
+  "const cria uma coleção imutável de verdade, fixada em tempo de compilação — chamar .add nela não é um descuido pequeno, é proibido em tempo de execução.",
+  "Trocar const por var no lugar errado resolve o travamento, mas troca por outro bug: uma lista var no nível superior é compartilhada entre chamadas, e cada .add fica acumulado da chamada anterior.",
+  "A saída é não mutar _base em lugar nenhum: monte a lista de retorno com spread, [..._base, item], deixando _base intocada.",
+]
+
+[validation]
+mode    = "test"
+command = ["dart", "run", "testes.dart"]
+timeout = "60s"
