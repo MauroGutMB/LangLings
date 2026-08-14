@@ -1,0 +1,24 @@
+title    = "Repassar argumentos: $@ sem aspas muda a contagem"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+contar_args deve devolver a quantidade exata de argumentos que recebeu, seja
+lá o que houver dentro deles — inclusive espaço.
+
+contar() está correta e não deve ser tocada. contar_args repassa os
+argumentos para ela, e o jeito como repassa é a armadilha: funciona para
+argumentos simples e erra a contagem quando algum deles tem espaço no meio.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "$@ sem aspas passa pelo mesmo word splitting de qualquer variável sem aspas: cada argumento com espaço vira mais de um.",
+  '"$@" com aspas é o único jeito de repassar a lista de argumentos exatamente como ela chegou, um argumento por posição.',
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

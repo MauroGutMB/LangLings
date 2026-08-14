@@ -1,0 +1,30 @@
+title    = "Arrays associativos: chave em vez de posição"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram declare -A, escrever e ler por chave
+(idades[Ana]=30), o tamanho (${#idades[@]}), percorrer chaves com
+"${!idades[@]}", testar existência com -v e dar um valor padrão para chave
+ausente com ${idades[x]:-...}.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente idade_de: ela recebe um nome procurado e, na sequência,
+pares nome/idade, e devolve a idade correspondente — ou "desconhecida" se o
+nome não estiver em nenhum par.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Monte um array associativo a partir dos pares recebidos depois do primeiro argumento, do jeito que exemplos() faz com declare -A.",
+  "Depois do primeiro argumento, consuma os pares dois a dois com shift 2 dentro de um while, e no fim leia ${idades[$procurado]:-desconhecida}.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

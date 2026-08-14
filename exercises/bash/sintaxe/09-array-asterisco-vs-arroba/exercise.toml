@@ -1,0 +1,23 @@
+title    = "${arr[*]} junta com o IFS, não com o separador que você quer"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+juntar_virgula recebe os itens como argumentos e devolve todos juntos numa
+única string, separados por vírgula.
+
+Rode os testes: com um item só, não há o que separar e tudo passa. Com mais
+de um, o separador que sai não é vírgula.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  '"${arr[*]}" entre aspas junta os elementos do array numa única palavra, usando o PRIMEIRO CARACTERE da variável IFS como separador — por padrão, espaço.',
+  'Ajustar IFS para "," antes do echo (um local IFS=, dentro da função já basta, sem afetar o resto do script) muda o separador que [*] usa.',
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

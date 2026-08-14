@@ -1,0 +1,28 @@
+title    = "Laços: for sobre lista, for aritmético e while"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram o for percorrendo uma lista de palavras, o
+for no formato aritmético ((i=0; i<n; i++)), o for sobre uma faixa {1..5}, o
+while com condição, e o efeito de break e continue.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente contagem_regressiva, que recebe um número n e imprime uma
+linha por número, de n até 1. Com n igual a 0 (ou negativo) não imprime nada.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um laço que anda de trás para frente precisa começar em n, testar se ainda é maior ou igual a 1 e diminuir a cada volta — o for aritmético dos exemplos aceita as três partes nessa ordem.",
+  "O caso de n igual a 0 não pede um if separado: se a condição do laço já for falsa na primeira avaliação, o corpo simplesmente não roda.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

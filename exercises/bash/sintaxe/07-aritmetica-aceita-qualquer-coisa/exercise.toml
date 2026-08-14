@@ -1,0 +1,25 @@
+title    = "$(( )) engole qualquer coisa: vazio e texto viram zero"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+soma_segura recebe valores como argumentos. Números entram na soma. Uma
+string vazia é "sem valor" e deve ser ignorada. Um texto que não é número
+nenhum é um dado inválido e deve fazer a função falhar — status 1, sem
+imprimir nada — em vez de somar como se fosse zero.
+
+Rode os testes: a soma de números funciona, o vazio é ignorado direitinho.
+O caso que quebra é o de um valor que não é nem número nem vazio.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Dentro de $(( )) um texto sem aspas que não é número não dá erro: o bash tenta usá-lo como nome de variável, e uma variável inexistente vale 0.",
+  "Valide cada valor ANTES de somar: um vazio você pula com continue; um texto que não bate com um padrão de dígitos (com [[ ]] e =~) faz a função devolver 1.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

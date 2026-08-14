@@ -1,0 +1,29 @@
+title    = "Exit code: o status que $? guarda"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram que todo comando devolve um status (0 é
+sucesso), que $? guarda só o do último comando, que && e || decidem se rodam
+com base nesse status, e que uma função sem return explícito devolve o status
+do último comando do seu corpo.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente numero_par: ela não imprime nada, só devolve status 0
+quando o argumento é um inteiro par, e status diferente de 0 quando é ímpar.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O status não é um valor que você imprime: é o resultado de um teste, do jeito que eh_positivo devolve o de [[ $1 -gt 0 ]] sem return explícito.",
+  "(( )) já devolve status 0 quando a conta dá diferente de zero e 1 quando dá zero — um teste de resto por 2 dentro de (( )) resolve sozinho, sem if.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

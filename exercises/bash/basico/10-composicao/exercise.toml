@@ -1,0 +1,30 @@
+title    = "Composição: arrays, strings e aritmética juntos"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Sem conceito novo: os exemplos em exercicio.sh combinam um array de registros
+"nome:nota", a expansão de string dos exercícios anteriores (${registro%%:*}
+para o nome, ${registro#*:} para a nota) e aritmética ((( nota >= 6 )) e a
+divisão para a média) num único fluxo.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente contar_aprovados: recebe registros "nome:nota" como
+argumentos e devolve quantos têm nota maior ou igual a 6. Sem argumentos,
+devolve 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Separe a nota de cada registro do mesmo jeito que exemplos() faz: ${registro#*:} pega tudo depois do primeiro ':'.",
+  "Percorra os argumentos com um for, compare cada nota com (( nota >= 6 )) e acumule um contador — sem precisar do nome nesta função.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

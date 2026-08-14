@@ -1,0 +1,29 @@
+title    = "Variáveis, aspas e local"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram como atribuir e ler uma variável, para que
+servem as chaves em ${nome}, o que acontece com uma variável nunca definida, a
+diferença entre "$var" e $var na hora de imprimir, e o que local faz dentro de
+uma função.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente etiquetar, que recebe um texto e devolve "Nome: <texto>" com
+o texto preservado exatamente como veio — inclusive os espaços internos.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O corpo já tem a variável pronta; falta só imprimi-la junto do prefixo. Uma linha de echo resolve.",
+  "Os exemplos mostram que sem aspas o Bash quebra o valor em palavras e cola tudo com um espaço só. O teste passa um texto com dois espaços seguidos justamente para cobrar isso.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

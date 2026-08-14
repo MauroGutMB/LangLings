@@ -1,0 +1,29 @@
+title    = "Arrays: índice, tamanho e percorrer com aspas"
+category = "basico"
+editable = ["exercicio.sh"]
+
+objective = """
+Os exemplos em exercicio.sh mostram como declarar um array (frutas=(...)),
+ler por índice (${frutas[0]}), contar elementos (${#frutas[@]}), acrescentar
+ao final (+=), pegar o último item (índice negativo), percorrer com
+"${frutas[@]}" e fatiar com ${frutas[@]:inicio:quantos}.
+
+Para vê-los rodando, abra o shell do container com [s] e digite:
+
+    source ./exercicio.sh && exemplos
+
+Depois implemente soma_array, que recebe números como argumentos e devolve o
+total. Sem argumentos, devolve 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Percorra os argumentos recebidos e vá acumulando com (( total += n )), do jeito que os exemplos usam (( )) para conta.",
+  'Um for em "$@" com aspas, um total que começa em 0, e echo "$total" no final bastam.',
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

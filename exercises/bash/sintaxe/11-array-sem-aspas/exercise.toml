@@ -1,0 +1,23 @@
+title    = "${arr[@]} sem aspas quebra elementos com espaço"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+contar_itens monta um array a partir dos argumentos recebidos e devolve
+quantos itens ele tem, repassando para tamanho (já correta, não mexa nela).
+
+Rode os testes: itens sem espaço contam certo. Um item com espaço dentro
+faz a contagem subir sozinha, como se fossem dois itens.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A expansão de um array sem aspas passa pelo mesmo word splitting de qualquer variável sem aspas: cada elemento com espaço vira mais de uma palavra.",
+  '"${itens[@]}" com aspas é o que preserva cada elemento do array como um item só ao repassá-lo adiante.',
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"

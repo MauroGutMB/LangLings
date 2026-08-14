@@ -1,0 +1,8 @@
+name    = "Bash"
+image   = "bash:5.2-alpine3.22"
+workdir = "/workspace"
+
+# A imagem compila o bash da fonte em /usr/local/bin/bash; o /bin/sh da base
+# continua sendo o ash do busybox, e abrir o shell do exercício em ash seria
+# abrir a linguagem errada.
+shell   = ["/usr/local/bin/bash"]

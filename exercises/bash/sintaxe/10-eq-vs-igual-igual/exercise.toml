@@ -1,0 +1,24 @@
+title    = "-eq compara número, == compara texto"
+category = "sintaxe"
+editable = ["exercicio.sh"]
+
+objective = """
+iguais recebe dois números e devolve status 0 quando representam o mesmo
+valor — mesmo escritos diferente, como "007" e "7" — e status diferente de 0
+quando os valores são diferentes.
+
+Rode os testes: números escritos do mesmo jeito funcionam. O caso que quebra
+é de dois números iguais escritos com formatações diferentes.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "== dentro de [[ ]] compara as duas strings caractere a caractere — não converte para número antes.",
+  "Existe um operador de teste específico para comparação NUMÉRICA, o mesmo usado em -gt e -lt.",
+]
+
+[validation]
+mode    = "test"
+command = ["bash", "testes.sh"]
+timeout = "30s"
