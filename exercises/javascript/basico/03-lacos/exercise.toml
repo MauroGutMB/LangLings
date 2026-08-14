@@ -1,0 +1,25 @@
+title    = "Laços: for, for...of e while"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram o for clássico com índice, o for...of que
+percorre os valores direto, o while que repete enquanto uma condição vale, e o
+que break e continue fazem dentro de qualquer um deles.
+
+Depois implemente somarPares, que recebe um array de números e devolve a soma
+apenas dos pares. Com o array vazio, a soma é 0. Números negativos contam:
+-4 é par.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um acumulador declarado com let ANTES do laço, somado dentro dele e devolvido depois é a forma mais direta — e a mesma que os exemplos usam para o total.",
+  "Par é o número cujo resto da divisão por 2 é zero, e o operador de resto é o %. Cuidado com os negativos: -4 % 2 é 0, mas -3 % 2 é -1, e não 1.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

@@ -1,0 +1,23 @@
+title    = "sort() ordena números como se fossem texto"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente ordenarNumeros, que devolve uma cópia de arr ordenada em ordem
+numérica crescente — sem alterar o array recebido.
+
+O código já escrito ordena, no sentido de que o array muda de ordem — só que
+rode os testes com números de mais de um dígito: a ordem que sai não é a
+numérica.
+"""
+
+hints = [
+  "Sem um comparador, Array.prototype.sort() converte cada elemento para string e compara caractere a caractere. Para strings, '10' vem antes de '2'.",
+  "sort() também muda o array no lugar (in-place) e devolve a mesma referência — isso, por si só, ainda não é o bug aqui, mas repare que o array recebido também é afetado.",
+  "Passe um comparador: (a, b) => a - b diz a sort() a diferença numérica, não a ordem alfabética. E para não alterar arr, ordene uma cópia: [...arr].sort(...).",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

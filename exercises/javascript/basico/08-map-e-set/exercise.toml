@@ -1,0 +1,26 @@
+title    = "Map e Set: chave de qualquer tipo e coleção sem repetidos"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram o Map — set, get, has, delete, size e o
+percurso em ordem de inserção — e o Set, que guarda cada valor uma vez só e
+resolve a remoção de duplicados de um array numa linha.
+
+Depois implemente contarOcorrencias, que recebe um array de palavras e devolve
+um Map de palavra para quantas vezes ela apareceu. Palavras que diferem por
+maiúsculas são palavras diferentes. Com o array vazio, o Map devolvido tem
+size 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Ler uma chave ausente de um Map devolve undefined, não 0 — então a contagem precisa de um valor de partida quando a palavra aparece pela primeira vez.",
+  "O idioma é `mapa.set(palavra, (mapa.get(palavra) ?? 0) + 1)` dentro de um for...of. O Map tem que ser criado com `new Map()` antes do laço e devolvido depois.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

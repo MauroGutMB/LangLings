@@ -1,0 +1,30 @@
+title    = "Condicionais: if, ternário e switch"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram a cadeia if / else if / else, o operador
+ternário como expressão que devolve um valor, e o switch com seus case, break e
+default.
+
+Depois implemente classificar, que recebe uma nota de 0 a 100 e devolve a
+letra correspondente:
+  - 90 ou mais devolve 'A';
+  - 80 ou mais devolve 'B';
+  - 70 ou mais devolve 'C';
+  - abaixo de 70 devolve 'F'.
+
+Os limites são inclusivos: 90 é 'A' e 89 é 'B'.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Uma cadeia if / else if resolve isso sem nenhum && : quando o teste chega no segundo ramo, o primeiro já foi descartado, então basta perguntar pelo limite de baixo.",
+  "Cuidado com a ordem — testar >= 70 antes de >= 90 faria toda nota alta cair em 'C'. Vá do maior limite para o menor, e deixe 'F' no else.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

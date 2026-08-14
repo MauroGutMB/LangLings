@@ -1,0 +1,22 @@
+title    = "Objeto passado por referência é o mesmo objeto"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente comNomeMaiusculo, que recebe um objeto pessoa e devolve um objeto
+NOVO com o campo nome em maiúsculas. O objeto recebido não pode sair alterado.
+
+O código que já está aí devolve o resultado certo — só que rode os testes e
+repare no que sobra do objeto original depois da chamada.
+"""
+
+hints = [
+  "Uma variável que guarda um objeto guarda uma referência a ele, não uma cópia. Escrever num campo através dessa variável altera o único objeto que existe.",
+  "Devolver o mesmo objeto que você acabou de modificar passa no teste do valor de retorno e ainda assim é mutação — os dois efeitos moram na mesma linha.",
+  "Espalhe pessoa dentro de um objeto literal novo antes de sobrescrever o campo: { ...pessoa, nome: ... }. O original nunca é tocado porque o alvo da escrita é outro objeto.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

@@ -1,0 +1,32 @@
+title    = "Juntando tudo: objeto, array, Map e erro"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Último da categoria: nada novo, só a combinação do que veio antes. Os exemplos
+em exercicio.mjs montam um pequeno relatório de estoque com array de objetos,
+desestruturação, map/filter/reduce, Map para agrupar, template literal e um
+erro próprio.
+
+Depois implemente resumir, que recebe um array de itens e devolve o valor total
+por categoria:
+  - a chave do Map é a categoria do item;
+  - o valor é a soma de preco * qtd de todos os itens daquela categoria (preco
+    está em centavos, então tudo é inteiro);
+  - com o array vazio, lance um ErroDeEstoque com a mensagem 'nenhum item';
+  - se algum item tiver categoria vazia, lance um ErroDeEstoque cuja mensagem
+    contenha o nome do item.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Trate os dois casos de erro primeiro, com return cedo — quer dizer, com throw cedo. O que sobra é um for...of só, acumulando no Map.",
+  "A categoria vazia precisa ser detectada item a item, dentro do mesmo laço que soma: um `if (!item.categoria) throw ...` antes da soma resolve, porque a string vazia é falsy.",
+  "Para acumular, vale o mesmo idioma do exercício de Map: `total.set(categoria, (total.get(categoria) ?? 0) + valor)`.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

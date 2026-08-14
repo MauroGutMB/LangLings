@@ -1,0 +1,23 @@
+title    = "|| descarta mais do que null e undefined"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente comPadrao, que devolve valor quando ele foi de fato informado
+(não é null nem undefined), e devolve padrao caso contrário. Um valor 0 ou
+uma string vazia contam como informados — não devem cair no padrão.
+
+O código já escrito resolve o caso em que valor está ausente. Rode os testes
+com um valor 0: o resultado não é o que o objective pede.
+"""
+
+hints = [
+  "|| substitui pelo padrão sempre que o lado esquerdo é falsy — e 0, '', NaN e false são falsy tanto quanto null e undefined.",
+  "?? só substitui quando o lado esquerdo é null ou undefined, especificamente. Todo outro valor falsy passa direto.",
+  "Troque || por ?? na expressão: valor ?? padrao.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

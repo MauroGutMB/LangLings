@@ -1,0 +1,22 @@
+title    = "map passa três argumentos, parseInt usa o segundo"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente paraNumeros, que converte um array de strings numéricas para um
+array de números inteiros, na mesma ordem.
+
+O código já escrito converte o primeiro elemento certinho. Rode os testes com
+um array de mais de um elemento: alguns resultados nem parecem número.
+"""
+
+hints = [
+  "map chama o callback com três argumentos: (elemento, índice, array). parseInt aceita dois: (string, radix).",
+  "Passar parseInt direto para map faz o índice de cada posição virar a base da conversão — parseInt('10', 1) não é uma base válida, e parseInt('10', 2) lê '10' como binário.",
+  "Envolva a chamada: arr.map((s) => parseInt(s, 10)) — assim só o valor de s chega até parseInt, e a base fica sempre 10.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

@@ -1,0 +1,8 @@
+name    = "JavaScript"
+image   = "node:24-alpine"
+workdir = "/workspace"
+shell   = ["/bin/sh"]
+
+# Sem cache_dir: nesta fase nenhum exercício instala dependência — o runner de
+# testes é o `node --test` embutido —, então ~/.npm nunca é escrito e um volume
+# nomeado seria só um diretório vazio com nome.

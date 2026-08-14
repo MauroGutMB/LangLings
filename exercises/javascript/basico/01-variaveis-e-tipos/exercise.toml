@@ -1,0 +1,26 @@
+title    = "Variáveis, tipos e a diferença entre undefined e null"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Leia os exemplos comentados em exercicio.mjs — e rode-os se quiser, com
+`node exercicio.mjs` no shell: eles mostram let e const, o que const congela de
+verdade, o que typeof responde, e a diferença entre undefined (ninguém atribuiu
+nada) e null (alguém atribuiu o vazio de propósito).
+
+Depois implemente temValor: ela devolve true quando o argumento é algum valor,
+e false só quando ele é undefined ou null. Cuidado: 0, '' e false SÃO valores,
+e temValor precisa devolver true para os três.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Ausência de valor em JavaScript tem duas formas, e o exercício quer as duas: undefined e null. Qualquer outra coisa é um valor.",
+  "Compare com === contra cada uma delas e combine as duas respostas com &&. Nada de converter o argumento para booleano: 0 e '' passariam por ausência.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

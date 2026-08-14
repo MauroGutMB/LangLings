@@ -1,0 +1,22 @@
+title    = "Array(n) cria buracos, e map pula buracos"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente criarZeros(n), que devolve um array com n elementos, todos
+valendo 0.
+
+O código já escrito devolve um array de comprimento n. Rode os testes: o
+conteúdo dele não é o que o objective pede.
+"""
+
+hints = [
+  "Array(n) cria um array com length n, mas sem nenhum elemento de verdade dentro — são posições vazias (esparsas), não posições valendo undefined.",
+  "map só chama o callback nas posições que existem de fato. Um array esparso não tem nenhuma, então map devolve outro array igualmente vazio por dentro — só o length muda de dono.",
+  "Array.from({ length: n }, () => 0) e Array(n).fill(0) criam elementos de verdade em cada posição, prontos para virarem 0.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

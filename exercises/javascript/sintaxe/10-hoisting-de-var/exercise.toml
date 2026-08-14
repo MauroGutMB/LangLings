@@ -1,0 +1,22 @@
+title    = "Todo closure de var compartilha a mesma variável"
+category = "sintaxe"
+editable = ["exercicio.mjs"]
+
+objective = """
+Implemente criarContadores(n), que devolve um array com n funções. A função
+na posição i, quando chamada, deve devolver i.
+
+O código já escrito devolve um array de n funções, como pedido. Rode os
+testes: chamar as funções não devolve o índice de cada uma.
+"""
+
+hints = [
+  "var não é local ao corpo do for — ela é local à função inteira. Existe uma única variável i, compartilhada por todas as closures criadas no laço.",
+  "Quando o laço termina, i já vale n. Toda função criada lá dentro lê essa mesma variável no momento em que é CHAMADA, não no momento em que foi criada.",
+  "let, ao contrário de var, cria uma variável nova a cada volta do laço — cada closure enxerga a sua própria cópia de i.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"

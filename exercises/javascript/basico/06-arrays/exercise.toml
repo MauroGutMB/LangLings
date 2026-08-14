@@ -1,0 +1,25 @@
+title    = "Arrays: push, map, filter e reduce"
+category = "basico"
+editable = ["exercicio.mjs"]
+
+objective = """
+Os exemplos em exercicio.mjs mostram o array por índice, push e pop, a busca
+com includes e indexOf, e o trio que resolve quase tudo: map (transforma cada
+elemento), filter (escolhe quais ficam) e reduce (junta todos num valor só).
+
+Depois implemente media, que recebe um array de números e devolve a média
+deles. Com o array vazio, devolva 0 — dividir por zero daria NaN, e NaN não é
+uma média.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A média é a soma dividida pela quantidade. A soma é exatamente o caso do reduce mostrado nos exemplos, e a quantidade é o length do array.",
+  "Trate o array vazio antes de dividir, com um return cedo. Sem ele, 0 / 0 devolve NaN, que passa despercebido e contamina qualquer conta seguinte.",
+]
+
+[validation]
+mode    = "test"
+command = ["node", "--test", "exercicio.test.mjs"]
+timeout = "30s"
