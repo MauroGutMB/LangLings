@@ -1,0 +1,29 @@
+title    = "Arrays: tamanho fixo, índices e o comprimento que viaja junto"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram como declarar e
+inicializar um array, que os índices vão de 0 a n-1, como descobrir o número
+de elementos de um array local, e por que uma função que recebe um array
+precisa receber o comprimento como parâmetro separado.
+
+Depois implemente maior_valor, que recebe um array de int e quantos elementos
+ele tem, e devolve o maior deles. O harness nunca chama a função com n igual
+a 0.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Comece assumindo que o maior é o primeiro elemento e percorra o resto comparando. Começar de 0 como candidato inicial quebraria com um array só de negativos.",
+  "O percurso é um for de i até n-1 lendo v[i]; quando o elemento for maior que o candidato guardado, o candidato passa a ser ele."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

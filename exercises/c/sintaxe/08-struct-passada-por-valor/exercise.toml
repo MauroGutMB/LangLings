@@ -1,0 +1,26 @@
+title    = "A cópia do struct que o ponteiro não impede"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente mover, que soma dx a p->x e dy a p->y, alterando o Ponto de quem
+chamou.
+
+O código em base/ recebe um ponteiro para o Ponto, exatamente como deveria
+para poder alterar o original — e mesmo assim, depois de chamar mover, os
+campos do Ponto de quem chamou continuam com os valores antigos. Descubra
+onde a mudança está se perdendo, mesmo com o ponteiro certo na assinatura.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Ter um ponteiro não obriga a escrever através dele: struct Ponto copia = *p; faz uma cópia comum do struct apontado, tão independente do original quanto qualquer outra atribuição de struct.",
+  "Alterar copia.x e copia.y só altera essa cópia local — ela desaparece no fim da função sem nunca ter tocado o Ponto original.",
+  "Escreva direto nos campos através do ponteiro: p->x += dx; p->y += dy;, sem passar por uma variável struct Ponto intermediária."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

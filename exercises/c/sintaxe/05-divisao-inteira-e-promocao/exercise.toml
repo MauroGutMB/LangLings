@@ -1,0 +1,25 @@
+title    = "Divisão inteira e o arredondamento que ela não faz para o lado que você espera"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente divisao_para_baixo, que divide a por b e arredonda o resultado para
+baixo — em direção ao menos infinito, não em direção a zero. b nunca é 0.
+
+O código em base/ usa a divisão de inteiros de C direto (a / b) e passa nos
+casos com números positivos, mas erra sempre que o resultado exato tem parte
+fracionária e um dos operandos é negativo. Descubra a diferença entre as duas
+formas de arredondar.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "A divisão entre inteiros em C trunca em direção a zero (-7 / 2 vale -3), não em direção ao menos infinito (que daria -4). As duas só coincidem quando a divisão é exata ou quando os dois operandos têm o mesmo sinal.",
+  "Calcule o quociente e o resto com / e %; quando o resto não é zero e os sinais de a e b são diferentes, o quociente truncado está uma unidade acima do que você quer — subtraia 1 dele nesse caso."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

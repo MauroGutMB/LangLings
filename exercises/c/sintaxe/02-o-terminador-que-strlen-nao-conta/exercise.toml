@@ -1,0 +1,26 @@
+title    = "O terminador que strlen não conta"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente copia_string, que copia origem para dest, byte a byte, de forma que
+dest se torne uma string válida com o mesmo conteúdo de origem. dest sempre
+tem espaço de sobra: você não precisa se preocupar em alocar nada, só em
+escrever os bytes certos.
+
+O código em base/ copia exatamente os caracteres visíveis, usando strlen para
+saber quantos são, e mesmo assim dest não vira uma string igual a origem.
+Descubra o que falta.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "strlen(origem) conta os caracteres ATÉ o terminador, sem contá-lo — copiar exatamente essa quantidade de bytes não leva o terminador junto.",
+  "Depois do laço que copia os caracteres, escreva você mesmo dest[i] = '\\0' na posição seguinte ao último caractere copiado."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

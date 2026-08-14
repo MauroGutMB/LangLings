@@ -1,0 +1,28 @@
+title    = "Structs: agrupando campos sob um nome só"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram como declarar um
+struct, inicializar seus campos, acessá-los com o ponto, e o que acontece
+quando um struct é copiado para outra variável ou passado por valor a uma
+função — os campos vão junto, mas em uma cópia independente.
+
+Depois implemente criar_ponto, que devolve um struct Ponto com os campos x e y
+preenchidos com os valores recebidos.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um struct se constrói com uma lista de valores entre chaves, na ordem dos campos: (struct Ponto){x, y}.",
+  "return (struct Ponto){x, y}; monta o struct e já o devolve, sem precisar de uma variável local para isso."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

@@ -1,0 +1,29 @@
+title    = "Strings: um array de char que termina em \\0"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram que uma string em C
+é um array de char terminado pelo byte '\\0', que strlen conta os caracteres
+sem contar esse terminador, e o que strcpy, strcmp e strncmp fazem.
+
+Depois implemente comeca_com, que devolve 1 quando a string s começa com o
+prefixo dado e 0 quando não. Prefixo vazio começa qualquer string, inclusive
+a vazia. Prefixo maior que s nunca começa s.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Não é preciso comparar as strings inteiras: basta comparar os primeiros caracteres de s, tantos quantos o prefixo tiver.",
+  "strncmp(a, b, n) compara no máximo n caracteres e devolve 0 quando esses n são iguais. O n que você quer é o comprimento do prefixo, e strlen o dá.",
+  "Se o prefixo for maior que s, strncmp para no '\\0' de s e já devolve diferente de zero — você não precisa checar os comprimentos antes."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

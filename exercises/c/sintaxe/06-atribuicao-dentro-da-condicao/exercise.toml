@@ -1,0 +1,24 @@
+title    = "= dentro do if em vez de =="
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente eh_igual_a_cinco, que devolve 1 quando x vale 5, e 0 caso
+contrário.
+
+O código em base/ compila sem erro e tem um if que parece checar exatamente
+isso — mas devolve 1 para todo x, não só para x igual a 5. Descubra o que o
+if está fazendo de verdade.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "= e == são operadores diferentes: = atribui e o valor da expressão é o que foi atribuído; == compara e o valor é 0 ou 1. Um if aceita qualquer expressão, então os dois compilam sem erro dentro dele.",
+  "if (x = 5) atribui 5 a x e testa esse 5, que nunca é zero — o if entra sempre, para qualquer x. Troque por ==."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

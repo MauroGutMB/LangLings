@@ -1,0 +1,28 @@
+title    = "Laços: for, while e do/while"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram as três partes do
+for, o while que pode não executar nenhuma vez, o do/while que executa pelo
+menos uma, e o que break e continue fazem dentro de um laço.
+
+Depois implemente soma_ate, que devolve a soma de todos os inteiros de 1 até
+n. soma_ate(4) é 10. Para n menor ou igual a zero não há nada para somar, e o
+resultado é 0.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um acumulador é uma variável declarada ANTES do laço e somada dentro dele — se você declarar dentro, ela volta ao valor inicial a cada volta.",
+  "Um for de 1 até n inclusive é `for (int i = 1; i <= n; i++)`. Com n valendo 0 ou menos, a condição já é falsa na primeira checagem e o corpo não roda nenhuma vez, que é exatamente o resultado 0 pedido."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

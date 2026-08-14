@@ -1,0 +1,28 @@
+title    = "Composição: um struct dentro de outro"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram como um struct pode
+ter outro struct como campo, como acessar um campo aninhado encadeando pontos
+(retangulo.origem.x), e que copiar o struct de fora copia o de dentro junto.
+
+Depois implemente deslocar, que devolve um Retangulo igual ao recebido, mas
+com origem.x e origem.y somados a dx e dy respectivamente. largura e altura
+não mudam.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "r.origem.x acessa o x do Ponto que mora dentro do Retangulo — o ponto encadeia dois acessos, um para cada nível.",
+  "Comece com uma cópia local do retângulo recebido (struct Retangulo novo = r;), some dx e dy aos campos de novo.origem e devolva novo."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"
