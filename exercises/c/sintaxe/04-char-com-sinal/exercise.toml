@@ -1,0 +1,25 @@
+title    = "char com sinal"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente eh_byte_alto, que devolve 1 quando o valor do byte c, interpretado
+como um número de 0 a 255, é 128 ou mais — e 0 caso contrário.
+
+O código em base/ compara c diretamente com 128 e nunca devolve 1, para
+nenhum byte. Descubra por que uma comparação aparentemente direta falha
+sempre.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Neste ambiente char é um tipo COM sinal: ele vai de -128 a 127, não de 0 a 255. Um byte que 'deveria' valer 200 vira um char negativo.",
+  "Comparar esse char negativo com 128 nunca dá certo, porque nenhum char chega a valer 128 — o intervalo dele para antes.",
+  "Converta c para unsigned char antes de comparar: (unsigned char)c reinterpreta o mesmo byte na faixa de 0 a 255."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

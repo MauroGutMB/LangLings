@@ -1,0 +1,28 @@
+title    = "A macro sem parênteses que a precedência atropela"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Corrija a macro DOBRO, definida em exercicio.c, para que ela dobre o valor de
+qualquer expressão passada a ela — não só o de uma variável simples. A função
+usa_dobro(a, b) já está implementada e chama DOBRO(a + b); ela não deve
+mudar.
+
+O código em base/ define DOBRO(x) como x + x, sem parênteses ao redor de x. A
+macro é só um copia-e-cola de texto: ela funciona para uma variável isolada,
+mas expande errado quando o argumento é uma expressão com operador dentro.
+Descubra o que o pré-processador realmente monta.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Uma macro de função não avalia o argumento antes de substituir: ela cola o TEXTO do argumento no lugar de x, exatamente como foi escrito.",
+  "DOBRO(a + b) com #define DOBRO(x) x + x expande para a + b + b, não para (a + b) * 2 — o + b some do a original e sobra pendurado sozinho.",
+  "Envolva x entre parênteses nos dois usos dentro da macro: #define DOBRO(x) ((x) + (x)). Os parênteses isolam o argumento (e o resultado) de qualquer operador ao redor."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

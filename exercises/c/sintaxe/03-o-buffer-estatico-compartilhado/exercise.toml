@@ -1,0 +1,28 @@
+title    = "O buffer estático compartilhado entre chamadas"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente para_maiusculas, que devolve um ponteiro para uma cópia de s com
+todas as letras convertidas para maiúsculas. Cada chamada precisa devolver uma
+string independente: guardar o ponteiro de uma chamada anterior e usá-lo
+depois de uma nova chamada tem que continuar mostrando o texto de quando ele
+foi obtido.
+
+O código em base/ converte certinho as letras, mas guardar dois resultados de
+chamadas diferentes e depois ler ambos revela que um deles mudou sozinho.
+Descubra de onde vem essa memória compartilhada.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Um buffer static local a uma função existe uma única vez durante todo o programa, não uma vez por chamada — toda chamada escreve no mesmo espaço de memória.",
+  "Guardar o ponteiro devolvido por uma chamada não guarda o texto: ele continua apontando para esse único buffer, que a próxima chamada reaproveita e sobrescreve.",
+  "Aloque a string de retorno com malloc a cada chamada, para que cada resultado tenha seu próprio endereço — não precisa se preocupar em liberar."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

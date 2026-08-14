@@ -1,0 +1,28 @@
+title    = "Funções: protótipo, parâmetros e retorno"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram que o compilador lê o
+arquivo de cima para baixo e precisa conhecer a função antes da chamada — daí
+o protótipo —, que todo parâmetro chega por cópia, e o que static significa
+numa função de uso interno.
+
+Depois implemente maior_de_tres, que devolve o maior dos três inteiros
+recebidos. Empates devolvem o próprio valor repetido.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Você não precisa escrever a comparação de três valores de uma vez: já existe uma função no arquivo que resolve o caso de dois.",
+  "Chamar essa função sobre o resultado dela mesma reduz o problema: o maior de três é o maior entre um deles e o maior dos outros dois."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

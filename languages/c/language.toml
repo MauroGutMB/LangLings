@@ -1,0 +1,8 @@
+name       = "C"
+dockerfile = "languages/c/Dockerfile"
+workdir    = "/workspace"
+shell      = ["/bin/sh"]
+
+# Sem cache_dir: o gcc não tem cache de toolchain para persistir. Um ccache
+# seria uma dependência a mais na imagem para economizar ~200ms na compilação
+# de dois arquivos — não paga.

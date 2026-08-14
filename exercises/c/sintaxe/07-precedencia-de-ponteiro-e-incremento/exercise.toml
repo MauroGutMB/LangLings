@@ -1,0 +1,23 @@
+title    = "*p++ não é (*p)++"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente incrementa_valor, que soma 1 ao valor apontado por p.
+
+O código em base/ usa * e ++ juntos numa única expressão, do jeito que parece
+natural para "incrementar o que p aponta" — e mesmo assim o valor apontado
+nunca muda. Descubra o que essa combinação realmente faz.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "* e ++ têm precedências diferentes: ++ (posfixo) se aplica primeiro, ao ponteiro p, não ao valor *p.",
+  "*p++ lê *p e descarta o resultado, depois avança p (uma cópia local, que some no fim da função) — o inteiro apontado nunca é escrito. Para incrementar o valor, os parênteses precisam envolver *p antes do ++: (*p)++."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

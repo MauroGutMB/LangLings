@@ -1,0 +1,29 @@
+title    = "Condicionais: if, switch e os operadores de comparação"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram if/else if/else,
+switch com case e break, os operadores de comparação e os lógicos && e ||,
+além do fato de que em C um valor "verdadeiro" é qualquer número diferente
+de zero.
+
+Depois implemente conceito, que recebe uma nota de 0 a 100 e devolve a letra
+correspondente: 'A' para 90 ou mais, 'B' para 80 ou mais, 'C' para 70 ou
+mais, e 'F' abaixo disso.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Uma cadeia if / else if / else testa as condições de cima para baixo e para na primeira que for verdadeira — a ordem em que você escreve os limites é a regra do exercício.",
+  "Se você começar pelo limite mais baixo, todas as notas caem no primeiro ramo. Comece pelo 90 e vá descendo, como o exemplo da faixa etária faz."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

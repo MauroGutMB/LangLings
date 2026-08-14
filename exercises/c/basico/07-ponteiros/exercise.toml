@@ -1,0 +1,27 @@
+title    = "Ponteiros: endereço, dereferência e o & que devolve o caminho de volta"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram que & devolve o
+endereço de uma variável, que um ponteiro guarda esse endereço, que * lê ou
+escreve no que o ponteiro aponta, e por que uma função só consegue alterar a
+variável de quem chamou se receber o endereço dela.
+
+Depois implemente dobra, que deve dobrar o valor apontado por p.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "*p lê o valor para o qual p aponta. Do outro lado de uma atribuição, *p = algo escreve nesse mesmo lugar.",
+  "Leia o valor apontado, multiplique por 2 e escreva o resultado de volta no mesmo endereço com *p = ..."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

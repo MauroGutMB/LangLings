@@ -1,0 +1,28 @@
+title    = "Ponteiros e arrays: o nome do array que vira endereço do primeiro elemento"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram que o nome de um
+array, na maioria dos contextos, decai para um ponteiro ao seu primeiro
+elemento, que v[i] e *(v + i) são a mesma leitura, e como percorrer um array
+avançando um ponteiro em vez de indexar.
+
+Depois implemente soma, que devolve a soma dos n primeiros elementos de v,
+percorrendo com aritmética de ponteiro em vez de v[i].
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "v[i] e *(v + i) leem exatamente o mesmo elemento; o exercício pede a segunda forma.",
+  "Declare um ponteiro fim = v + n para marcar onde parar, e percorra com um ponteiro p que começa em v e avança (p++) até chegar em fim, somando *p a cada passo."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

@@ -1,0 +1,25 @@
+title    = "Comparar strings com == compara endereços, não conteúdo"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente strings_iguais, que devolve 1 quando a e b têm exatamente o mesmo
+conteúdo (mesmos caracteres, na mesma ordem), e 0 caso contrário.
+
+O código em base/ compara a e b diretamente com ==, e mesmo assim duas
+strings com o mesmo texto, guardadas em lugares diferentes da memória, são
+tratadas como diferentes. Descubra o que == está comparando de verdade.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "a e b são ponteiros (char *). == entre ponteiros compara ENDEREÇOS: se apontam para o mesmo lugar, não se o conteúdo lá é igual.",
+  "Duas strings podem ter exatamente o mesmo texto e viver em buffers diferentes — nesse caso a == b é falso mesmo com o conteúdo idêntico.",
+  "strcmp(a, b) compara conteúdo, caractere a caractere, e devolve 0 quando as strings são iguais."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

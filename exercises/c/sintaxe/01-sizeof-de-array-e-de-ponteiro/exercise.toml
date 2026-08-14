@@ -1,0 +1,26 @@
+title    = "sizeof de array e de ponteiro"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente numero_de_elementos, que deve devolver n — o número de elementos
+válidos de v. O parâmetro n já existe na assinatura exatamente porque, dentro
+de uma função, sizeof não dá para adivinhar sozinho quantos elementos um array
+recebido tem.
+
+O código em base/ tenta uma forma que compila sem erro nem aviso e, ainda
+assim, devolve o número errado sempre que o array não tem exatamente dois
+elementos. Descubra por quê antes de corrigir.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "sizeof(v) dentro da função não vê o array inteiro: v, como parâmetro, já decaiu para um ponteiro. sizeof(v) é o tamanho do ponteiro, não do array.",
+  "É exatamente por isso que a função recebe n separadamente — use-o em vez de calcular algo a partir de sizeof(v)."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

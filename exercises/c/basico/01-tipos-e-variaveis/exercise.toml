@@ -1,0 +1,29 @@
+title    = "Tipos, variáveis e o tamanho de cada um"
+category = "basico"
+editable = ["exercicio.c"]
+
+objective = """
+Leia os exemplos comentados em exercicio.c: eles mostram como declarar int,
+char e double, o que cada tipo guarda, a conversão explícita entre eles e o
+operador sizeof, que responde em bytes quanto um tipo ocupa.
+
+Depois implemente bytes_de_doubles: ela recebe quantos double você quer
+guardar e devolve, como long, quantos bytes isso ocupa. Com quantidade 0 o
+resultado é 0. O teste calcula o esperado com o mesmo sizeof, então não
+chute o número — pergunte ao compilador.
+
+Se quiser ver a saída dos exemplos, chame exemplos() a partir da sua função e
+salve; o harness de teste não a chama.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "sizeof é um operador, não uma função de biblioteca: sizeof(double) já é o número de bytes de um double, resolvido em tempo de compilação.",
+  "A multiplicação de dois int acontece em int e só depois vira long. Converta um dos lados para long antes de multiplicar, como os exemplos fazem com (long)."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

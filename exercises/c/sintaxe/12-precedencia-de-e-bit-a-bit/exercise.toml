@@ -1,0 +1,24 @@
+title    = "& tem precedência menor que ==, e isso muda o resultado"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente tem_flag, que devolve 1 quando todos os bits ligados em mascara
+também estão ligados em flags, e 0 caso contrário.
+
+O código em base/ escreve a comparação numa linha só, misturando & e == numa
+ordem que parece óbvia de ler — e mesmo assim erra sempre que mascara tem mais
+de um bit ligado. Descubra que conta o C está fazendo primeiro.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "& tem precedência MENOR que ==. Em flags & mascara == mascara, o == é calculado primeiro: mascara == mascara sempre vale 1, e a expressão inteira vira flags & 1.",
+  "Isso testa só o bit menos significativo de flags, não os bits de mascara. Separe com parênteses: (flags & mascara) == mascara."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"

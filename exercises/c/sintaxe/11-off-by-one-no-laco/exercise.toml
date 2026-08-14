@@ -1,0 +1,24 @@
+title    = "Off-by-one no laço: <= onde deveria ser <"
+category = "sintaxe"
+editable = ["exercicio.c"]
+
+objective = """
+Implemente soma_primeiros, que devolve a soma dos n primeiros elementos de v
+(índices 0 a n-1).
+
+O código em base/ percorre v com um laço que parece contar até n certinho, e
+mesmo assim o resultado sai errado toda vez que existe algo logo depois da
+posição n-1. Descubra até onde o laço está indo de verdade.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Os n primeiros elementos são v[0] até v[n-1]. Um laço que testa i <= n como condição de continuação ainda executa uma vez a mais, com i valendo n.",
+  "v[n] não é um dos n primeiros elementos — é o de logo depois. A condição do for precisa ser i < n, não i <= n."
+]
+
+[validation]
+mode    = "test"
+command = ["make", "-s", "test"]
+timeout = "60s"
