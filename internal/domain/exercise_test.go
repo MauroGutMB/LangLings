@@ -178,9 +178,22 @@ func TestLanguage_ImageRef(t *testing.T) {
 
 func TestCategory(t *testing.T) {
 	require.True(t, CategoryCompilador.Valid())
+	require.True(t, CategoryBasico.Valid())
 	require.False(t, Category("algoritmos").Valid())
 	require.Equal(t, "Compilador/Interpretador", CategoryCompilador.Label())
-	require.Len(t, Categories, 4)
+	require.Equal(t, "Básico", CategoryBasico.Label())
+
+	// A ordem de Categories é a ordem de exibição na TUI, não detalhe interno:
+	// Básico precisa vir antes de Sintaxe, ou o aluno encontra a armadilha
+	// idiomática antes da introdução à linguagem.
+	require.Equal(t, CategoryBasico, Categories[0])
+	require.Equal(t, CategorySintaxe, Categories[1])
+}
+
+func TestCategoriesHint(t *testing.T) {
+	// A dica é derivada de Categories justamente para não virar uma terceira
+	// cópia da lista, que uma categoria nova deixaria mentindo em silêncio.
+	require.Equal(t, "basico, sintaxe, compilador, frameworks, exemplos", CategoriesHint())
 }
 
 func TestExercise_Layout(t *testing.T) {

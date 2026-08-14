@@ -10,6 +10,8 @@ package catalog
 import (
 	"fmt"
 	"os"
+	"path"
+	"path/filepath"
 	"sort"
 	"strings"
 	"time"
@@ -155,6 +157,20 @@ func (m languageManifest) toLanguage(slug string) (domain.Language, error) {
 		return domain.Language{}, fmt.Errorf("declare image (imagem pronta) ou dockerfile (build local)")
 	case m.Image != "" && m.Dockerfile != "":
 		return domain.Language{}, fmt.Errorf("declare image ou dockerfile, não os dois")
+	}
+
+	// O dockerfile é resolvido contra a raiz do conteúdo na hora do build. Um
+	// caminho absoluto ou com ".." apontaria para fora dela — e um manifesto
+	// não deveria conseguir mandar o daemon construir a partir de qualquer
+	// lugar do disco.
+	if m.Dockerfile != "" {
+		limpo := path.Clean(filepath.ToSlash(m.Dockerfile))
+		switch {
+		case path.IsAbs(limpo):
+			return domain.Language{}, fmt.Errorf("dockerfile %q deve ser relativo à raiz do conteúdo", m.Dockerfile)
+		case limpo == ".." || strings.HasPrefix(limpo, "../"):
+			return domain.Language{}, fmt.Errorf("dockerfile %q não pode escapar da raiz do conteúdo", m.Dockerfile)
+		}
 	}
 
 	workdir := m.Workdir

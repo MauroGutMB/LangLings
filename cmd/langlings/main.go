@@ -19,6 +19,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 
 	"langlings/internal/catalog"
+	"langlings/internal/domain"
 	"langlings/internal/engine"
 	"langlings/internal/runner"
 	"langlings/internal/store"
@@ -237,18 +238,26 @@ func comandoVerify(args []string) error {
 	defer a.engine.Shutdown(context.Background())
 
 	alvos := fs.Args()
-	var relatorios []engine.VerifyReport
 
-	if len(alvos) == 0 {
-		relatorios = a.engine.VerifyAll(ctx)
-	} else {
+	exercicios := a.engine.Catalog.Exercises
+	if len(alvos) > 0 {
+		exercicios = nil
 		for _, alvo := range alvos {
 			ex, ok := a.engine.Catalog.Exercise(alvo)
 			if !ok {
 				return fmt.Errorf("exercício %q não está no catálogo", alvo)
 			}
-			relatorios = append(relatorios, a.engine.Verify(ctx, ex))
+			exercicios = append(exercicios, ex)
 		}
+	}
+
+	if err := garantirImagens(ctx, a, exercicios); err != nil {
+		return err
+	}
+
+	relatorios := make([]engine.VerifyReport, 0, len(exercicios))
+	for _, ex := range exercicios {
+		relatorios = append(relatorios, a.engine.Verify(ctx, ex))
 	}
 
 	reprovados := 0
@@ -267,6 +276,36 @@ func comandoVerify(args []string) error {
 	fmt.Printf("\n%d exercício(s), %d com problema\n", len(relatorios), reprovados)
 	if reprovados > 0 {
 		return fmt.Errorf("o conteúdo não passou no gate")
+	}
+	return nil
+}
+
+// garantirImagens materializa a imagem de cada linguagem envolvida antes de
+// verificar qualquer coisa.
+//
+// A TUI faz isso pelo fluxo de instalação, mas o verify vai direto ao container
+// efêmero. Para uma imagem oficial o daemon puxa sozinho e ninguém percebe a
+// falta; para uma linguagem que constrói a própria imagem, o docker tentaria
+// baixar `langlings/<slug>` do Hub e falharia com "pull access denied" — um erro
+// que não tem nada a ver com o problema real.
+func garantirImagens(ctx context.Context, a *app, exercicios []domain.Exercise) error {
+	vistos := map[string]bool{}
+
+	for _, ex := range exercicios {
+		if vistos[ex.Language] {
+			continue
+		}
+		vistos[ex.Language] = true
+
+		lang, ok := a.engine.Catalog.Language(ex.Language)
+		if !ok {
+			return fmt.Errorf("linguagem %q não encontrada", ex.Language)
+		}
+		// O log do build vai para stderr: num gate rodado em CI, a saída limpa
+		// do stdout continua sendo só o relatório dos exercícios.
+		if err := a.engine.Install(ctx, lang, os.Stderr); err != nil {
+			return err
+		}
 	}
 	return nil
 }

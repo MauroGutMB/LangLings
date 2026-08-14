@@ -13,14 +13,21 @@ dispara sozinha** — não existe comando de "verificar" para lembrar. O código
 roda dentro do container daquela linguagem, e o progresso vai para um banco
 SQLite: 🔴 não iniciado, 🟡 em progresso, 🟢 completo.
 
-Cada linguagem tem quatro categorias de atividade:
+Cada linguagem tem cinco categorias de atividade:
 
 | Categoria | Como é validada |
 |---|---|
+| **Básico** | testes automatizados sobre o seu código |
 | **Sintaxe** | testes automatizados sobre o seu código |
 | **Compilador/Interpretador** | você compila à mão no shell do container, e o CLI confere o resultado |
 | **Frameworks/Bibliotecas** | testes automatizados |
 | **Exemplos reais** | testes automatizados sobre projetos multi-arquivo |
+
+**Básico** é a porta de entrada de uma linguagem: o arquivo já vem com os
+exemplos de uso comentados e rodando, e fecha com uma lacuna pequena, análoga ao
+que você acabou de ler. Você aprende lendo código que funciona, não decorando
+sintaxe no vazio. **Sintaxe** é o passo seguinte — a armadilha idiomática que só
+aparece quando você já sabe escrever na linguagem.
 
 A categoria **Compilador/Interpretador** é a que foge do padrão: não há testes.
 Você aperta `[s]`, cai num shell dentro do container, compila do seu jeito, sai

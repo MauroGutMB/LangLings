@@ -129,8 +129,8 @@ func loadExercises(dir string, knownLanguages map[string]bool) ([]domain.Exercis
 			category := domain.Category(catEntry.Name())
 			if !category.Valid() {
 				problems = append(problems, fmt.Errorf(
-					"exercises/%s/%s: categoria desconhecida (use: sintaxe, compilador, frameworks, exemplos)",
-					language, catEntry.Name()))
+					"exercises/%s/%s: categoria desconhecida (use: %s)",
+					language, catEntry.Name(), domain.CategoriesHint()))
 				continue
 			}
 

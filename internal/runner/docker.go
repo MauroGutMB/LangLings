@@ -8,6 +8,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -104,12 +105,7 @@ func (d *Docker) EnsureImage(ctx context.Context, lang domain.Language, contextD
 		return nil
 	}
 
-	var args []string
-	if lang.BuildsOwnImage() {
-		args = []string{"build", "-t", ref, "-f", lang.Dockerfile, contextDir}
-	} else {
-		args = []string{"pull", ref}
-	}
+	args := imageArgs(lang, contextDir)
 
 	if progress == nil {
 		progress = io.Discard
@@ -126,6 +122,29 @@ func (d *Docker) EnsureImage(ctx context.Context, lang domain.Language, contextD
 		return fmt.Errorf("não foi possível %s a imagem %s: %w", verbo, ref, err)
 	}
 	return nil
+}
+
+// imageArgs monta o comando que materializa a imagem de uma linguagem.
+//
+// Está separado de EnsureImage para ser testável sem daemon, como containerArgs:
+// o caminho `dockerfile` é o único que nenhum teste de integração cobre de
+// graça, porque exige uma linguagem que construa a própria imagem.
+func imageArgs(lang domain.Language, contextDir string) []string {
+	ref := lang.ImageRef()
+	if !lang.BuildsOwnImage() {
+		return []string{"pull", ref}
+	}
+
+	// O caminho do manifesto é relativo à raiz do conteúdo, não ao diretório
+	// de onde o CLI foi invocado. Sem resolvê-lo aqui, o docker o
+	// interpretaria contra o CWD do processo — e o build quebraria ao rodar de
+	// uma subpasta do projeto ou com -content apontando para outro lugar.
+	df := filepath.Join(contextDir, filepath.FromSlash(lang.Dockerfile))
+
+	// O contexto de build é o diretório do próprio Dockerfile: os nossos não
+	// fazem COPY, e mandar a raiz do conteúdo inteira (com .git e exercises/)
+	// para o daemon é pagar segundos de upload por nada.
+	return []string{"build", "-t", ref, "-f", df, filepath.Dir(df)}
 }
 
 // containerArgs monta as flags comuns a sessão e container efêmero.

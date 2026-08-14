@@ -13,10 +13,11 @@ import (
 	"time"
 )
 
-// Category é uma das quatro categorias de atividade de uma linguagem.
+// Category é uma das categorias de atividade de uma linguagem.
 type Category string
 
 const (
+	CategoryBasico     Category = "basico"
 	CategorySintaxe    Category = "sintaxe"
 	CategoryCompilador Category = "compilador"
 	CategoryFrameworks Category = "frameworks"
@@ -24,7 +25,12 @@ const (
 )
 
 // Categories lista as categorias na ordem em que devem aparecer na TUI.
+//
+// Básico vem primeiro porque é a única categoria que não pressupõe a linguagem
+// já conhecida: ela ensina por exemplos comentados antes de cobrar a armadilha
+// idiomática que Sintaxe explora.
 var Categories = []Category{
+	CategoryBasico,
 	CategorySintaxe,
 	CategoryCompilador,
 	CategoryFrameworks,
@@ -34,6 +40,8 @@ var Categories = []Category{
 // Label devolve o nome de exibição da categoria.
 func (c Category) Label() string {
 	switch c {
+	case CategoryBasico:
+		return "Básico"
 	case CategorySintaxe:
 		return "Sintaxe"
 	case CategoryCompilador:
@@ -47,7 +55,7 @@ func (c Category) Label() string {
 	}
 }
 
-// Valid informa se a categoria é uma das quatro conhecidas.
+// Valid informa se a categoria é uma das conhecidas.
 func (c Category) Valid() bool {
 	for _, known := range Categories {
 		if c == known {
@@ -55,6 +63,18 @@ func (c Category) Valid() bool {
 		}
 	}
 	return false
+}
+
+// CategoriesHint lista as categorias válidas para uma mensagem de erro.
+//
+// Existe para que a lista não seja reescrita à mão em cada mensagem: já houve
+// duas cópias literais, e uma categoria nova as deixaria mentindo em silêncio.
+func CategoriesHint() string {
+	nomes := make([]string, 0, len(Categories))
+	for _, c := range Categories {
+		nomes = append(nomes, string(c))
+	}
+	return strings.Join(nomes, ", ")
 }
 
 // Language é uma linguagem-alvo, descrita por languages/<slug>/language.toml.
@@ -167,7 +187,7 @@ func (e Exercise) Validate() error {
 		return fmt.Errorf("objective é obrigatório")
 	}
 	if !e.Category.Valid() {
-		return fmt.Errorf("category %q desconhecida (use: sintaxe, compilador, frameworks, exemplos)", e.Category)
+		return fmt.Errorf("category %q desconhecida (use: %s)", e.Category, CategoriesHint())
 	}
 	if len(e.Editable) == 0 {
 		return fmt.Errorf("editable é obrigatório: sem ele o watcher não sabe o que observar")

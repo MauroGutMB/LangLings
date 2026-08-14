@@ -102,6 +102,27 @@ func TestContainerArgs_SemCacheDirNaoMontaVolume(t *testing.T) {
 	require.NotContains(t, args, "langlings-cache")
 }
 
+func TestImageArgs_ImagemPronta(t *testing.T) {
+	require.Equal(t,
+		[]string{"pull", "golang:1.26-alpine"},
+		imageArgs(linguagemDeTeste(), "/repo"))
+}
+
+func TestImageArgs_DockerfileEhResolvidoContraOConteudo(t *testing.T) {
+	lang := domain.Language{Slug: "lua", Name: "Lua", Dockerfile: "languages/lua/Dockerfile"}
+
+	args := imageArgs(lang, "/repo/LangLings")
+
+	// O caminho do manifesto é relativo à raiz do conteúdo. Deixá-lo cru faria
+	// o docker resolvê-lo contra o CWD do processo, e o build quebraria ao
+	// rodar de uma subpasta ou com -content.
+	require.Equal(t, []string{
+		"build", "-t", "langlings/lua:latest",
+		"-f", "/repo/LangLings/languages/lua/Dockerfile",
+		"/repo/LangLings/languages/lua",
+	}, args)
+}
+
 func TestInteractiveCmd_NaoExecuta(t *testing.T) {
 	d := &Docker{Binary: "docker", UID: 1000, GID: 1000}
 

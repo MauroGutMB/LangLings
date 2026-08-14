@@ -399,6 +399,12 @@ func TestLoad_ManifestoDeLinguagemInvalido(t *testing.T) {
 		{"sem image nem dockerfile", `name = "Go"`, "declare image"},
 		{"image e dockerfile juntos", "name = \"Go\"\nimage = \"golang:1.26-alpine\"\ndockerfile = \"Dockerfile\"", "não os dois"},
 		{"workdir relativo", "name = \"Go\"\nimage = \"x\"\nworkdir = \"workspace\"", "absoluto"},
+
+		// O dockerfile é resolvido contra a raiz do conteúdo na hora do build.
+		// Um manifesto não deveria conseguir mandar o daemon construir a
+		// partir de qualquer lugar do disco.
+		{"dockerfile absoluto", "name = \"Lua\"\ndockerfile = \"/etc/Dockerfile\"", "relativo à raiz"},
+		{"dockerfile escapando", "name = \"Lua\"\ndockerfile = \"../../Dockerfile\"", "escapar"},
 	}
 
 	for _, tt := range tests {
