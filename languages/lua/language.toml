@@ -1,0 +1,7 @@
+name       = "Lua"
+dockerfile = "languages/lua/Dockerfile"
+workdir    = "/workspace"
+shell      = ["/bin/sh"]
+
+# Sem cache_dir: o interpretador não compila nada em disco, então não há o que
+# persistir entre execuções — cada validação já parte de zero em milissegundos.

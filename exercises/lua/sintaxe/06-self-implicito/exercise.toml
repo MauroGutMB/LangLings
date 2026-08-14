@@ -1,0 +1,24 @@
+title    = "O self que : passa e . não passa"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+M.depositar(conta, valor) deve somar valor ao saldo de conta e devolver o
+saldo resultante. Conta:depositar já está pronta e funciona quando chamada do
+jeito certo.
+
+A chamada atual quebra assim que roda: o método espera receber a própria
+conta implicitamente, e não é isso que está sendo passado.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "conta:depositar(valor) e conta.depositar(conta, valor) são a mesma chamada — os dois pontos passam conta como primeiro argumento (self) por trás dos panos.",
+  "conta.depositar(valor), com ponto, NÃO faz essa passagem sozinho: valor vira o self da função, e o argumento de verdade nunca chega. Chame com dois pontos, ou passe conta manualmente como primeiro argumento.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

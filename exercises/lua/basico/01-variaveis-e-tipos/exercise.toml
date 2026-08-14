@@ -1,0 +1,25 @@
+title    = "Variáveis, tipos e os dois subtipos de number"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Leia os exemplos comentados em exercicio.lua: eles mostram que quem carrega
+tipo é o valor e não a variável, o que type() e math.type() devolvem, por que
+10 / 2 dá 5.0 e não 5, e como converter entre texto e número.
+
+Depois implemente ehInteiro: ela devolve true quando n é um número inteiro, e
+false para qualquer outra coisa — inclusive para 3.0, que é um float com valor
+inteiro, e para o texto "3".
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "type() não serve aqui: ele devolve \"number\" tanto para 3 quanto para 3.0. A distinção entre inteiro e float é mais fina que isso.",
+  "math.type() é a função que separa os dois subtipos, e ela devolve nil quando o valor nem número é — o que resolve os casos de texto, nil e boolean de graça.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

@@ -1,0 +1,27 @@
+title    = "sub é inclusivo nos dois extremos"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+cortarAntesDe(texto, separador) deve devolver tudo o que vem antes da primeira
+ocorrência de separador em texto — sem incluir o próprio separador.
+
+O código roda sem erro e parece certo à primeira vista: encontra a posição do
+separador e corta o texto até ali. Rode os testes e repare que o resultado
+sempre traz um caractere a mais do que devia.
+
+A armadilha está em como find() reporta a posição e como sub() usa essa
+posição.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "find devolve a posição do separador contando a partir de 1, e sub(1, pos) inclui essa posição no recorte — os dois extremos de sub são inclusivos, não como um intervalo meio-aberto.",
+  "Se a posição do separador é pos, o último caractere que você quer é o de antes dele: pos - 1.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

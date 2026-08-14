@@ -1,0 +1,23 @@
+title    = "+ soma, .. concatena — e as duas coisas parecem \"juntar\""
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+chaveDoItem(prefixo, id) deve montar uma chave como "item-42" a partir de um
+prefixo (texto) e um id (número), no formato prefixo .. "-" .. id.
+
+Salve o arquivo e a validação roda sozinha. A versão atual nem chega a rodar
+o primeiro teste — ela quebra assim que é chamada.
+
+O operador usado para "juntar" os pedaços da chave não é o certo para texto.
+"""
+
+hints = [
+  "+ é aritmética: os dois lados precisam ser (ou virar) número. Um texto que não representa um número nenhum, como \"item\", não tem como virar número — daí o erro.",
+  "Para colar texto e número numa string só, o operador é .. — ele converte o número para texto sozinho, sem precisar de tostring.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

@@ -1,0 +1,26 @@
+title    = "# não garante que a lista está sem buracos"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+todosPreenchidos(t, tamanho) deve dizer se as tamanho primeiras posições de t
+estão todas ocupadas (nenhuma é nil).
+
+O código roda sem erro e parece um jeito razoável de checar isso: compara o
+comprimento medido com o tamanho esperado. Rode os testes e repare que ele
+aprova uma lista que tem um buraco no meio.
+
+A armadilha está no que # realmente garante.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "# só é bem definido quando a tabela é uma sequência sem buracos — com um nil no meio, ele ainda pode devolver o tamanho que você esperava, mesmo faltando uma posição preenchida.",
+  "Só dá para confirmar que não falta nada olhando posição por posição, de 1 até tamanho, e checando se algum t[i] é nil.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

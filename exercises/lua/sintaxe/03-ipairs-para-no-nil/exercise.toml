@@ -1,0 +1,26 @@
+title    = "ipairs para no primeiro nil"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+somarConhecendoTamanho(t, tamanho) deve somar as tamanho primeiras posições de
+t, mesmo que alguma delas seja nil no meio — tratando esse nil como 0.
+
+O código roda sem erro e parece a forma natural de somar uma lista: percorre
+com ipairs e acumula. Rode os testes e repare que a soma vem menor do que
+devia quando há um buraco no meio da lista.
+
+A armadilha está em até onde ipairs realmente vai.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "ipairs para na primeira posição que valer nil — as posições depois dela nunca são visitadas, mesmo que a lista continue.",
+  "Como tamanho já é conhecido, um for numérico de 1 até tamanho visita todas as posições, buraco ou não; t[i] vale nil onde há buraco, e somar nil trata como 0 com (t[i] or 0).",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

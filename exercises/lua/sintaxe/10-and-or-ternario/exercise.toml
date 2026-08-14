@@ -1,0 +1,27 @@
+title    = "and/or como ternário falha quando o valor \"verdadeiro\" é false"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+escolher(condicao, valorSeVerdadeiro, valorSeFalso) deve devolver
+valorSeVerdadeiro quando condicao for true, e valorSeFalso quando for false —
+sem olhar para o que esses dois valores são.
+
+O código roda sem erro e imita o operador ternário de outras linguagens com
+"condicao and a or b". Rode os testes e repare que, num caso específico, ele
+devolve o valor errado mesmo com a condição correta.
+
+A armadilha está em quando valorSeVerdadeiro é, ele mesmo, um valor falso.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "\"condicao and a or b\" funciona avaliando a expressão da esquerda pra direita: se condicao é true, o resultado de \"condicao and a\" é a — a menos que a seja nil ou false, caso em que and já devolve isso, e o or seguinte substitui por b.",
+  "Isso quebra exatamente quando valorSeVerdadeiro é false: mesmo com condicao true, o idioma \"and/or\" acaba devolvendo valorSeFalso. Um if comum não tem essa armadilha.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

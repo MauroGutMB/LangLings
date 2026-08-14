@@ -1,0 +1,26 @@
+title    = "Tabelas como lista: índice 1, # e ipairs"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram a tabela usada como lista: a primeira
+posição é a 1, o # devolve o comprimento, table.insert acrescenta no fim ou no
+meio, table.remove tira, ipairs percorre em ordem e table.concat junta tudo num
+texto.
+
+Depois implemente dobrar: ela recebe uma lista de números e devolve uma lista
+NOVA com cada número multiplicado por 2, na mesma ordem. A lista original não
+pode ser alterada, e uma lista vazia devolve outra vazia.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "\"Devolve uma lista nova\" já diz o primeiro passo: criar uma tabela vazia antes do laço e devolvê-la no fim.",
+  "Percorra a original com ipairs, que entrega índice e valor em ordem, e acrescente cada dobro na tabela nova com table.insert — ou escrevendo direto em nova[i], já que os índices são os mesmos.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

@@ -1,0 +1,26 @@
+title    = "Copiar uma tabela não é devolvê-la de volta"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+clonar(t) deve devolver uma tabela NOVA, independente, com os mesmos
+elementos de t — alterar a cópia depois não pode alterar t, e vice-versa.
+
+O código roda sem erro e os testes que só olham o conteúdo da cópia passam
+tranquilos. Rode os testes e repare que um deles falha mesmo sem mexer no
+conteúdo: ele mexe na cópia e depois olha o original.
+
+A armadilha está no que uma variável de tabela realmente guarda.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Uma variável de tabela não guarda a tabela — guarda uma referência a ela. \"return t\" devolve a MESMA tabela, com outro nome; não existem duas tabelas ali, existe uma só com dois jeitos de chegar até ela.",
+  "Uma cópia de verdade precisa de uma tabela NOVA, com table.insert (ou nova[i] = t[i]) copiando cada elemento — o padrão já usado no exercício de listas.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

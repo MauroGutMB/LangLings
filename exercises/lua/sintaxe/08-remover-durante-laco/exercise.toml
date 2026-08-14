@@ -1,0 +1,27 @@
+title    = "table.remove dentro do laço bagunça os índices"
+category = "sintaxe"
+editable = ["exercicio.lua"]
+
+objective = """
+removerNegativos(t) deve devolver uma lista nova só com os elementos de t que
+não são negativos, na mesma ordem, sem alterar t.
+
+O código roda sem erro e parece direto ao ponto: percorrer a lista e tirar
+quem for negativo. Rode os testes e repare que, quando dois números negativos
+aparecem em sequência, um deles escapa.
+
+A armadilha está em tirar elementos de uma lista enquanto ainda está andando
+por ela com ipairs.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "table.remove fecha o buraco empurrando todo mundo depois dele uma posição para trás — mas o ipairs que está percorrendo a lista já decidiu qual é o próximo índice antes disso acontecer, então ele pula quem ocupou o lugar de quem saiu.",
+  "O jeito mais simples de evitar o problema é não alterar a lista original: construa uma lista NOVA, adicionando nela só quem passa no teste, e devolva essa lista nova.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

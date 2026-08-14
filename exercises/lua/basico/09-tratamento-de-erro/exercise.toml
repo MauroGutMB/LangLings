@@ -1,0 +1,27 @@
+title    = "Tratamento de erro: error e pcall"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram error interrompendo a função na hora,
+pcall chamando uma função protegida e devolvendo true mais o resultado quando
+dá certo, ou false mais a mensagem quando error foi chamado dentro dela — sem
+o programa inteiro morrer.
+
+Depois implemente dividirSeguro: ela recebe dois números e devolve dois
+valores. Se b for 0, devolve nil e a mensagem de erro "divisão por zero" (sem
+lançar error nem travar o programa). Caso contrário, devolve a divisão a / b
+e nil.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "Não é preciso pcall aqui — pcall protege quem CHAMA uma função que pode dar error; dividirSeguro é quem decide se há erro, então ela mesma checa a condição com um if.",
+  "\"Devolve dois valores\" quer dizer dois returns separados por vírgula: um deles sempre vem nil, dependendo de qual dos dois casos aconteceu.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"

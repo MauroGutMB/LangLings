@@ -1,0 +1,26 @@
+title    = "Funções: vários retornos e número variável de argumentos"
+category = "basico"
+editable = ["exercicio.lua"]
+
+objective = """
+Os exemplos em exercicio.lua mostram função como valor, o que acontece quando
+se passa argumento demais ou de menos, como devolver mais de um valor de uma
+vez e como uma função recebe uma quantidade indefinida de argumentos com o ...
+
+Depois implemente somaEContagem: ela recebe uma quantidade qualquer de números
+e devolve DOIS valores, nesta ordem — a soma deles e quantos eram. Sem nenhum
+argumento, devolve 0 e 0.
+
+Salve o arquivo e a validação roda sozinha.
+"""
+
+hints = [
+  "O ... dentro da função é a lista dos argumentos que sobraram, e o for genérico com ipairs não serve para percorrê-la diretamente.",
+  "Para somar, um for numérico sobre {...} resolve; para contar, existe uma função que responde exatamente \"quantos argumentos vieram\" — é a mesma select que aparece nos exemplos, com \"#\" no lugar do índice.",
+  "Devolver dois valores é escrever os dois depois do return, separados por vírgula.",
+]
+
+[validation]
+mode    = "test"
+command = ["lua5.4", "testes.lua"]
+timeout = "30s"
