@@ -2,7 +2,8 @@
 
 Uma CLI de exercícios de programação multi-linguagem, no espírito do Rustlings,
 com interface de terminal e cada linguagem rodando isolada em seu próprio
-container Docker.
+container Docker. São 199 atividades em 9 linguagens: Go, C, Rust, Java, Dart,
+JavaScript, TypeScript, Lua e Bash.
 
 ## Descrição
 
@@ -108,17 +109,26 @@ O `-p 1` importa: pacotes diferentes mexem no mesmo Docker.
 
 ## Linguagens
 
-| Linguagem | Básico | Sintaxe | Compilador | Frameworks | Exemplos |
-|---|---|---|---|---|---|
-| Go | 10 | 12 | 1 | — | — |
-| C | 10 | 12 | — | — | — |
-| JavaScript | 10 | 12 | — | — | — |
-| Lua | 10 | 12 | — | — | — |
-| Bash | 10 | 12 | — | — | — |
-| Rust | planejada | | | | |
-| Java | planejada | | | | |
-| TypeScript | planejada | | | | |
-| Dart | planejada | | | | |
+São **199 atividades**, distribuídas igualmente entre as nove linguagens.
+
+| Linguagem | Básico | Sintaxe | Compilador | Frameworks | Exemplos | Imagem |
+|---|---|---|---|---|---|---|
+| Go | 10 | 12 | 1 | — | — | `golang:1.26-alpine` |
+| C | 10 | 12 | — | — | — | Dockerfile próprio |
+| Rust | 10 | 12 | — | — | — | `rust:1.97-slim-trixie` |
+| Java | 10 | 12 | — | — | — | `eclipse-temurin:25-jdk-alpine` |
+| Dart | 10 | 12 | — | — | — | `dart:3.13-sdk` |
+| JavaScript | 10 | 12 | — | — | — | `node:24-alpine` |
+| TypeScript | 10 | 12 | — | — | — | Dockerfile próprio |
+| Lua | 10 | 12 | — | — | — | Dockerfile próprio |
+| Bash | 10 | 12 | — | — | — | `bash:5.2-alpine3.22` |
+
+Nenhuma atividade usa dependência externa: todas rodam com a rede desligada,
+usando só o que vem no toolchain de cada linguagem. As três que constroem a
+própria imagem têm motivo específico — Lua porque não existe imagem oficial no
+Docker Hub, TypeScript porque o Node executa `.ts` apagando os tipos sem
+checá-los (sem o `tsc` na imagem, um exercício de TypeScript aprovaria código
+com erro de tipo), e C para não carregar os 561 MB da `gcc` oficial.
 
 Adicionar uma linguagem é escrever um `languages/<slug>/language.toml` e as
 atividades em `exercises/<slug>/<categoria>/<slug-da-atividade>/`. Cada
